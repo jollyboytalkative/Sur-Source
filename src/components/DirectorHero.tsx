@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Disc3 } from 'lucide-react';
 import { DirectorId, DirectorProfile } from '../types/archive';
 import cassetteArchiveImg from '../assets/images/bollywood_cassette_archive_1794559716635.jpg';
 import vintageDeskImg from '../assets/images/vintage_music_desk_1794559717261.jpg';
 
+export interface DirectorStats {
+  totalMovies: number;
+  totalSongs: number;
+  copiedOrInspiredCount: number;
+  originalCount: number;
+}
+
 interface DirectorHeroProps {
   directors: DirectorProfile[];
   activeDirectorId: DirectorId;
   onSelectDirector: (id: DirectorId) => void;
-  stats: {
-    totalMovies: number;
-    totalSongs: number;
-    copiedOrInspiredCount: number;
-    originalCount: number;
-  };
+  stats: DirectorStats;
+  directorStatsMap?: Record<DirectorId, DirectorStats>;
 }
 
 export const DirectorHero: React.FC<DirectorHeroProps> = ({
@@ -21,10 +24,68 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
   activeDirectorId,
   onSelectDirector,
   stats,
+  directorStatsMap,
 }) => {
   const [imgError, setImgError] = useState(false);
+  const [hoveredDirectorId, setHoveredDirectorId] = useState<DirectorId | null>(
+    null
+  );
+  const [popoverCoords, setPopoverCoords] = useState<{
+    left: number;
+    top: number;
+  } | null>(null);
+  const tablistWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  const sortedDirectors = useMemo(
+    () =>
+      [...directors].sort((a, b) =>
+        a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
+      ),
+    [directors]
+  );
+
   const activeDirector =
-    directors.find((d) => d.id === activeDirectorId) ?? directors[0];
+    sortedDirectors.find((d) => d.id === activeDirectorId) ?? sortedDirectors[0];
+
+  const hoveredDirector = hoveredDirectorId
+    ? sortedDirectors.find((d) => d.id === hoveredDirectorId) ?? null
+    : null;
+
+  const hoveredStats =
+    hoveredDirectorId && directorStatsMap
+      ? directorStatsMap[hoveredDirectorId]
+      : hoveredDirectorId === activeDirectorId
+        ? stats
+        : undefined;
+
+  const openHoverCard = (directorId: DirectorId, targetEl: HTMLElement) => {
+    const container = tablistWrapperRef.current;
+    if (!container) {
+      setHoveredDirectorId(directorId);
+      return;
+    }
+
+    const containerRect = container.getBoundingClientRect();
+    const btnRect = targetEl.getBoundingClientRect();
+    const cardWidth = Math.min(340, containerRect.width);
+
+    const idealLeft =
+      btnRect.left - containerRect.left + btnRect.width / 2 - cardWidth / 2;
+    const clampedLeft = Math.max(
+      0,
+      Math.min(idealLeft, containerRect.width - cardWidth)
+    );
+    const top = btnRect.bottom - containerRect.top + 8;
+
+    setPopoverCoords({ left: clampedLeft, top });
+    setHoveredDirectorId(directorId);
+  };
+
+  const closeHoverCard = (directorId?: DirectorId) => {
+    setHoveredDirectorId((prev) =>
+      !directorId || prev === directorId ? null : prev
+    );
+  };
 
   const heroImageUrl =
     activeDirectorId === 'nadeem-shravan' ? cassetteArchiveImg : vintageDeskImg;
@@ -32,44 +93,130 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
   return (
     <section id="director-tabs" className="scroll-mt-20 pt-8 pb-10 border-b border-[#E4DDD0]">
       <div className="max-w-[1280px] mx-auto px-6">
-        {/* Director Tabs Switcher (wrapped/stacked cleanly with no horizontal scroll) */}
+        {/* Director Tabs Switcher (alphabetical A–Z, wrapped/stacked cleanly with hover stats card) */}
         <div className="pb-6 mb-8 border-b border-[#E4DDD0] space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="font-mono text-[11px] uppercase tracking-wider text-[#6B655D] font-medium">
-              Select Music Director
+              Select Music Director (A–Z)
             </span>
             <p className="text-xs text-[#6B655D]">
-              Bollywood Music Directors Catalog · Song &amp; Provenance Index
+              Hover any composer for quick counts · Click to open full catalog
             </p>
           </div>
 
           <div
-            role="tablist"
-            aria-label="Bollywood Music Directors"
-            className="flex flex-wrap items-center gap-1.5 p-1.5 bg-[#F2EDE4] rounded-lg"
+            ref={tablistWrapperRef}
+            className="relative"
+            onMouseLeave={() => closeHoverCard()}
           >
-            {directors.map((director) => {
-              const isActive = director.id === activeDirectorId;
-              return (
-                <button
-                  key={director.id}
-                  role="tab"
-                  type="button"
-                  aria-selected={isActive}
-                  onClick={() => onSelectDirector(director.id)}
-                  className={`px-3.5 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3412] ${
-                    isActive
-                      ? 'bg-[#FFFFFF] text-[#1C1917] shadow-xs'
-                      : 'text-[#57534E] hover:text-[#1C1917] hover:bg-[#FAF7F2]/60'
-                  }`}
-                >
-                  <span>{director.name}</span>
-                  <span className="ml-2 font-mono text-[11px] font-normal text-[#78716C]">
-                    {director.status === 'active' ? director.era : 'Queued'}
+            <div
+              role="tablist"
+              aria-label="Bollywood Music Directors"
+              className="flex flex-wrap items-center gap-1.5 p-1.5 bg-[#F2EDE4] rounded-lg"
+            >
+              {sortedDirectors.map((director) => {
+                const isActive = director.id === activeDirectorId;
+                return (
+                  <button
+                    key={director.id}
+                    role="tab"
+                    type="button"
+                    aria-selected={isActive}
+                    onClick={() => onSelectDirector(director.id)}
+                    onPointerEnter={(e) => {
+                      if (e.pointerType !== 'touch') {
+                        openHoverCard(director.id, e.currentTarget);
+                      }
+                    }}
+                    onFocus={(e) => {
+                      openHoverCard(director.id, e.currentTarget);
+                    }}
+                    onBlur={() => closeHoverCard(director.id)}
+                    className={`px-3.5 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3412] ${
+                      isActive
+                        ? 'bg-[#FFFFFF] text-[#1C1917] shadow-xs'
+                        : 'text-[#57534E] hover:text-[#1C1917] hover:bg-[#FAF7F2]/60'
+                    }`}
+                  >
+                    <span>{director.name}</span>
+                    <span className="ml-2 font-mono text-[11px] font-normal text-[#78716C]">
+                      {director.status === 'active' ? director.era : 'Queued'}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {hoveredDirector && hoveredStats && popoverCoords && (
+              <div
+                role="tooltip"
+                aria-live="polite"
+                style={{
+                  left: `${popoverCoords.left}px`,
+                  top: `${popoverCoords.top}px`,
+                  width: 'min(340px, 100%)',
+                }}
+                className="pointer-events-none absolute z-40 rounded-lg border border-[#D6CEBE] bg-[#FFFFFF] p-4 shadow-lg shadow-[#1C1917]/10"
+              >
+                <div className="flex items-baseline justify-between gap-2 pb-2.5 mb-3 border-b border-[#EFEAE0]">
+                  <span className="font-serif text-base font-semibold text-[#1C1917] leading-tight">
+                    {hoveredDirector.name}
                   </span>
-                </button>
-              );
-            })}
+                  <span className="font-mono text-[11px] text-[#78716C] shrink-0">
+                    {hoveredDirector.era}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <div className="text-[11px] text-[#6B655D]">
+                      Cataloged Movies
+                    </div>
+                    <div className="font-mono text-lg font-medium text-[#1C1917] tabular-nums">
+                      {hoveredStats.totalMovies}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-[11px] text-[#6B655D]">
+                      Indexed Songs
+                    </div>
+                    <div className="font-mono text-lg font-medium text-[#1C1917] tabular-nums">
+                      {hoveredStats.totalSongs}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-[11px] text-[#6B655D]">
+                      Close Similarity / Inspired
+                    </div>
+                    <div className="font-mono text-lg font-medium text-[#9A3412] tabular-nums">
+                      {hoveredStats.copiedOrInspiredCount}{' '}
+                      <span className="text-xs font-normal text-[#78716C]">
+                        (
+                        {hoveredStats.totalSongs > 0
+                          ? (
+                              (hoveredStats.copiedOrInspiredCount /
+                                hoveredStats.totalSongs) *
+                              100
+                            ).toFixed(1)
+                          : '0.0'}
+                        %)
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-[11px] text-[#6B655D]">
+                      Original Tracks
+                    </div>
+                    <div className="font-mono text-lg font-medium text-[#14532D] tabular-nums">
+                      {hoveredStats.originalCount}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

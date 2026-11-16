@@ -254,39 +254,68 @@ export default function App() {
     });
   }, [mergedBaseAndLiveMovies, liveOverrides]);
 
+  const sortedDirectors = useMemo(
+    () =>
+      [...DIRECTORS].sort((a, b) =>
+        a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
+      ),
+    []
+  );
+
   const activeMovies = useMemo(
     () => allMovies.filter((m) => m.directorId === activeDirectorId),
     [allMovies, activeDirectorId]
   );
 
   const activeDirector = useMemo(
-    () => DIRECTORS.find((d) => d.id === activeDirectorId) ?? DIRECTORS[0],
-    [activeDirectorId]
+    () =>
+      sortedDirectors.find((d) => d.id === activeDirectorId) ?? sortedDirectors[0],
+    [sortedDirectors, activeDirectorId]
   );
 
-  const stats = useMemo(() => {
-    let totalSongs = 0;
-    let copiedOrInspiredCount = 0;
-    let originalCount = 0;
+  const directorStatsMap = useMemo(() => {
+    const map = {} as Record<
+      DirectorId,
+      {
+        totalMovies: number;
+        totalSongs: number;
+        copiedOrInspiredCount: number;
+        originalCount: number;
+      }
+    >;
 
-    activeMovies.forEach((m) => {
-      m.songs.forEach((s) => {
-        totalSongs += 1;
+    for (const d of DIRECTORS) {
+      map[d.id] = {
+        totalMovies: 0,
+        totalSongs: 0,
+        copiedOrInspiredCount: 0,
+        originalCount: 0,
+      };
+    }
+
+    for (const m of allMovies) {
+      const bucket = map[m.directorId];
+      if (!bucket) continue;
+      bucket.totalMovies += 1;
+      for (const s of m.songs) {
+        bucket.totalSongs += 1;
         if (s.adaptationType === 'copied' || s.adaptationType === 'inspired') {
-          copiedOrInspiredCount += 1;
+          bucket.copiedOrInspiredCount += 1;
         } else {
-          originalCount += 1;
+          bucket.originalCount += 1;
         }
-      });
-    });
+      }
+    }
 
-    return {
-      totalMovies: activeMovies.length,
-      totalSongs,
-      copiedOrInspiredCount,
-      originalCount,
-    };
-  }, [activeMovies]);
+    return map;
+  }, [allMovies]);
+
+  const stats = directorStatsMap[activeDirectorId] ?? {
+    totalMovies: 0,
+    totalSongs: 0,
+    copiedOrInspiredCount: 0,
+    originalCount: 0,
+  };
 
   const handleSelectDirector = (id: DirectorId) => {
     setActiveDirectorId(id);
@@ -362,10 +391,11 @@ export default function App() {
             />
 
             <DirectorHero
-              directors={DIRECTORS}
+              directors={sortedDirectors}
               activeDirectorId={activeDirectorId}
               onSelectDirector={handleSelectDirector}
               stats={stats}
+              directorStatsMap={directorStatsMap}
             />
 
             {showCatalog ? (

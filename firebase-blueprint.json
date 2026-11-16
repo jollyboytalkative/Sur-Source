@@ -1,0 +1,712 @@
+{
+  "entities": {
+    "SongOverride": {
+      "title": "SongOverride",
+      "description": "Admin-approved live classification and source metadata override for an archive song.",
+      "type": "object",
+      "properties": {
+        "songId": {
+          "type": "string",
+          "description": "Unique identifier of the song in the archive.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "movieId": {
+          "type": "string",
+          "description": "Unique identifier of the parent movie.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "directorId": {
+          "type": "string",
+          "description": "Music director identifier.",
+          "enum": [
+            "nadeem-shravan",
+            "anu-malik",
+            "rd-burman",
+            "shankar-jaikishan",
+            "ar-rahman",
+            "naushad",
+            "op-nayyar",
+            "anand-milind",
+            "laxmikant-pyarelal",
+            "sd-burman",
+            "ravi"
+          ],
+          "maxLength": 64
+        },
+        "adaptationType": {
+          "type": "string",
+          "description": "Approved live classification.",
+          "enum": [
+            "copied",
+            "inspired"
+          ],
+          "maxLength": 32
+        },
+        "originalSongTitle": {
+          "type": "string",
+          "description": "Title of the reported original source composition.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "originalArtist": {
+          "type": "string",
+          "description": "Performer or composer of the reported original source.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "originalYear": {
+          "type": "string",
+          "description": "Release year or era of the original source.",
+          "maxLength": 32
+        },
+        "originCategory": {
+          "type": "string",
+          "description": "Regional or stylistic origin category.",
+          "enum": [
+            "Pakistani Film & Ghazal",
+            "Nusrat Fateh Ali Khan",
+            "Arabic & Middle Eastern",
+            "Western Pop & Ambient",
+            "African & World Folk",
+            "Indian Folk & Classical",
+            "Original Composition"
+          ],
+          "maxLength": 64
+        },
+        "adaptationNotes": {
+          "type": "string",
+          "description": "Editorial notes comparing the melody, groove, or arrangement.",
+          "maxLength": 1200
+        },
+        "originalLink": {
+          "type": "string",
+          "description": "External listening link for the reported original track.",
+          "maxLength": 500
+        },
+        "referenceSource": {
+          "type": "string",
+          "description": "Source publication, database, or archive reference.",
+          "maxLength": 300
+        },
+        "sourceUrl": {
+          "type": "string",
+          "description": "Grounded reference article URL.",
+          "maxLength": 500
+        },
+        "discoveryId": {
+          "type": "string",
+          "description": "Reference ID of the staged discovery queue item.",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "approvedBy": {
+          "type": "string",
+          "description": "Firebase UID of the admin who approved the override.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when override was published."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when override was last updated."
+        }
+      },
+      "required": [
+        "songId",
+        "movieId",
+        "directorId",
+        "adaptationType",
+        "originalSongTitle",
+        "originalArtist",
+        "originalYear",
+        "originCategory",
+        "adaptationNotes",
+        "originalLink",
+        "referenceSource",
+        "sourceUrl",
+        "discoveryId",
+        "approvedBy",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "DiscoveryCandidate": {
+      "title": "DiscoveryCandidate",
+      "description": "Search-grounded adaptation candidate staged for private admin 1-click approval.",
+      "type": "object",
+      "properties": {
+        "discoveryId": {
+          "type": "string",
+          "description": "Unique candidate document ID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "songId": {
+          "type": "string",
+          "description": "Target archive song ID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "movieId": {
+          "type": "string",
+          "description": "Target archive movie ID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "directorId": {
+          "type": "string",
+          "description": "Music director ID.",
+          "enum": [
+            "nadeem-shravan",
+            "anu-malik",
+            "rd-burman",
+            "shankar-jaikishan",
+            "ar-rahman",
+            "naushad",
+            "op-nayyar",
+            "anand-milind",
+            "laxmikant-pyarelal",
+            "sd-burman",
+            "ravi"
+          ],
+          "maxLength": 64
+        },
+        "directorName": {
+          "type": "string",
+          "description": "Display name of the music director.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "movieTitle": {
+          "type": "string",
+          "description": "Movie title.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "movieYear": {
+          "type": "integer",
+          "description": "Release year of the movie."
+        },
+        "songTitle": {
+          "type": "string",
+          "description": "Bollywood song title currently marked Original.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "singers": {
+          "type": "string",
+          "description": "Playback singers.",
+          "maxLength": 300
+        },
+        "bollywoodLink": {
+          "type": "string",
+          "description": "External listening link for the Bollywood song.",
+          "maxLength": 500
+        },
+        "suggestedType": {
+          "type": "string",
+          "description": "Suggested classification from Search grounding.",
+          "enum": [
+            "copied",
+            "inspired"
+          ],
+          "maxLength": 32
+        },
+        "originalSongTitle": {
+          "type": "string",
+          "description": "Discovered original song title.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "originalArtist": {
+          "type": "string",
+          "description": "Discovered original performer or composer.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "originalYear": {
+          "type": "string",
+          "description": "Year or era of the discovered original track.",
+          "maxLength": 32
+        },
+        "originCategory": {
+          "type": "string",
+          "description": "Suggested origin region or style.",
+          "enum": [
+            "Pakistani Film & Ghazal",
+            "Nusrat Fateh Ali Khan",
+            "Arabic & Middle Eastern",
+            "Western Pop & Ambient",
+            "African & World Folk",
+            "Indian Folk & Classical",
+            "Original Composition"
+          ],
+          "maxLength": 64
+        },
+        "adaptationNotes": {
+          "type": "string",
+          "description": "Grounded summary of the reported similarity.",
+          "maxLength": 1200
+        },
+        "originalLink": {
+          "type": "string",
+          "description": "External listening link for the discovered original.",
+          "maxLength": 500
+        },
+        "referenceSource": {
+          "type": "string",
+          "description": "Source attribution label (e.g. ITWOFS, CopycatList, Wikipedia).",
+          "maxLength": 300
+        },
+        "sourceUrl": {
+          "type": "string",
+          "description": "Primary grounded web source URL.",
+          "maxLength": 500
+        },
+        "sourceTitle": {
+          "type": "string",
+          "description": "Primary grounded web source title.",
+          "maxLength": 300
+        },
+        "confidence": {
+          "type": "string",
+          "description": "Evidence confidence tier.",
+          "enum": [
+            "high",
+            "medium"
+          ],
+          "maxLength": 16
+        },
+        "status": {
+          "type": "string",
+          "description": "Review queue workflow state.",
+          "enum": [
+            "pending",
+            "approved",
+            "rejected"
+          ],
+          "maxLength": 16
+        },
+        "discoveredAtIso": {
+          "type": "string",
+          "description": "ISO timestamp when discovery ran.",
+          "maxLength": 64
+        },
+        "ownerUid": {
+          "type": "string",
+          "description": "Firebase UID of the private admin owner.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": [
+        "discoveryId",
+        "songId",
+        "movieId",
+        "directorId",
+        "directorName",
+        "movieTitle",
+        "movieYear",
+        "songTitle",
+        "singers",
+        "bollywoodLink",
+        "suggestedType",
+        "originalSongTitle",
+        "originalArtist",
+        "originalYear",
+        "originCategory",
+        "adaptationNotes",
+        "originalLink",
+        "referenceSource",
+        "sourceUrl",
+        "sourceTitle",
+        "confidence",
+        "status",
+        "discoveredAtIso",
+        "ownerUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "LiveMovie": {
+      "title": "LiveMovie",
+      "description": "Admin-approved Bollywood film and song tracks dynamically appended to a director's live catalog.",
+      "type": "object",
+      "properties": {
+        "movieId": {
+          "type": "string",
+          "description": "Unique movie identifier.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "directorId": {
+          "type": "string",
+          "description": "Music director identifier.",
+          "enum": [
+            "nadeem-shravan",
+            "anu-malik",
+            "rd-burman",
+            "shankar-jaikishan",
+            "ar-rahman",
+            "naushad",
+            "op-nayyar",
+            "anand-milind",
+            "laxmikant-pyarelal",
+            "sd-burman",
+            "ravi"
+          ],
+          "maxLength": 64
+        },
+        "title": {
+          "type": "string",
+          "description": "Hindi / Bollywood movie title.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "year": {
+          "type": "integer",
+          "description": "Release year of the film."
+        },
+        "cast": {
+          "type": "string",
+          "description": "Lead cast summary.",
+          "maxLength": 300
+        },
+        "label": {
+          "type": "string",
+          "description": "Music label.",
+          "maxLength": 120
+        },
+        "significance": {
+          "type": "string",
+          "description": "Editorial summary of the soundtrack release.",
+          "maxLength": 600
+        },
+        "songs": {
+          "type": "array",
+          "description": "Cataloged tracks belonging to this newly discovered film (bounded list)."
+        },
+        "sourceUrl": {
+          "type": "string",
+          "description": "Grounded reference URL confirming the release.",
+          "maxLength": 500
+        },
+        "releaseId": {
+          "type": "string",
+          "description": "Reference ID from release_queue.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "approvedBy": {
+          "type": "string",
+          "description": "Firebase UID of the approving admin.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": [
+        "movieId",
+        "directorId",
+        "title",
+        "year",
+        "cast",
+        "label",
+        "significance",
+        "songs",
+        "sourceUrl",
+        "releaseId",
+        "approvedBy",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ReleaseDiscoveryCandidate": {
+      "title": "ReleaseDiscoveryCandidate",
+      "description": "Search-grounded newly released or upcoming Hindi film/soundtrack staged for private admin approval.",
+      "type": "object",
+      "properties": {
+        "releaseId": {
+          "type": "string",
+          "description": "Unique staged release ID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "movieId": {
+          "type": "string",
+          "description": "Proposed unique movie ID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "directorId": {
+          "type": "string",
+          "description": "Target music director identifier.",
+          "enum": [
+            "nadeem-shravan",
+            "anu-malik",
+            "rd-burman",
+            "shankar-jaikishan",
+            "ar-rahman",
+            "naushad",
+            "op-nayyar",
+            "anand-milind",
+            "laxmikant-pyarelal",
+            "sd-burman",
+            "ravi"
+          ],
+          "maxLength": 64
+        },
+        "directorName": {
+          "type": "string",
+          "description": "Display name of the composer.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "title": {
+          "type": "string",
+          "description": "Film title.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "year": {
+          "type": "integer",
+          "description": "Release year."
+        },
+        "cast": {
+          "type": "string",
+          "description": "Lead cast summary.",
+          "maxLength": 300
+        },
+        "label": {
+          "type": "string",
+          "description": "Record label.",
+          "maxLength": 120
+        },
+        "significance": {
+          "type": "string",
+          "description": "Summary of the release.",
+          "maxLength": 600
+        },
+        "songs": {
+          "type": "array",
+          "description": "Tracklist entries for the film (bounded list)."
+        },
+        "sourceUrl": {
+          "type": "string",
+          "description": "Grounded source URL.",
+          "maxLength": 500
+        },
+        "sourceTitle": {
+          "type": "string",
+          "description": "Grounded source title.",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "description": "Queue status.",
+          "enum": [
+            "pending",
+            "approved",
+            "rejected"
+          ],
+          "maxLength": 16
+        },
+        "discoveredAtIso": {
+          "type": "string",
+          "description": "ISO discovery timestamp.",
+          "maxLength": 64
+        },
+        "ownerUid": {
+          "type": "string",
+          "description": "Firebase UID of private admin owner.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": [
+        "releaseId",
+        "movieId",
+        "directorId",
+        "directorName",
+        "title",
+        "year",
+        "cast",
+        "label",
+        "significance",
+        "songs",
+        "sourceUrl",
+        "sourceTitle",
+        "status",
+        "discoveredAtIso",
+        "ownerUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "DiscoverySettings": {
+      "title": "DiscoverySettings",
+      "description": "Private admin configuration for scheduled Search-grounded discovery.",
+      "type": "object",
+      "properties": {
+        "settingId": {
+          "type": "string",
+          "description": "Configuration document identifier.",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether periodic background discovery scans are enabled."
+        },
+        "intervalHours": {
+          "type": "integer",
+          "description": "Interval in hours between scheduled background checks."
+        },
+        "targetDirector": {
+          "type": "string",
+          "description": "Director filter for automated checks.",
+          "enum": [
+            "all",
+            "nadeem-shravan",
+            "anu-malik",
+            "rd-burman",
+            "shankar-jaikishan",
+            "ar-rahman",
+            "naushad",
+            "op-nayyar",
+            "anand-milind",
+            "laxmikant-pyarelal",
+            "sd-burman",
+            "ravi"
+          ],
+          "maxLength": 64
+        },
+        "batchSize": {
+          "type": "integer",
+          "description": "Number of Original songs checked per scheduled run."
+        },
+        "lastScanAtIso": {
+          "type": "string",
+          "description": "ISO timestamp of the most recent completed scan.",
+          "maxLength": 64
+        },
+        "lastScanSummary": {
+          "type": "string",
+          "description": "Short summary of the latest discovery scan.",
+          "maxLength": 400
+        },
+        "ownerUid": {
+          "type": "string",
+          "description": "Firebase UID of the private admin owner.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": [
+        "settingId",
+        "enabled",
+        "intervalHours",
+        "targetDirector",
+        "batchSize",
+        "lastScanAtIso",
+        "lastScanSummary",
+        "ownerUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/song_overrides/{songId}": {
+      "schema": {
+        "$ref": "#/entities/SongOverride"
+      },
+      "description": "Publicly readable approved song overrides that dynamically update catalog classifications without redeployment."
+    },
+    "/discovery_queue/{discoveryId}": {
+      "schema": {
+        "$ref": "#/entities/DiscoveryCandidate"
+      },
+      "description": "Private admin review queue holding Search-grounded adaptation discoveries pending 1-click approval."
+    },
+    "/live_movies/{movieId}": {
+      "schema": {
+        "$ref": "#/entities/LiveMovie"
+      },
+      "description": "Publicly readable approved new Hindi film and tracklist additions published dynamically without redeployment."
+    },
+    "/release_queue/{releaseId}": {
+      "schema": {
+        "$ref": "#/entities/ReleaseDiscoveryCandidate"
+      },
+      "description": "Private admin review queue holding Search-grounded newly released or upcoming Hindi films/songs pending 1-click approval."
+    },
+    "/discovery_settings/{settingId}": {
+      "schema": {
+        "$ref": "#/entities/DiscoverySettings"
+      },
+      "description": "Private admin scheduler settings for periodic background discovery scans."
+    }
+  }
+}

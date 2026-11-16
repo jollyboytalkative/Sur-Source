@@ -1,0 +1,8 @@
+{
+  "name": "Sur & Source — Bollywood Music Directors Archive",
+  "description": "A comprehensive archival catalog of Bollywood music directors, their complete filmographies, song adaptations, closely similar or inspired origins, and side-by-side external listening links.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

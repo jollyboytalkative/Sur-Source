@@ -1,0 +1,629 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Pillar 1 / Global Safety Net: Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Hardened Global Helpers ---
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedAdmin() {
+      return isSignedIn()
+        && request.auth.token.email_verified == true
+        && request.auth.token.email == 'jollyboytalkative@gmail.com';
+    }
+
+    function isValidId(id) {
+      return id is string
+        && id.size() >= 1
+        && id.size() <= 128
+        && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidDirectorId(val) {
+      return val is string
+        && val.size() <= 64
+        && val in ['nadeem-shravan', 'anu-malik', 'rd-burman', 'shankar-jaikishan', 'ar-rahman', 'naushad', 'op-nayyar', 'anand-milind', 'laxmikant-pyarelal', 'sd-burman', 'ravi'];
+    }
+
+    function isValidTargetDirector(val) {
+      return val is string
+        && val.size() <= 64
+        && val in ['all', 'nadeem-shravan', 'anu-malik', 'rd-burman', 'shankar-jaikishan', 'ar-rahman', 'naushad', 'op-nayyar', 'anand-milind', 'laxmikant-pyarelal', 'sd-burman', 'ravi'];
+    }
+
+    function isValidOriginCategory(val) {
+      return val is string
+        && val.size() <= 64
+        && val in [
+          'Pakistani Film & Ghazal',
+          'Nusrat Fateh Ali Khan',
+          'Arabic & Middle Eastern',
+          'Western Pop & Ambient',
+          'African & World Folk',
+          'Indian Folk & Classical',
+          'Original Composition'
+        ];
+    }
+
+    function isValidAdaptationChoice(val) {
+      return val is string
+        && val.size() <= 32
+        && val in ['copied', 'inspired'];
+    }
+
+    function isBoundedString(val, minLen, maxLen) {
+      return val is string && val.size() >= minLen && val.size() <= maxLen;
+    }
+
+    function isValidSongsList(songs) {
+      return songs is list
+        && songs.size() >= 1
+        && songs.size() <= 25
+        && songs[0] is map
+        && songs[0].keys().hasAll(['id', 'title', 'singers', 'adaptationType', 'originCategory', 'bollywoodLink'])
+        && isValidId(songs[0].id)
+        && isBoundedString(songs[0].title, 1, 200);
+    }
+
+    // --- Entity Validation Blueprints (Synced with firebase-blueprint.json) ---
+    function isValidSongOverride(data) {
+      return data.keys().hasAll([
+          'songId',
+          'movieId',
+          'directorId',
+          'adaptationType',
+          'originalSongTitle',
+          'originalArtist',
+          'originalYear',
+          'originCategory',
+          'adaptationNotes',
+          'originalLink',
+          'referenceSource',
+          'sourceUrl',
+          'discoveryId',
+          'approvedBy',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'songId',
+          'movieId',
+          'directorId',
+          'adaptationType',
+          'originalSongTitle',
+          'originalArtist',
+          'originalYear',
+          'originCategory',
+          'adaptationNotes',
+          'originalLink',
+          'referenceSource',
+          'sourceUrl',
+          'discoveryId',
+          'approvedBy',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.songId)
+        && isValidId(data.movieId)
+        && isValidDirectorId(data.directorId)
+        && isValidAdaptationChoice(data.adaptationType)
+        && isBoundedString(data.originalSongTitle, 1, 200)
+        && isBoundedString(data.originalArtist, 1, 200)
+        && isBoundedString(data.originalYear, 0, 32)
+        && isValidOriginCategory(data.originCategory)
+        && isBoundedString(data.adaptationNotes, 0, 1200)
+        && isBoundedString(data.originalLink, 0, 500)
+        && isBoundedString(data.referenceSource, 0, 300)
+        && isBoundedString(data.sourceUrl, 0, 500)
+        && isValidId(data.discoveryId)
+        && isValidId(data.approvedBy)
+        && data.approvedBy == request.auth.uid
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidDiscoveryCandidate(data) {
+      return data.keys().hasAll([
+          'discoveryId',
+          'songId',
+          'movieId',
+          'directorId',
+          'directorName',
+          'movieTitle',
+          'movieYear',
+          'songTitle',
+          'singers',
+          'bollywoodLink',
+          'suggestedType',
+          'originalSongTitle',
+          'originalArtist',
+          'originalYear',
+          'originCategory',
+          'adaptationNotes',
+          'originalLink',
+          'referenceSource',
+          'sourceUrl',
+          'sourceTitle',
+          'confidence',
+          'status',
+          'discoveredAtIso',
+          'ownerUid',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'discoveryId',
+          'songId',
+          'movieId',
+          'directorId',
+          'directorName',
+          'movieTitle',
+          'movieYear',
+          'songTitle',
+          'singers',
+          'bollywoodLink',
+          'suggestedType',
+          'originalSongTitle',
+          'originalArtist',
+          'originalYear',
+          'originCategory',
+          'adaptationNotes',
+          'originalLink',
+          'referenceSource',
+          'sourceUrl',
+          'sourceTitle',
+          'confidence',
+          'status',
+          'discoveredAtIso',
+          'ownerUid',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.discoveryId)
+        && isValidId(data.songId)
+        && isValidId(data.movieId)
+        && isValidDirectorId(data.directorId)
+        && isBoundedString(data.directorName, 1, 120)
+        && isBoundedString(data.movieTitle, 1, 200)
+        && data.movieYear is int
+        && data.movieYear >= 1930
+        && data.movieYear <= 2035
+        && isBoundedString(data.songTitle, 1, 200)
+        && isBoundedString(data.singers, 0, 300)
+        && isBoundedString(data.bollywoodLink, 0, 500)
+        && isValidAdaptationChoice(data.suggestedType)
+        && isBoundedString(data.originalSongTitle, 1, 200)
+        && isBoundedString(data.originalArtist, 1, 200)
+        && isBoundedString(data.originalYear, 0, 32)
+        && isValidOriginCategory(data.originCategory)
+        && isBoundedString(data.adaptationNotes, 0, 1200)
+        && isBoundedString(data.originalLink, 0, 500)
+        && isBoundedString(data.referenceSource, 0, 300)
+        && isBoundedString(data.sourceUrl, 0, 500)
+        && isBoundedString(data.sourceTitle, 0, 300)
+        && data.confidence is string
+        && data.confidence.size() <= 16
+        && data.confidence in ['high', 'medium']
+        && data.status is string
+        && data.status.size() <= 16
+        && data.status in ['pending', 'approved', 'rejected']
+        && isBoundedString(data.discoveredAtIso, 0, 64)
+        && isValidId(data.ownerUid)
+        && data.ownerUid == request.auth.uid
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidLiveMovie(data) {
+      return data.keys().hasAll([
+          'movieId',
+          'directorId',
+          'title',
+          'year',
+          'cast',
+          'label',
+          'significance',
+          'songs',
+          'sourceUrl',
+          'releaseId',
+          'approvedBy',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'movieId',
+          'directorId',
+          'title',
+          'year',
+          'cast',
+          'label',
+          'significance',
+          'songs',
+          'sourceUrl',
+          'releaseId',
+          'approvedBy',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.movieId)
+        && isValidDirectorId(data.directorId)
+        && isBoundedString(data.title, 1, 200)
+        && data.year is int
+        && data.year >= 1930
+        && data.year <= 2035
+        && isBoundedString(data.cast, 0, 300)
+        && isBoundedString(data.label, 0, 120)
+        && isBoundedString(data.significance, 0, 600)
+        && isValidSongsList(data.songs)
+        && isBoundedString(data.sourceUrl, 0, 500)
+        && isValidId(data.releaseId)
+        && isValidId(data.approvedBy)
+        && data.approvedBy == request.auth.uid
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidReleaseCandidate(data) {
+      return data.keys().hasAll([
+          'releaseId',
+          'movieId',
+          'directorId',
+          'directorName',
+          'title',
+          'year',
+          'cast',
+          'label',
+          'significance',
+          'songs',
+          'sourceUrl',
+          'sourceTitle',
+          'status',
+          'discoveredAtIso',
+          'ownerUid',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'releaseId',
+          'movieId',
+          'directorId',
+          'directorName',
+          'title',
+          'year',
+          'cast',
+          'label',
+          'significance',
+          'songs',
+          'sourceUrl',
+          'sourceTitle',
+          'status',
+          'discoveredAtIso',
+          'ownerUid',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.releaseId)
+        && isValidId(data.movieId)
+        && isValidDirectorId(data.directorId)
+        && isBoundedString(data.directorName, 1, 120)
+        && isBoundedString(data.title, 1, 200)
+        && data.year is int
+        && data.year >= 1930
+        && data.year <= 2035
+        && isBoundedString(data.cast, 0, 300)
+        && isBoundedString(data.label, 0, 120)
+        && isBoundedString(data.significance, 0, 600)
+        && isValidSongsList(data.songs)
+        && isBoundedString(data.sourceUrl, 0, 500)
+        && isBoundedString(data.sourceTitle, 0, 300)
+        && data.status is string
+        && data.status.size() <= 16
+        && data.status in ['pending', 'approved', 'rejected']
+        && isBoundedString(data.discoveredAtIso, 0, 64)
+        && isValidId(data.ownerUid)
+        && data.ownerUid == request.auth.uid
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidDiscoverySettings(data) {
+      return data.keys().hasAll([
+          'settingId',
+          'enabled',
+          'intervalHours',
+          'targetDirector',
+          'batchSize',
+          'lastScanAtIso',
+          'lastScanSummary',
+          'ownerUid',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'settingId',
+          'enabled',
+          'intervalHours',
+          'targetDirector',
+          'batchSize',
+          'lastScanAtIso',
+          'lastScanSummary',
+          'ownerUid',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.settingId)
+        && data.enabled is bool
+        && data.intervalHours is int
+        && data.intervalHours >= 1
+        && data.intervalHours <= 168
+        && isValidTargetDirector(data.targetDirector)
+        && data.batchSize is int
+        && data.batchSize >= 1
+        && data.batchSize <= 15
+        && isBoundedString(data.lastScanAtIso, 0, 64)
+        && isBoundedString(data.lastScanSummary, 0, 400)
+        && isValidId(data.ownerUid)
+        && data.ownerUid == request.auth.uid
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    // --- Connection Check Document (Read-Only Probe) ---
+    match /test/connection {
+      allow get: if true;
+    }
+
+    // --- Publicly Readable Live Catalog Overrides (Admin-Only Writes) ---
+    match /song_overrides/{songId} {
+      allow get: if isValidId(songId);
+      allow list: if resource.data.adaptationType in ['copied', 'inspired'];
+
+      allow create: if isVerifiedAdmin()
+        && isValidId(songId)
+        && isValidSongOverride(incoming())
+        && incoming().songId == songId
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isVerifiedAdmin()
+        && isValidId(songId)
+        && isValidSongOverride(incoming())
+        && incoming().songId == existing().songId
+        && incoming().movieId == existing().movieId
+        && incoming().directorId == existing().directorId
+        && incoming().approvedBy == existing().approvedBy
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'adaptationType',
+          'originalSongTitle',
+          'originalArtist',
+          'originalYear',
+          'originCategory',
+          'adaptationNotes',
+          'originalLink',
+          'referenceSource',
+          'sourceUrl',
+          'discoveryId',
+          'updatedAt'
+        ]);
+
+      allow delete: if isVerifiedAdmin() && isValidId(songId);
+    }
+
+    // --- Publicly Readable Live Approved New Releases (Admin-Only Writes) ---
+    match /live_movies/{movieId} {
+      allow get: if isValidId(movieId);
+      allow list: if resource.data.year >= 1930 && resource.data.year <= 2035;
+
+      allow create: if isVerifiedAdmin()
+        && isValidId(movieId)
+        && isValidLiveMovie(incoming())
+        && incoming().movieId == movieId
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isVerifiedAdmin()
+        && isValidId(movieId)
+        && isValidLiveMovie(incoming())
+        && incoming().movieId == existing().movieId
+        && incoming().directorId == existing().directorId
+        && incoming().approvedBy == existing().approvedBy
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'title',
+          'year',
+          'cast',
+          'label',
+          'significance',
+          'songs',
+          'sourceUrl',
+          'releaseId',
+          'updatedAt'
+        ]);
+
+      allow delete: if isVerifiedAdmin() && isValidId(movieId);
+    }
+
+    // --- Private Admin Discovery Queue (Strictly jollyboytalkative@gmail.com) ---
+    match /discovery_queue/{discoveryId} {
+      allow get: if isVerifiedAdmin()
+        && isValidId(discoveryId)
+        && existing().ownerUid == request.auth.uid;
+
+      allow list: if isVerifiedAdmin()
+        && resource.data.ownerUid == request.auth.uid;
+
+      allow create: if isVerifiedAdmin()
+        && isValidId(discoveryId)
+        && isValidDiscoveryCandidate(incoming())
+        && incoming().discoveryId == discoveryId
+        && incoming().status == 'pending'
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isVerifiedAdmin()
+        && isValidId(discoveryId)
+        && isValidDiscoveryCandidate(incoming())
+        && incoming().discoveryId == existing().discoveryId
+        && incoming().songId == existing().songId
+        && incoming().movieId == existing().movieId
+        && incoming().directorId == existing().directorId
+        && incoming().ownerUid == existing().ownerUid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          (
+            existing().status == 'pending'
+            && incoming().status in ['approved', 'rejected']
+            && incoming().diff(existing()).affectedKeys().hasOnly([
+              'status',
+              'suggestedType',
+              'originalSongTitle',
+              'originalArtist',
+              'originalYear',
+              'originCategory',
+              'adaptationNotes',
+              'originalLink',
+              'referenceSource',
+              'updatedAt'
+            ])
+          )
+          ||
+          (
+            existing().status == 'pending'
+            && incoming().status == 'pending'
+            && incoming().diff(existing()).affectedKeys().hasOnly([
+              'suggestedType',
+              'originalSongTitle',
+              'originalArtist',
+              'originalYear',
+              'originCategory',
+              'adaptationNotes',
+              'originalLink',
+              'referenceSource',
+              'updatedAt'
+            ])
+          )
+        );
+
+      allow delete: if isVerifiedAdmin()
+        && isValidId(discoveryId)
+        && existing().ownerUid == request.auth.uid;
+    }
+
+    // --- Private Admin New Releases Discovery Queue (Strictly jollyboytalkative@gmail.com) ---
+    match /release_queue/{releaseId} {
+      allow get: if isVerifiedAdmin()
+        && isValidId(releaseId)
+        && existing().ownerUid == request.auth.uid;
+
+      allow list: if isVerifiedAdmin()
+        && resource.data.ownerUid == request.auth.uid;
+
+      allow create: if isVerifiedAdmin()
+        && isValidId(releaseId)
+        && isValidReleaseCandidate(incoming())
+        && incoming().releaseId == releaseId
+        && incoming().status == 'pending'
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isVerifiedAdmin()
+        && isValidId(releaseId)
+        && isValidReleaseCandidate(incoming())
+        && incoming().releaseId == existing().releaseId
+        && incoming().movieId == existing().movieId
+        && incoming().directorId == existing().directorId
+        && incoming().ownerUid == existing().ownerUid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          (
+            existing().status == 'pending'
+            && incoming().status in ['approved', 'rejected']
+            && incoming().diff(existing()).affectedKeys().hasOnly([
+              'status',
+              'title',
+              'year',
+              'cast',
+              'label',
+              'significance',
+              'songs',
+              'updatedAt'
+            ])
+          )
+          ||
+          (
+            existing().status == 'pending'
+            && incoming().status == 'pending'
+            && incoming().diff(existing()).affectedKeys().hasOnly([
+              'title',
+              'year',
+              'cast',
+              'label',
+              'significance',
+              'songs',
+              'updatedAt'
+            ])
+          )
+        );
+
+      allow delete: if isVerifiedAdmin()
+        && isValidId(releaseId)
+        && existing().ownerUid == request.auth.uid;
+    }
+
+    // --- Private Admin Discovery Scheduler Settings ---
+    match /discovery_settings/{settingId} {
+      allow get: if isVerifiedAdmin()
+        && isValidId(settingId)
+        && existing().ownerUid == request.auth.uid;
+
+      allow list: if isVerifiedAdmin()
+        && resource.data.ownerUid == request.auth.uid;
+
+      allow create: if isVerifiedAdmin()
+        && isValidId(settingId)
+        && isValidDiscoverySettings(incoming())
+        && incoming().settingId == settingId
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isVerifiedAdmin()
+        && isValidId(settingId)
+        && isValidDiscoverySettings(incoming())
+        && incoming().settingId == existing().settingId
+        && incoming().ownerUid == existing().ownerUid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'enabled',
+          'intervalHours',
+          'targetDirector',
+          'batchSize',
+          'lastScanAtIso',
+          'lastScanSummary',
+          'updatedAt'
+        ]);
+
+      allow delete: if isVerifiedAdmin()
+        && isValidId(settingId)
+        && existing().ownerUid == request.auth.uid;
+    }
+  }
+}

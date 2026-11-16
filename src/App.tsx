@@ -34,6 +34,7 @@ import { ArchiveNotes } from './components/ArchiveNotes';
 import { DisclaimerPage } from './components/DisclaimerPage';
 import { ContactPage } from './components/ContactPage';
 import { AdminReviewPage } from './components/AdminReviewPage';
+import { ROUTE_SEO_META } from './seo/seoConfig';
 
 type AppRoute = '/' | '/disclaimer' | '/contact' | '/admin';
 
@@ -100,16 +101,53 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (currentRoute === '/disclaimer') {
-      document.title = 'Disclaimer — Bollywood Music Origins | Sur & Source';
-    } else if (currentRoute === '/contact') {
-      document.title = 'Contact / Corrections — Bollywood Music Origins | Sur & Source';
-    } else if (currentRoute === '/admin') {
-      document.title = 'Curator Review Queue — Sur & Source';
-    } else {
-      document.title =
-        'Sur & Source — Bollywood Music Directors & Song Origins Archive';
+    const meta = ROUTE_SEO_META[currentRoute];
+    document.title = meta.title;
+
+    const canonicalUrl = `${window.location.origin}${
+      currentRoute === '/' ? '/' : currentRoute
+    }`;
+
+    const setMetaTag = (
+      selector: string,
+      attr: 'name' | 'property',
+      key: string,
+      value: string
+    ) => {
+      let el = document.head.querySelector<HTMLMetaElement>(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', value);
+    };
+
+    setMetaTag('meta[name="description"]', 'name', 'description', meta.description);
+    setMetaTag('meta[name="robots"]', 'name', 'robots', meta.robots);
+    setMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
+    setMetaTag('meta[property="og:title"]', 'property', 'og:title', meta.title);
+    setMetaTag(
+      'meta[property="og:description"]',
+      'property',
+      'og:description',
+      meta.description
+    );
+    setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', meta.title);
+    setMetaTag(
+      'meta[name="twitter:description"]',
+      'name',
+      'twitter:description',
+      meta.description
+    );
+
+    let canonicalEl = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalEl);
     }
+    canonicalEl.setAttribute('href', canonicalUrl);
   }, [currentRoute]);
 
   const baseMovies = useMemo<MovieEntry[]>(

@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
-import emblemImg from '../assets/images/maroon_emblem_question_1794572752412.jpg';
 
 interface TopBarProps {
   activeSection: string;
@@ -72,7 +71,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onNavigate }) => {
           className="flex items-center gap-3 shrink-0 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3412]"
         >
           <img
-            src={emblemImg}
+            src="/assets/aistudio/sur_source_83510373.png"
             alt="Sur & Source — Bollywood Music Origins emblem"
             className="w-[51px] h-[51px] sm:w-[55px] sm:h-[55px] object-contain mix-blend-multiply shrink-0"
           />

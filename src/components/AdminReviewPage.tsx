@@ -845,7 +845,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
             Scheduled and on-demand Gemini checks grounded with Google Search scan
             both <strong>Original</strong> tracks for newly documented source
             references and <strong>upcoming Hindi releases (2025–2027+)</strong>{' '}
-            for A. R. Rahman (Bollywood), Anu Malik, Nadeem–Shravan, and every active
+            for A. R. Rahman, Anu Malik, Nadeem–Shravan, and every active
             composer. Approve updates with one click to publish live without
             redeploying.
           </p>
@@ -1434,7 +1434,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
                     <p className="text-xs text-[#6B655D] max-w-lg mx-auto">
                       Click &ldquo;Scan New Hindi Releases (2025–2027+)&rdquo;
                       above to search for upcoming or newly released Hindi
-                      soundtracks by A. R. Rahman (Bollywood), Anu Malik,
+                      soundtracks by A. R. Rahman, Anu Malik,
                       Nadeem–Shravan, and other active composers. South Indian
                       and dubbed titles are automatically filtered out.
                     </p>

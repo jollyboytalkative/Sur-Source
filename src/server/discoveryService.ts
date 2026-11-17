@@ -663,7 +663,7 @@ export async function runNewReleaseDiscoveryScan(
 ${JSON.stringify(recentContext, null, 2)}
 
 CRITICAL RULES:
-1. For "ar-rahman" (A. R. Rahman (Bollywood)): ONLY return original HINDI-language Bollywood feature films. STRICTLY EXCLUDE any Tamil, Telugu, Malayalam, Kannada, or South Indian dubbed films (do NOT include Ponniyin Selvan, Thug Life, Raayan, Ayalaan, Kadhalikka Neramillai, Genie, Peddi, RC16, etc.). Films like Ramayana, Lahore 1947, or other upcoming Hindi Bollywood projects are valid ONLY if verified in Search results.
+1. For "ar-rahman" (A. R. Rahman): ONLY return original HINDI-language Bollywood feature films. STRICTLY EXCLUDE any Tamil, Telugu, Malayalam, Kannada, or South Indian dubbed films (do NOT include Ponniyin Selvan, Thug Life, Raayan, Ayalaan, Kadhalikka Neramillai, Genie, Peddi, RC16, etc.). Films like Ramayana, Lahore 1947, or other upcoming Hindi Bollywood projects are valid ONLY if verified in Search results.
 2. For "nadeem-shravan", "anu-malik", or any other composer: ONLY return newly composed/released or confirmed upcoming Hindi (Bollywood) films/singles from 2024–${currentYear + 2} (or newly verified releases) that are NOT already in "recentAlreadyCataloged".
 3. Do NOT repeat any film listed in "recentAlreadyCataloged".
 4. Only return genuine releases confirmed by Google Search results with real cast/singers/track details. If there are no new verified Hindi releases not yet listed, return [].

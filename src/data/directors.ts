@@ -61,8 +61,8 @@ export const DIRECTORS: DirectorProfile[] = [
   },
   {
     id: 'ar-rahman',
-    name: 'A. R. Rahman (Bollywood)',
-    fullName: 'Allah Rakha Rahman · Original Hindi (Bollywood) Films Only',
+    name: 'A. R. Rahman',
+    fullName: 'Allah Rakha Rahman · Hindi (Bollywood) Films Only',
     era: '1995 – Present',
     status: 'active',
     summary:
@@ -151,7 +151,7 @@ export const DIRECTORS: DirectorProfile[] = [
   },
   {
     id: 'ravi',
-    name: 'Ravi (Bollywood)',
+    name: 'Ravi',
     fullName: 'Ravi Shankar Sharma · Hindi (Bollywood) Films Only',
     era: '1955 – 2003',
     status: 'active',
@@ -193,5 +193,20 @@ export const DIRECTORS: DirectorProfile[] = [
       'Lata Mangeshkar, Mohammed Rafi, Talat Mahmood, Asha Bhosle · Hindustani Ghazals, Sitar & Lush Strings · Raja Mehdi Ali Khan, Rajinder Krishan, Kaifi Azmi & Gulzar lyrics',
     archiveNote:
       'Chronological Hindi filmography (1950 Aankhen – 1980 Chaalbaaz & Veer-Zaara 2004 archival revival) covering his ~95-film / ~700-song career, with song origins and direct listening links.',
+  },
+  {
+    id: 'bappi-lahiri',
+    name: 'Bappi Lahiri',
+    fullName: 'Alokesh "Bappi" Lahiri · Hindi (Bollywood) Films Only',
+    era: '1973 – 2020',
+    status: 'active',
+    summary:
+      'Bollywood’s "Disco King" who pioneered synthesized pop and electronic dance in Hindi cinema across a 480–500+ multi-language filmography and entered the 1986 Guinness World Records (180+ songs across 33 films in one year)—strictly cataloging his Hindi (Bollywood) films only.',
+    editorialEssay:
+      'While Alokesh "Bappi" Lahiri scored 480 to 500+ total films across Hindi, Bengali, Telugu, and Kannada cinema—and entered the 1986 Guinness World Records for recording over 180 songs across 33 films in a single year—this dossier maintains exclusively his Hindi (Bollywood) filmography (excluding Bengali, Tamil, Telugu, and Kannada soundtracks), starting with Nanha Shikari (1973) and breakthrough Zakhmee (1975) through Namak Halaal, Disco Dancer, Sharaabi, Dance Dance, Ghayal, Thanedaar, Shola Aur Shabnam, Aankhen, Dalaal, Maine Gandhi Ko Nahin Mara, and 2020 credited revivals. Blending acoustic ghazals and Kishore Kumar ballads with Roland Jupiter-8 disco grooves, his Hindi catalog pairs iconic studio originals with documented close similarities and inspirations drawn from Ottawan, Modern Talking, The Buggles, Kaoma, Mory Kanté, ABBA, Culture Club, The Three Degrees, UB40, Laura Branigan, Osibisa, Glenn Frey, and Vital Signs.',
+    signatureSound:
+      'Kishore Kumar, Asha Bhosle, Lata Mangeshkar, Alisha Chinai, Bappi Lahiri, S. Janaki, Usha Uthup · Synthesized Disco, Analog Brass & Drum Machines · Anjaan & Indeevar lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi filmography (1973 Nanha Shikari – 2020 revivals; Bengali, Telugu, Kannada & regional scores excluded), with expanded ITWOFS/musicology origins and direct listening links.',
   },
 ];

@@ -60,7 +60,11 @@ type DecadeFilter =
   | '1960-1964'
   | '1965-1968'
   | '1970-1975'
-  | '1976-2004';
+  | '1976-2004'
+  | '1973-1979'
+  | '1980-1985'
+  | '1986-1991'
+  | '1992-2020';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -177,6 +181,21 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'mm-mausam-1975',
         'mm-laila-majnu-1976',
         'mm-veer-zaara-2004',
+        'bl-zakhmee-1975',
+        'bl-chalte-chalte-1976',
+        'bl-pyaara-dushman-1980',
+        'bl-armaan-1981',
+        'bl-disco-dancer-1982',
+        'bl-namak-halaal-1982',
+        'bl-himmatwala-1983',
+        'bl-sharaabi-1984',
+        'bl-kasam-paida-karnewale-ki-1984',
+        'bl-saaheb-1985',
+        'bl-dance-dance-1987',
+        'bl-ghayal-1990',
+        'bl-thanedaar-1990',
+        'bl-shola-aur-shabnam-1992',
+        'bl-aankhen-1993',
       ])
   );
 
@@ -226,6 +245,10 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === '1965-1968' && (m.year < 1965 || m.year > 1968)) return false;
         if (decade === '1970-1975' && (m.year < 1970 || m.year > 1975)) return false;
         if (decade === '1976-2004' && m.year < 1976) return false;
+        if (decade === '1973-1979' && (m.year < 1973 || m.year > 1979)) return false;
+        if (decade === '1980-1985' && (m.year < 1980 || m.year > 1985)) return false;
+        if (decade === '1986-1991' && (m.year < 1986 || m.year > 1991)) return false;
+        if (decade === '1992-2020' && m.year < 1992) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -363,7 +386,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                         { id: '1970-1975', label: '1970–1975' },
                                         { id: '1976-2004', label: '1976–2004' },
                                       ] as const)
-                                    : ([
+                                    : directorId === 'bappi-lahiri'
+                                      ? ([
+                                          { id: 'all', label: 'All Eras (1973–2020)' },
+                                          { id: '1973-1979', label: '1973–1979' },
+                                          { id: '1980-1985', label: '1980–1985' },
+                                          { id: '1986-1991', label: '1986–1991' },
+                                          { id: '1992-2020', label: '1992–2020' },
+                                        ] as const)
+                                      : ([
                             {
                               id: 'all',
                               label:

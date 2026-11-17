@@ -11,7 +11,8 @@ export type DirectorId =
   | 'sd-burman'
   | 'ravi'
   | 'roshan'
-  | 'madan-mohan';
+  | 'madan-mohan'
+  | 'bappi-lahiri';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

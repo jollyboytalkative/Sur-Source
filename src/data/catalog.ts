@@ -3,6 +3,7 @@ import { DIRECTORS } from './directors.ts';
 import { ANAND_MILIND_MOVIES } from './anandMilindData.ts';
 import { ANU_MALIK_MOVIES } from './anuMalikData.ts';
 import { AR_RAHMAN_BOLLYWOOD_MOVIES } from './arRahmanBollywoodData.ts';
+import { BAPPI_LAHIRI_MOVIES } from './bappiLahiriData.ts';
 import { LAXMIKANT_PYARELAL_MOVIES } from './laxmikantPyarelalData.ts';
 import { MADAN_MOHAN_MOVIES } from './madanMohanData.ts';
 import { NADEEM_SHRAVAN_MOVIES } from './nadeemShravanData.ts';
@@ -28,6 +29,7 @@ export const ALL_DIRECTOR_MOVIES: MovieEntry[] = [
   ...RAVI_MOVIES,
   ...ROSHAN_MOVIES,
   ...MADAN_MOHAN_MOVIES,
+  ...BAPPI_LAHIRI_MOVIES,
 ];
 
 export interface CatalogDirectorStats {

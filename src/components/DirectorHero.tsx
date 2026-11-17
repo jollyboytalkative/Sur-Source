@@ -328,7 +328,9 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                     ? 'Verified Hindi filmography (~55 career films & ~450 songs from Neki Aur Badi 1949 to posthumous Anokhi Raat 1968)'
                                     : activeDirectorId === 'madan-mohan'
                                       ? 'Verified Hindi filmography (95 released films, ~700 songs + 12 shelved & posthumous Veer-Zaara 2004 archival revival)'
-                                      : 'Verified chronological filmography'}
+                                      : activeDirectorId === 'bappi-lahiri'
+                                        ? 'Verified Hindi (Bollywood) filmography (1973 Nanha Shikari – 2020 revivals; 480–500+ total career films across languages & 1986 Guinness Record 180 songs / 33 films; regional films excluded)'
+                                        : 'Verified chronological filmography'}
             </div>
           </div>
 

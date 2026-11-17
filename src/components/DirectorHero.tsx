@@ -117,12 +117,23 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
               {sortedDirectors.map((director) => {
                 const isActive = director.id === activeDirectorId;
                 return (
-                  <button
+                  <a
                     key={director.id}
                     role="tab"
-                    type="button"
+                    href={`/director/${director.id}`}
                     aria-selected={isActive}
-                    onClick={() => onSelectDirector(director.id)}
+                    onClick={(e) => {
+                      if (
+                        !e.metaKey &&
+                        !e.ctrlKey &&
+                        !e.shiftKey &&
+                        !e.altKey &&
+                        e.button === 0
+                      ) {
+                        e.preventDefault();
+                        onSelectDirector(director.id);
+                      }
+                    }}
                     onPointerEnter={(e) => {
                       if (e.pointerType !== 'touch') {
                         openHoverCard(director.id, e.currentTarget);
@@ -132,7 +143,7 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                       openHoverCard(director.id, e.currentTarget);
                     }}
                     onBlur={() => closeHoverCard(director.id)}
-                    className={`px-3.5 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3412] ${
+                    className={`inline-flex items-center px-3.5 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3412] ${
                       isActive
                         ? 'bg-[#FFFFFF] text-[#1C1917] shadow-xs'
                         : 'text-[#57534E] hover:text-[#1C1917] hover:bg-[#FAF7F2]/60'
@@ -142,7 +153,7 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                     <span className="ml-2 font-mono text-[11px] font-normal text-[#78716C]">
                       {director.status === 'active' ? director.era : 'Queued'}
                     </span>
-                  </button>
+                  </a>
                 );
               })}
             </div>
@@ -261,7 +272,7 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                 {!imgError ? (
                   <img
                     src={heroImageUrl}
-                    alt={`${activeDirector.name} 1990s Bollywood cassette and studio notes archive`}
+                    alt={`${activeDirector.name} (${activeDirector.era}) Indian & Bollywood soundtrack cassette and archival studio notes`}
                     referrerPolicy="no-referrer"
                     onError={() => setImgError(true)}
                     className="w-full h-full object-cover"
@@ -315,7 +326,9 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                   ? 'Verified Hindi (Bollywood) filmography (91 Hindi films from Vachan 1955 to Ek Alag Mausam 2003 · Malayalam films excluded)'
                                   : activeDirectorId === 'roshan'
                                     ? 'Verified Hindi filmography (~55 career films & ~450 songs from Neki Aur Badi 1949 to posthumous Anokhi Raat 1968)'
-                                    : 'Verified chronological filmography'}
+                                    : activeDirectorId === 'madan-mohan'
+                                      ? 'Verified Hindi filmography (95 released films, ~700 songs + 12 shelved & posthumous Veer-Zaara 2004 archival revival)'
+                                      : 'Verified chronological filmography'}
             </div>
           </div>
 

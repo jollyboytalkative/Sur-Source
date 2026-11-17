@@ -1,18 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { onAuthStateChanged, type User } from 'firebase/auth';
 import { DIRECTORS } from './data/directors';
-import { NADEEM_SHRAVAN_MOVIES } from './data/nadeemShravanData';
-import { ANU_MALIK_MOVIES } from './data/anuMalikData';
-import { RD_BURMAN_MOVIES } from './data/rdBurmanData';
-import { SHANKAR_JAIKISHAN_MOVIES } from './data/shankarJaikishanData';
-import { AR_RAHMAN_BOLLYWOOD_MOVIES } from './data/arRahmanBollywoodData';
-import { NAUSHAD_MOVIES } from './data/naushadData';
-import { OP_NAYYAR_MOVIES } from './data/opNayyarData';
-import { ANAND_MILIND_MOVIES } from './data/anandMilindData';
-import { LAXMIKANT_PYARELAL_MOVIES } from './data/laxmikantPyarelalData';
-import { SD_BURMAN_MOVIES } from './data/sdBurmanData';
-import { RAVI_MOVIES } from './data/raviData';
-import { ROSHAN_MOVIES } from './data/roshanData';
+import { ALL_DIRECTOR_MOVIES } from './data/catalog';
 import type {
   DirectorId,
   LiveMovieRecord,
@@ -35,25 +24,31 @@ import { ArchiveNotes } from './components/ArchiveNotes';
 import { DisclaimerPage } from './components/DisclaimerPage';
 import { ContactPage } from './components/ContactPage';
 import { AdminReviewPage } from './components/AdminReviewPage';
-import { ROUTE_SEO_META } from './seo/seoConfig';
+import {
+  buildStructuredDataJsonLd,
+  getSeoMetaForPath,
+  resolveSeoRoute,
+  type PublicSeoRoute,
+} from './seo/seoConfig';
 
-type AppRoute = '/' | '/disclaimer' | '/contact' | '/admin';
+type AppRoute = PublicSeoRoute;
 
-function resolveRoute(pathname: string): AppRoute {
-  const normalized = pathname.replace(/\/+$/, '') || '/';
-  if (normalized === '/disclaimer') return '/disclaimer';
-  if (normalized === '/contact') return '/contact';
-  if (normalized === '/admin') return '/admin';
-  return '/';
+function readQueryParam(): string {
+  try {
+    return new URLSearchParams(window.location.search).get('q')?.trim() ?? '';
+  } catch {
+    return '';
+  }
 }
 
 export default function App() {
-  const [currentRoute, setCurrentRoute] = useState<AppRoute>(() =>
-    resolveRoute(window.location.pathname)
+  const [initialResolved] = useState(() => resolveSeoRoute(window.location.pathname));
+  const [currentRoute, setCurrentRoute] = useState<AppRoute>(initialResolved.route);
+  const [activeDirectorId, setActiveDirectorId] = useState<DirectorId>(
+    initialResolved.directorId ?? 'nadeem-shravan'
   );
-  const [activeDirectorId, setActiveDirectorId] =
-    useState<DirectorId>('nadeem-shravan');
   const [selectedMovieFilter, setSelectedMovieFilter] = useState<string>('all');
+  const [urlSearchQuery, setUrlSearchQuery] = useState<string>(() => readQueryParam());
 
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [authReady, setAuthReady] = useState<boolean>(false);
@@ -64,7 +59,14 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentRoute(resolveRoute(window.location.pathname));
+      const next = resolveSeoRoute(window.location.pathname);
+      setCurrentRoute(next.route);
+      if (next.directorId) {
+        setActiveDirectorId(next.directorId);
+      } else if (next.route === '/') {
+        setActiveDirectorId('nadeem-shravan');
+      }
+      setUrlSearchQuery(readQueryParam());
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -102,12 +104,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const meta = ROUTE_SEO_META[currentRoute];
+    const activePath =
+      currentRoute === '/director'
+        ? `/director/${activeDirectorId}`
+        : currentRoute;
+    const meta = getSeoMetaForPath(activePath);
     document.title = meta.title;
 
-    const canonicalUrl = `${window.location.origin}${
-      currentRoute === '/' ? '/' : currentRoute
-    }`;
+    const canonicalUrl = `${window.location.origin}${meta.canonicalPath}`;
 
     const setMetaTag = (
       selector: string,
@@ -125,7 +129,9 @@ export default function App() {
     };
 
     setMetaTag('meta[name="description"]', 'name', 'description', meta.description);
+    setMetaTag('meta[name="keywords"]', 'name', 'keywords', meta.keywords);
     setMetaTag('meta[name="robots"]', 'name', 'robots', meta.robots);
+    setMetaTag('meta[property="og:type"]', 'property', 'og:type', meta.ogType);
     setMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
     setMetaTag('meta[property="og:title"]', 'property', 'og:title', meta.title);
     setMetaTag(
@@ -149,25 +155,17 @@ export default function App() {
       document.head.appendChild(canonicalEl);
     }
     canonicalEl.setAttribute('href', canonicalUrl);
-  }, [currentRoute]);
 
-  const baseMovies = useMemo<MovieEntry[]>(
-    () => [
-      ...NADEEM_SHRAVAN_MOVIES,
-      ...ANU_MALIK_MOVIES,
-      ...RD_BURMAN_MOVIES,
-      ...SHANKAR_JAIKISHAN_MOVIES,
-      ...AR_RAHMAN_BOLLYWOOD_MOVIES,
-      ...NAUSHAD_MOVIES,
-      ...OP_NAYYAR_MOVIES,
-      ...ANAND_MILIND_MOVIES,
-      ...LAXMIKANT_PYARELAL_MOVIES,
-      ...SD_BURMAN_MOVIES,
-      ...RAVI_MOVIES,
-      ...ROSHAN_MOVIES,
-    ],
-    []
-  );
+    const jsonLdEl = document.getElementById('structured-data-jsonld');
+    if (jsonLdEl) {
+      jsonLdEl.textContent = buildStructuredDataJsonLd(
+        window.location.origin,
+        activePath
+      );
+    }
+  }, [currentRoute, activeDirectorId]);
+
+  const baseMovies = useMemo<MovieEntry[]>(() => ALL_DIRECTOR_MOVIES, []);
 
   const mergedBaseAndLiveMovies = useMemo<MovieEntry[]>(() => {
     if (liveMovies.length === 0) return baseMovies;
@@ -322,9 +320,15 @@ export default function App() {
   const handleSelectDirector = (id: DirectorId) => {
     setActiveDirectorId(id);
     setSelectedMovieFilter('all');
+    setUrlSearchQuery('');
+    const nextPath = `/director/${id}`;
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState(null, '', nextPath);
+    }
+    setCurrentRoute('/director');
   };
 
-  const handleNavigateRoute = (path: AppRoute) => {
+  const handleNavigateRoute = (path: Exclude<AppRoute, '/director'>) => {
     if (window.location.pathname !== path) {
       window.history.pushState(null, '', path);
     }
@@ -333,14 +337,21 @@ export default function App() {
   };
 
   const handleNavigate = (sectionId: string) => {
-    if (currentRoute !== '/') {
+    if (sectionId === 'top') {
+      if (window.location.pathname !== '/' || window.location.search) {
+        window.history.pushState(null, '', '/');
+      }
+      setCurrentRoute('/');
+      setUrlSearchQuery('');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const isArchiveView = currentRoute === '/' || currentRoute === '/director';
+    if (!isArchiveView) {
       window.history.pushState(null, '', '/');
       setCurrentRoute('/');
       window.setTimeout(() => {
-        if (sectionId === 'top') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
         const el = document.getElementById(sectionId);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -349,10 +360,6 @@ export default function App() {
       return;
     }
 
-    if (sectionId === 'top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
     const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -408,6 +415,7 @@ export default function App() {
                   movies={activeMovies}
                   selectedMovieFilter={selectedMovieFilter}
                   onChangeMovieFilter={setSelectedMovieFilter}
+                  initialSearchQuery={urlSearchQuery}
                 />
                 <FilmographyExplorer
                   key={`filmography-${activeDirectorId}`}
@@ -430,71 +438,120 @@ export default function App() {
       </main>
 
       <footer className="border-t border-[#E4DDD0] bg-[#FFFFFF] py-6">
-        <div className="max-w-[1280px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#6B655D]">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2.5 text-center sm:text-left">
-            <span>Sur &amp; Source · Bollywood Music Origins Archive</span>
-            <span aria-hidden="true" className="hidden sm:inline text-[#D6CEBE]">
-              |
-            </span>
-            <span>
-              Design and Managed by{' '}
-              <a
-                href="https://jmmweb-india.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-[#9A3412] hover:underline underline-offset-4 transition-colors"
-              >
-                jmmweb-india.com
-              </a>
-            </span>
-          </div>
+        <div className="max-w-[1280px] mx-auto px-6 space-y-4">
           <nav
-            aria-label="Footer links"
-            className="flex flex-wrap items-center gap-2.5 text-xs text-[#6B655D]"
+            aria-label="Indexed Indian & Bollywood Music Directors"
+            className="pb-4 border-b border-[#EFEAE0] flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] text-[#6B655D]"
           >
-            <a
-              href="/disclaimer"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavigateRoute('/disclaimer');
-              }}
-              className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
-                currentRoute === '/disclaimer' ? 'text-[#9A3412] font-medium' : ''
-              }`}
-            >
-              Disclaimer
-            </a>
-            <span aria-hidden="true" className="text-[#D6CEBE]">
-              |
+            <span className="font-mono uppercase tracking-wider text-[#9A3412] font-medium mr-1">
+              Music Directors:
             </span>
-            <a
-              href="/contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavigateRoute('/contact');
-              }}
-              className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
-                currentRoute === '/contact' ? 'text-[#9A3412] font-medium' : ''
-              }`}
-            >
-              Contact / Corrections
-            </a>
-            <span aria-hidden="true" className="text-[#D6CEBE]">
-              |
-            </span>
-            <a
-              href="/admin"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavigateRoute('/admin');
-              }}
-              className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
-                currentRoute === '/admin' ? 'text-[#9A3412] font-medium' : ''
-              }`}
-            >
-              Curator Review
-            </a>
+            {sortedDirectors.map((d, idx) => (
+              <span key={d.id} className="inline-flex items-center gap-3">
+                <a
+                  href={`/director/${d.id}`}
+                  onClick={(e) => {
+                    if (
+                      !e.metaKey &&
+                      !e.ctrlKey &&
+                      !e.shiftKey &&
+                      !e.altKey &&
+                      e.button === 0
+                    ) {
+                      e.preventDefault();
+                      handleSelectDirector(d.id);
+                      window.setTimeout(() => {
+                        const el = document.getElementById('director-tabs');
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }, 40);
+                    }
+                  }}
+                  className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
+                    (currentRoute === '/' || currentRoute === '/director') &&
+                    activeDirectorId === d.id
+                      ? 'font-semibold text-[#1C1917]'
+                      : ''
+                  }`}
+                >
+                  {d.name}
+                </a>
+                {idx < sortedDirectors.length - 1 && (
+                  <span aria-hidden="true" className="text-[#D6CEBE]">
+                    ·
+                  </span>
+                )}
+              </span>
+            ))}
           </nav>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#6B655D]">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2.5 text-center sm:text-left">
+              <span>Sur &amp; Source · Indian &amp; Bollywood Music Origins Archive</span>
+              <span aria-hidden="true" className="hidden sm:inline text-[#D6CEBE]">
+                |
+              </span>
+              <span>
+                Design and Managed by{' '}
+                <a
+                  href="https://jmmweb-india.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#9A3412] hover:underline underline-offset-4 transition-colors"
+                >
+                  jmmweb-india.com
+                </a>
+              </span>
+            </div>
+            <nav
+              aria-label="Footer links"
+              className="flex flex-wrap items-center gap-2.5 text-xs text-[#6B655D]"
+            >
+              <a
+                href="/disclaimer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigateRoute('/disclaimer');
+                }}
+                className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
+                  currentRoute === '/disclaimer' ? 'text-[#9A3412] font-medium' : ''
+                }`}
+              >
+                Disclaimer
+              </a>
+              <span aria-hidden="true" className="text-[#D6CEBE]">
+                |
+              </span>
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigateRoute('/contact');
+                }}
+                className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
+                  currentRoute === '/contact' ? 'text-[#9A3412] font-medium' : ''
+                }`}
+              >
+                Contact / Corrections
+              </a>
+              <span aria-hidden="true" className="text-[#D6CEBE]">
+                |
+              </span>
+              <a
+                href="/admin"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigateRoute('/admin');
+                }}
+                className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
+                  currentRoute === '/admin' ? 'text-[#9A3412] font-medium' : ''
+                }`}
+              >
+                Curator Review
+              </a>
+            </nav>
+          </div>
         </div>
       </footer>
     </div>

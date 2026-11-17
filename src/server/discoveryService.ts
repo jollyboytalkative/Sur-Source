@@ -2,18 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { GoogleGenAI } from '@google/genai';
 import { DIRECTORS } from '../data/directors.ts';
-import { NADEEM_SHRAVAN_MOVIES } from '../data/nadeemShravanData.ts';
-import { ANU_MALIK_MOVIES } from '../data/anuMalikData.ts';
-import { RD_BURMAN_MOVIES } from '../data/rdBurmanData.ts';
-import { SHANKAR_JAIKISHAN_MOVIES } from '../data/shankarJaikishanData.ts';
-import { AR_RAHMAN_BOLLYWOOD_MOVIES } from '../data/arRahmanBollywoodData.ts';
-import { NAUSHAD_MOVIES } from '../data/naushadData.ts';
-import { OP_NAYYAR_MOVIES } from '../data/opNayyarData.ts';
-import { ANAND_MILIND_MOVIES } from '../data/anandMilindData.ts';
-import { LAXMIKANT_PYARELAL_MOVIES } from '../data/laxmikantPyarelalData.ts';
-import { SD_BURMAN_MOVIES } from '../data/sdBurmanData.ts';
-import { RAVI_MOVIES } from '../data/raviData.ts';
-import { ROSHAN_MOVIES } from '../data/roshanData.ts';
+import { ALL_DIRECTOR_MOVIES } from '../data/catalog.ts';
 import { resolveClosestYouTubeVideoUrl } from './youtubeResolver.ts';
 import {
   ORIGIN_CATEGORIES,
@@ -56,20 +45,7 @@ interface PersistedDiscoveryState {
 const DATA_DIR = path.resolve(process.cwd(), '.data');
 const STATE_FILE = path.join(DATA_DIR, 'discovery-state.json');
 
-const ALL_MOVIES: MovieEntry[] = [
-  ...NADEEM_SHRAVAN_MOVIES,
-  ...ANU_MALIK_MOVIES,
-  ...RD_BURMAN_MOVIES,
-  ...SHANKAR_JAIKISHAN_MOVIES,
-  ...AR_RAHMAN_BOLLYWOOD_MOVIES,
-  ...NAUSHAD_MOVIES,
-  ...OP_NAYYAR_MOVIES,
-  ...ANAND_MILIND_MOVIES,
-  ...LAXMIKANT_PYARELAL_MOVIES,
-  ...SD_BURMAN_MOVIES,
-  ...RAVI_MOVIES,
-  ...ROSHAN_MOVIES,
-];
+const ALL_MOVIES: MovieEntry[] = ALL_DIRECTOR_MOVIES;
 
 const DIRECTOR_NAME_MAP = new Map<DirectorId, string>(
   DIRECTORS.map((d) => [d.id, d.name])

@@ -24,7 +24,7 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
               Independent Music Research
             </span>
             <span aria-hidden="true">·</span>
-            <span>Filmography &amp; Provenance Archive</span>
+            <span>Indian &amp; Bollywood Filmography &amp; Provenance Archive</span>
           </div>
 
           <h1
@@ -34,7 +34,7 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
               textWrap: 'balance',
             }}
           >
-            Tracing the Melodies Behind Bollywood Cinema
+            Indian &amp; Bollywood Music Directors: Melodies &amp; Origins
           </h1>
 
           <div className="space-y-4 text-[15px] sm:text-base leading-[1.72] text-[#44403C] mb-7">
@@ -42,17 +42,19 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
               <strong className="font-semibold text-[#1C1917]">
                 Sur &amp; Source (Bollywood Music Origins)
               </strong>{' '}
-              is an independent research archive bringing together Bollywood
-              music directors, their complete filmographies, and documented
-              musical influences in one place—beginning with my favourite,{' '}
+              is an independent musicology research archive bringing together
+              Indian &amp; Bollywood music directors, their complete Hindi cinema
+              filmographies, and documented musical influences in one
+              place—beginning with my favourite,{' '}
               <strong className="font-semibold text-[#1C1917]">
                 Nadeem–Shravan
               </strong>{' '}
-              and expanding across eras to include{' '}
+              and expanding across golden and modern eras to include{' '}
               <strong className="font-semibold text-[#1C1917]">
                 Anu Malik, R.D. Burman, Shankar–Jaikishan, A. R. Rahman
                 (Bollywood), Naushad, O.P. Nayyar, Anand–Milind,
-                Laxmikant–Pyarelal, Ravi (Bollywood), Roshan, and S. D. Burman
+                Laxmikant–Pyarelal, Madan Mohan, Ravi (Bollywood), Roshan, and
+                S. D. Burman
               </strong>
               , among other composers.
             </p>

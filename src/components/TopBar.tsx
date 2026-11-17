@@ -63,10 +63,18 @@ export const TopBar: React.FC<TopBarProps> = ({ onNavigate }) => {
     <header className="sticky top-0 z-30 bg-[#FBF9F5]/95 backdrop-blur-sm border-b border-[#E4DDD0]">
       <div className="max-w-[1280px] mx-auto px-6 min-h-16 py-2 flex items-center justify-between gap-4 lg:gap-8">
         <a
-          href="#top"
+          href="/"
           onClick={(e) => {
-            e.preventDefault();
-            onNavigate('top');
+            if (
+              !e.metaKey &&
+              !e.ctrlKey &&
+              !e.shiftKey &&
+              !e.altKey &&
+              e.button === 0
+            ) {
+              e.preventDefault();
+              onNavigate('top');
+            }
           }}
           className="flex items-center gap-3 shrink-0 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3412]"
         >

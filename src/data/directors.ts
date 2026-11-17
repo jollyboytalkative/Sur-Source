@@ -179,4 +179,19 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Complete chronological Hindi filmography (1949 Neki Aur Badi – 1968 Anokhi Raat, covering 54 verified films from his ~55-film career), with verified tracklists, provenance, and direct listening links.',
   },
+  {
+    id: 'madan-mohan',
+    name: 'Madan Mohan',
+    fullName: 'Madan Mohan Kohli',
+    era: '1950 – 1975+',
+    status: 'active',
+    summary:
+      'Revered "Ghazal King" of Hindi cinema who scored 95 released Hindi films (~700 songs, plus 12 shelved projects & 1 documentary) from Aankhen (1950) through Mausam (1975), posthumous releases like Laila Majnu (1976), and unused archival compositions revived in Veer-Zaara (2004).',
+    editorialEssay:
+      'Celebrated across Indian music history as "Ghazal Ka Shehzada", Madan Mohan Kohli composed for 95 released Hindi films (plus 12 shelved projects and 1 Films Division documentary, spanning nearly 700 recorded songs) from his 1950 debut Aankhen through Adalat, Anpadh, Woh Kaun Thi?, Haqeeqat, Jahan Ara, Mera Saaya, Chirag, National Award-winning Dastak (1970), Heer Raanjha, Hanste Zakhm, and Mausam (1975). Following his passing in July 1975, posthumous scores included Laila Majnu (1976), Saheb Bahadur (1977), Jalan (1978), and Chaalbaaz (1980), while untouched cassette melodies preserved by his son Sanjeev Kohli triumphed three decades later in Yash Chopra’s Veer-Zaara (2004). Renowned for deeply original Hindustani raga and ghazal craft, his catalog has exceptionally few documented external adaptations.',
+    signatureSound:
+      'Lata Mangeshkar, Mohammed Rafi, Talat Mahmood, Asha Bhosle · Hindustani Ghazals, Sitar & Lush Strings · Raja Mehdi Ali Khan, Rajinder Krishan, Kaifi Azmi & Gulzar lyrics',
+    archiveNote:
+      'Chronological Hindi filmography (1950 Aankhen – 1980 Chaalbaaz & Veer-Zaara 2004 archival revival) covering his ~95-film / ~700-song career, with song origins and direct listening links.',
+  },
 ];

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Search,
   ExternalLink,
@@ -26,6 +26,7 @@ interface SongOriginTableProps {
   movies: MovieEntry[];
   selectedMovieFilter: string;
   onChangeMovieFilter: (movieId: string) => void;
+  initialSearchQuery?: string;
 }
 
 type StatusFilter = 'all' | 'adapted' | 'original';
@@ -46,11 +47,18 @@ export const SongOriginTable: React.FC<SongOriginTableProps> = ({
   movies,
   selectedMovieFilter,
   onChangeMovieFilter,
+  initialSearchQuery = '',
 }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [originFilter, setOriginFilter] = useState<string>('all');
   const [sortMode, setSortMode] = useState<SortMode>('priority');
+
+  useEffect(() => {
+    if (initialSearchQuery) {
+      setSearchQuery(initialSearchQuery);
+    }
+  }, [initialSearchQuery]);
 
   const allRows: FlattenedSongRow[] = useMemo(() => {
     const list: FlattenedSongRow[] = [];

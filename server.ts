@@ -4,11 +4,13 @@ import path from 'node:path';
 import express, { type NextFunction, type Request, type Response } from 'express';
 import type { DiscoveryTargetDirector } from './src/types/archive.ts';
 import {
+  buildSsrRootHtml,
   buildStructuredDataJsonLd,
   DEFAULT_APP_ORIGIN,
-  normalizeSeoRoute,
+  getSeoMetaForPath,
+  getSitemapEntries,
+  OG_IMAGE_ALT,
   OG_IMAGE_PATH,
-  ROUTE_SEO_META,
 } from './src/seo/seoConfig.ts';
 
 type DiscoveryServiceModule = typeof import('./src/server/discoveryService.ts');
@@ -155,17 +157,20 @@ function resolvePublicOrigin(req: Request): string {
 
 function injectSeoMeta(html: string, req: Request): string {
   const origin = resolvePublicOrigin(req);
-  const route = normalizeSeoRoute(req.path);
-  const meta = ROUTE_SEO_META[route];
-  const canonicalUrl = `${origin}${route === '/' ? '/' : route}`;
+  const meta = getSeoMetaForPath(req.path);
+  const canonicalUrl = `${origin}${meta.canonicalPath}`;
   const ogImageUrl = `${origin}${OG_IMAGE_PATH}`;
-  const structuredData = buildStructuredDataJsonLd(origin);
+  const structuredData = buildStructuredDataJsonLd(origin, req.path);
+  const ssrRootHtml = buildSsrRootHtml(req.path);
 
   const safeTitle = escapeHtmlAttr(meta.title);
   const safeDesc = escapeHtmlAttr(meta.description);
+  const safeKeywords = escapeHtmlAttr(meta.keywords);
   const safeRobots = escapeHtmlAttr(meta.robots);
   const safeCanonical = escapeHtmlAttr(canonicalUrl);
+  const safeOgType = escapeHtmlAttr(meta.ogType);
   const safeOgImage = escapeHtmlAttr(ogImageUrl);
+  const safeOgAlt = escapeHtmlAttr(OG_IMAGE_ALT);
 
   return html
     .replace(/<title>[\s\S]*?<\/title>/i, `<title>${safeTitle}</title>`)
@@ -174,12 +179,20 @@ function injectSeoMeta(html: string, req: Request): string {
       `<meta name="description" content="${safeDesc}" />`
     )
     .replace(
+      /<meta\s+name="keywords"\s+content="[\s\S]*?"\s*\/?>/i,
+      `<meta name="keywords" content="${safeKeywords}" />`
+    )
+    .replace(
       /<meta\s+name="robots"\s+content="[\s\S]*?"\s*\/?>/i,
       `<meta name="robots" content="${safeRobots}" />`
     )
     .replace(
       /<link\s+rel="canonical"\s+href="[\s\S]*?"\s*\/?>/i,
       `<link rel="canonical" href="${safeCanonical}" />`
+    )
+    .replace(
+      /<meta\s+property="og:type"\s+content="[\s\S]*?"\s*\/?>/i,
+      `<meta property="og:type" content="${safeOgType}" />`
     )
     .replace(
       /<meta\s+property="og:url"\s+content="[\s\S]*?"\s*\/?>/i,
@@ -202,6 +215,10 @@ function injectSeoMeta(html: string, req: Request): string {
       `<meta property="og:image:secure_url" content="${safeOgImage}" />`
     )
     .replace(
+      /<meta\s+property="og:image:alt"\s+content="[\s\S]*?"\s*\/?>/i,
+      `<meta property="og:image:alt" content="${safeOgAlt}" />`
+    )
+    .replace(
       /<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/i,
       `<meta name="twitter:title" content="${safeTitle}" />`
     )
@@ -214,8 +231,16 @@ function injectSeoMeta(html: string, req: Request): string {
       `<meta name="twitter:image" content="${safeOgImage}" />`
     )
     .replace(
+      /<meta\s+name="twitter:image:alt"\s+content="[\s\S]*?"\s*\/?>/i,
+      `<meta name="twitter:image:alt" content="${safeOgAlt}" />`
+    )
+    .replace(
       /<script id="structured-data-jsonld" type="application\/ld\+json">[\s\S]*?<\/script>/i,
       `<script id="structured-data-jsonld" type="application/ld+json">${structuredData}</script>`
+    )
+    .replace(
+      /<div id="root">\s*<\/div>/i,
+      `<div id="root">${ssrRootHtml}</div>`
     );
 }
 
@@ -240,11 +265,11 @@ async function startServer(): Promise<void> {
   app.get('/sitemap.xml', (req, res) => {
     const origin = resolvePublicOrigin(req);
     const today = new Date().toISOString().slice(0, 10);
-    const urls = [
-      { loc: `${origin}/`, changefreq: 'weekly', priority: '1.0' },
-      { loc: `${origin}/disclaimer`, changefreq: 'monthly', priority: '0.6' },
-      { loc: `${origin}/contact`, changefreq: 'monthly', priority: '0.6' },
-    ];
+    const urls = getSitemapEntries().map((entry) => ({
+      loc: `${origin}${entry.path}`,
+      changefreq: entry.changefreq,
+      priority: entry.priority,
+    }));
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
       .map(
         (u) =>

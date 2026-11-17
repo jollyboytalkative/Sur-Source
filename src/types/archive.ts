@@ -10,7 +10,8 @@ export type DirectorId =
   | 'laxmikant-pyarelal'
   | 'sd-burman'
   | 'ravi'
-  | 'roshan';
+  | 'roshan'
+  | 'madan-mohan';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

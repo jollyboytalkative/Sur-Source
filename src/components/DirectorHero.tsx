@@ -313,7 +313,9 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                 ? 'Verified Hindi (Bollywood) filmography (~89 Hindi films from Eight Days 1946 to Tyaag 1977 · Bengali films excluded)'
                                 : activeDirectorId === 'ravi'
                                   ? 'Verified Hindi (Bollywood) filmography (91 Hindi films from Vachan 1955 to Ek Alag Mausam 2003 · Malayalam films excluded)'
-                                  : 'Verified chronological filmography'}
+                                  : activeDirectorId === 'roshan'
+                                    ? 'Verified Hindi filmography (~55 career films & ~450 songs from Neki Aur Badi 1949 to posthumous Anokhi Raat 1968)'
+                                    : 'Verified chronological filmography'}
             </div>
           </div>
 

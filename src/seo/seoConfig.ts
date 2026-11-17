@@ -12,7 +12,7 @@ export const DEFAULT_APP_ORIGIN =
   'https://ais-pre-ctlhphzqer6embfkrimqiu-386234381851.asia-southeast1.run.app';
 
 export const SEO_KEYWORDS =
-  'Sur & Source, Bollywood music origins, Bollywood music directors archive, Hindi film songs adapted, Bollywood song inspirations, Nadeem-Shravan, Anu Malik, R.D. Burman, Shankar-Jaikishan, A. R. Rahman Bollywood, Naushad, O.P. Nayyar, Anand-Milind, Laxmikant-Pyarelal, S. D. Burman, Ravi Bollywood';
+  'Sur & Source, Bollywood music origins, Bollywood music directors archive, Hindi film songs adapted, Bollywood song inspirations, Nadeem-Shravan, Anu Malik, R.D. Burman, Shankar-Jaikishan, A. R. Rahman Bollywood, Naushad, O.P. Nayyar, Anand-Milind, Laxmikant-Pyarelal, S. D. Burman, Ravi Bollywood, Roshan';
 
 export const OG_IMAGE_PATH = '/og-image.jpg';
 export const OG_IMAGE_ALT =
@@ -30,6 +30,7 @@ export const ARCHIVED_COMPOSER_LIST = [
   { name: 'Laxmikant–Pyarelal', era: '1963–1998' },
   { name: 'S. D. Burman', era: '1946–1977' },
   { name: 'Ravi (Bollywood)', era: '1955–2003' },
+  { name: 'Roshan', era: '1949–1968' },
 ] as const;
 
 export const ROUTE_SEO_META: Record<PublicSeoRoute, RouteSeoMeta> = {
@@ -37,7 +38,7 @@ export const ROUTE_SEO_META: Record<PublicSeoRoute, RouteSeoMeta> = {
     path: '/',
     title: 'Sur & Source — Bollywood Music Directors & Origins Archive',
     description:
-      'Explore Bollywood music directors’ complete filmographies, song-by-song origins, close similarities, and listening links across 11 iconic Hindi composers.',
+      'Explore Bollywood music directors’ complete filmographies, song-by-song origins, close similarities, and listening links across 12 iconic Hindi composers.',
     robots:
       'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   },

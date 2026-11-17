@@ -13,6 +13,7 @@ import { ANAND_MILIND_MOVIES } from '../data/anandMilindData.ts';
 import { LAXMIKANT_PYARELAL_MOVIES } from '../data/laxmikantPyarelalData.ts';
 import { SD_BURMAN_MOVIES } from '../data/sdBurmanData.ts';
 import { RAVI_MOVIES } from '../data/raviData.ts';
+import { ROSHAN_MOVIES } from '../data/roshanData.ts';
 import { resolveClosestYouTubeVideoUrl } from './youtubeResolver.ts';
 import {
   ORIGIN_CATEGORIES,
@@ -67,6 +68,7 @@ const ALL_MOVIES: MovieEntry[] = [
   ...LAXMIKANT_PYARELAL_MOVIES,
   ...SD_BURMAN_MOVIES,
   ...RAVI_MOVIES,
+  ...ROSHAN_MOVIES,
 ];
 
 const DIRECTOR_NAME_MAP = new Map<DirectorId, string>(

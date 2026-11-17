@@ -164,4 +164,19 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Bollywood-only chronological Hindi filmography (1955 Vachan – 2003 Ek Alag Mausam, covering 91 verified Hindi films with all Malayalam films excluded), with song origins and direct listening links.',
   },
+  {
+    id: 'roshan',
+    name: 'Roshan',
+    fullName: 'Roshan Lal Nagrath',
+    era: '1949 – 1968',
+    status: 'active',
+    summary:
+      'Celebrated classical esraj player and golden-era composer who scored ~55 Hindi films (~450 songs) from Neki Aur Badi (1949) and Baawre Nain (1950) through Barsaat Ki Raat (1960), Filmfare-winning Taj Mahal (1963), Chitralekha (1964), Mamta (1966), and posthumous Anokhi Raat (1968).',
+    editorialEssay:
+      'Renowned Hindustani classical esraj artist Roshan Lal Nagrath debuted independently with Kidar Sharma’s Neki Aur Badi (1949) and broke through with Baawre Nain (1950). Across roughly 55 films and ~450 songs before his passing at age 50 in November 1967 (followed by posthumous Anokhi Raat in 1968), Roshan crafted landmark raga-rooted scores including Barsaat Ki Raat (1960), Aarti (1962), Taj Mahal (1963, Filmfare Best Music Director), Dil Hi To Hai (1963), Chitralekha (1964), Devar (1966), and Mamta (1966). Documented provenance spans authentic traditional qawwali and bhajan adaptations alongside rare orchestral inspirations such as the opening violin prelude to "Rahen Na Rahen Hum".',
+    signatureSound:
+      'Lata Mangeshkar, Mohammed Rafi, Mukesh, Talat Mahmood, Asha Bhosle, Manna Dey · Esraj, Sitar, Sarangi & Filmi Qawwali · Sahir Ludhianvi, Majrooh Sultanpuri, Kidar Sharma & Indeevar lyrics',
+    archiveNote:
+      'Complete chronological Hindi filmography (1949 Neki Aur Badi – 1968 Anokhi Raat, covering 54 verified films from his ~55-film career), with verified tracklists, provenance, and direct listening links.',
+  },
 ];

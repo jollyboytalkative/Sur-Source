@@ -52,7 +52,7 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
               <strong className="font-semibold text-[#1C1917]">
                 Anu Malik, R.D. Burman, Shankar–Jaikishan, A. R. Rahman
                 (Bollywood), Naushad, O.P. Nayyar, Anand–Milind,
-                Laxmikant–Pyarelal, S. D. Burman, and Ravi (Bollywood)
+                Laxmikant–Pyarelal, Ravi (Bollywood), Roshan, and S. D. Burman
               </strong>
               , among other composers.
             </p>

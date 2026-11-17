@@ -12,6 +12,7 @@ import { ANAND_MILIND_MOVIES } from './data/anandMilindData';
 import { LAXMIKANT_PYARELAL_MOVIES } from './data/laxmikantPyarelalData';
 import { SD_BURMAN_MOVIES } from './data/sdBurmanData';
 import { RAVI_MOVIES } from './data/raviData';
+import { ROSHAN_MOVIES } from './data/roshanData';
 import type {
   DirectorId,
   LiveMovieRecord,
@@ -163,6 +164,7 @@ export default function App() {
       ...LAXMIKANT_PYARELAL_MOVIES,
       ...SD_BURMAN_MOVIES,
       ...RAVI_MOVIES,
+      ...ROSHAN_MOVIES,
     ],
     []
   );

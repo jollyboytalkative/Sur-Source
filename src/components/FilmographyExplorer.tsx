@@ -54,7 +54,11 @@ type DecadeFilter =
   | '1955-1961'
   | '1962-1965'
   | '1966-1969'
-  | '1970-2003';
+  | '1970-2003'
+  | '1949-1954'
+  | '1955-1959'
+  | '1960-1964'
+  | '1965-1968';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -148,6 +152,14 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'ravi-hamraaz-1967',
         'ravi-neel-kamal-1968',
         'ravi-nikaah-1982',
+        'roshan-baawre-nain-1950',
+        'roshan-barsaat-ki-raat-1960',
+        'roshan-aarti-1962',
+        'roshan-dil-hi-to-hai-1963',
+        'roshan-taj-mahal-1963',
+        'roshan-chitralekha-1964',
+        'roshan-mamta-1966',
+        'roshan-anokhi-raat-1968',
       ])
   );
 
@@ -191,6 +203,10 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === '1962-1965' && (m.year < 1962 || m.year > 1965)) return false;
         if (decade === '1966-1969' && (m.year < 1966 || m.year > 1969)) return false;
         if (decade === '1970-2003' && m.year < 1970) return false;
+        if (decade === '1949-1954' && (m.year < 1949 || m.year > 1954)) return false;
+        if (decade === '1955-1959' && (m.year < 1955 || m.year > 1959)) return false;
+        if (decade === '1960-1964' && (m.year < 1960 || m.year > 1964)) return false;
+        if (decade === '1965-1968' && (m.year < 1965 || m.year > 1968)) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -312,7 +328,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                     { id: '1966-1969', label: '1966–1969' },
                                     { id: '1970-2003', label: '1970–2003' },
                                   ] as const)
-                                : ([
+                                : directorId === 'roshan'
+                                  ? ([
+                                      { id: 'all', label: 'All Eras (1949–1968)' },
+                                      { id: '1949-1954', label: '1949–1954' },
+                                      { id: '1955-1959', label: '1955–1959' },
+                                      { id: '1960-1964', label: '1960–1964' },
+                                      { id: '1965-1968', label: '1965–1968' },
+                                    ] as const)
+                                  : ([
                             {
                               id: 'all',
                               label:

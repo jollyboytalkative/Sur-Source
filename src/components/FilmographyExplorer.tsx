@@ -9,6 +9,7 @@ import {
   Disc,
 } from 'lucide-react';
 import { DirectorId, MovieEntry } from '../types/archive';
+import { toDirectPlayHref } from '../lib/youtubeLink';
 
 interface FilmographyExplorerProps {
   directorId: DirectorId;
@@ -64,7 +65,11 @@ type DecadeFilter =
   | '1973-1979'
   | '1980-1985'
   | '1986-1991'
-  | '1992-2020';
+  | '1992-2020'
+  | '1991-1995'
+  | '1996-1999'
+  | '2000-2002'
+  | '2003-2008';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -196,6 +201,21 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'bl-thanedaar-1990',
         'bl-shola-aur-shabnam-1992',
         'bl-aankhen-1993',
+        'jl-yaara-dildara-1991',
+        'jl-jo-jeeta-wohi-sikandar-1992',
+        'jl-khiladi-1992',
+        'jl-kabhi-haan-kabhi-naa-1994',
+        'jl-dilwale-dulhania-le-jayenge-1995',
+        'jl-khamoshi-the-musical-1996',
+        'jl-yes-boss-1997',
+        'jl-ghulam-1998',
+        'jl-kuch-kuch-hota-hai-1998',
+        'jl-sarfarosh-1999',
+        'jl-mohabbatein-2000',
+        'jl-kabhi-khushi-kabhie-gham-2001',
+        'jl-chalte-chalte-2003',
+        'jl-hum-tum-2004',
+        'jl-fanaa-2006',
       ])
   );
 
@@ -249,6 +269,10 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === '1980-1985' && (m.year < 1980 || m.year > 1985)) return false;
         if (decade === '1986-1991' && (m.year < 1986 || m.year > 1991)) return false;
         if (decade === '1992-2020' && m.year < 1992) return false;
+        if (decade === '1991-1995' && (m.year < 1991 || m.year > 1995)) return false;
+        if (decade === '1996-1999' && (m.year < 1996 || m.year > 1999)) return false;
+        if (decade === '2000-2002' && (m.year < 2000 || m.year > 2002)) return false;
+        if (decade === '2003-2008' && m.year < 2003) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -394,7 +418,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                           { id: '1986-1991', label: '1986–1991' },
                                           { id: '1992-2020', label: '1992–2020' },
                                         ] as const)
-                                      : ([
+                                      : directorId === 'jatin-lalit'
+                                        ? ([
+                                            { id: 'all', label: 'All Eras (1991–2008)' },
+                                            { id: '1991-1995', label: '1991–1995' },
+                                            { id: '1996-1999', label: '1996–1999' },
+                                            { id: '2000-2002', label: '2000–2002' },
+                                            { id: '2003-2008', label: '2003–2008' },
+                                          ] as const)
+                                        : ([
                             {
                               id: 'all',
                               label:
@@ -606,7 +638,11 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                               <td className="py-2.5 px-3 text-right whitespace-nowrap">
                                 <div className="inline-flex items-center gap-2">
                                   <a
-                                    href={song.bollywoodLink}
+                                    href={toDirectPlayHref(song.bollywoodLink, {
+                                      title: song.title,
+                                      movie: `${movie.title} ${movie.year}`,
+                                      kind: 'movie',
+                                    })}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-1 text-[#1C1917] hover:text-[#9A3412] underline underline-offset-2"
@@ -616,7 +652,11 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                   </a>
                                   {song.originalLink && (
                                     <a
-                                      href={song.originalLink}
+                                      href={toDirectPlayHref(song.originalLink, {
+                                        title: song.originalSongTitle ?? '',
+                                        artist: song.originalArtist ?? '',
+                                        kind: 'original',
+                                      })}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       title={

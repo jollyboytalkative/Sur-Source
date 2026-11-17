@@ -40,6 +40,13 @@ const VALID_DIRECTORS: DirectorId[] = [
   'naushad',
   'op-nayyar',
   'anand-milind',
+  'laxmikant-pyarelal',
+  'sd-burman',
+  'ravi',
+  'roshan',
+  'madan-mohan',
+  'bappi-lahiri',
+  'jatin-lalit',
 ];
 const VALID_TARGET_DIRECTORS: DiscoveryTargetDirector[] = [
   'all',

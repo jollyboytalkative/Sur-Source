@@ -4,6 +4,7 @@ import { ANAND_MILIND_MOVIES } from './anandMilindData.ts';
 import { ANU_MALIK_MOVIES } from './anuMalikData.ts';
 import { AR_RAHMAN_BOLLYWOOD_MOVIES } from './arRahmanBollywoodData.ts';
 import { BAPPI_LAHIRI_MOVIES } from './bappiLahiriData.ts';
+import { JATIN_LALIT_MOVIES } from './jatinLalitData.ts';
 import { LAXMIKANT_PYARELAL_MOVIES } from './laxmikantPyarelalData.ts';
 import { MADAN_MOHAN_MOVIES } from './madanMohanData.ts';
 import { NADEEM_SHRAVAN_MOVIES } from './nadeemShravanData.ts';
@@ -14,8 +15,9 @@ import { RD_BURMAN_MOVIES } from './rdBurmanData.ts';
 import { ROSHAN_MOVIES } from './roshanData.ts';
 import { SD_BURMAN_MOVIES } from './sdBurmanData.ts';
 import { SHANKAR_JAIKISHAN_MOVIES } from './shankarJaikishanData.ts';
+import { DIRECT_VIDEO_LINKS } from './directVideoLinks.ts';
 
-export const ALL_DIRECTOR_MOVIES: MovieEntry[] = [
+const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = [
   ...NADEEM_SHRAVAN_MOVIES,
   ...ANU_MALIK_MOVIES,
   ...RD_BURMAN_MOVIES,
@@ -30,7 +32,27 @@ export const ALL_DIRECTOR_MOVIES: MovieEntry[] = [
   ...ROSHAN_MOVIES,
   ...MADAN_MOHAN_MOVIES,
   ...BAPPI_LAHIRI_MOVIES,
+  ...JATIN_LALIT_MOVIES,
 ];
+
+export const ALL_DIRECTOR_MOVIES: MovieEntry[] = RAW_ALL_DIRECTOR_MOVIES.map(
+  (movie) => ({
+    ...movie,
+    songs: movie.songs.map((song) => {
+      const directId = DIRECT_VIDEO_LINKS[song.id];
+      if (
+        directId &&
+        (!song.bollywoodLink || song.bollywoodLink.includes('search_query='))
+      ) {
+        return {
+          ...song,
+          bollywoodLink: `https://www.youtube.com/watch?v=${directId}`,
+        };
+      }
+      return song;
+    }),
+  })
+);
 
 export interface CatalogDirectorStats {
   totalMovies: number;

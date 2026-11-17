@@ -253,6 +253,55 @@ async function startServer(): Promise<void> {
     res.json({ ok: true });
   });
 
+  const playRedirectCache = new Map<string, string>();
+  app.get('/api/play', async (req, res) => {
+    const q = typeof req.query.q === 'string' ? req.query.q.trim() : '';
+    const title = typeof req.query.title === 'string' ? req.query.title.trim() : '';
+    const movie = typeof req.query.movie === 'string' ? req.query.movie.trim() : '';
+    const artist = typeof req.query.artist === 'string' ? req.query.artist.trim() : '';
+    const kind = req.query.kind === 'original' ? 'original' : 'movie';
+
+    const queryText = q || [title, movie, artist].filter(Boolean).join(' ');
+    if (!queryText) {
+      res.status(400).send('Missing song query');
+      return;
+    }
+
+    const cacheKey = `${kind}::${queryText.toLowerCase()}`;
+    const cached = playRedirectCache.get(cacheKey);
+    if (cached) {
+      res.redirect(302, cached);
+      return;
+    }
+
+    try {
+      const { resolveClosestYouTubeVideoUrl } = await import(
+        './src/server/youtubeResolver.ts'
+      );
+      const resolvedUrl = await resolveClosestYouTubeVideoUrl({
+        query: queryText,
+        bollywoodSongTitle: kind === 'movie' ? title || queryText : undefined,
+        originalSongTitle: kind === 'original' ? title || queryText : undefined,
+        originalArtist: kind === 'original' ? artist : undefined,
+        movieTitle: movie || undefined,
+        kind,
+        isBroadComparison: true,
+      });
+      if (resolvedUrl.includes('watch?v=')) {
+        if (playRedirectCache.size > 5000) {
+          playRedirectCache.clear();
+        }
+        playRedirectCache.set(cacheKey, resolvedUrl);
+      }
+      res.redirect(302, resolvedUrl);
+    } catch {
+      res.redirect(
+        302,
+        `https://www.youtube.com/results?search_query=${encodeURIComponent(queryText)}`
+      );
+    }
+  });
+
   app.get('/robots.txt', (req, res) => {
     const origin = resolvePublicOrigin(req);
     res

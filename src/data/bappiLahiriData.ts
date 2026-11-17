@@ -225,7 +225,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The opening melodic contour and buoyant brass cadence closely mirror Burt Bacharach’s 1969 Academy Award-winning classic.',
-          originalLink: yt("Raindrops Keep Fallin on My Head B.J. Thomas 1969"),
+          originalLink: 'https://www.youtube.com/watch?v=_VyA2f6hGW4',
           referenceSource: 'ITWOFS / Hindi Musicology Archives',
         }
       ),
@@ -465,7 +465,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Built around a sleek spy-cinema twang guitar motif and brass stabs inspired by classic Bond spy soundtracks.',
-          originalLink: yt('James Bond Theme John Barry 1962'),
+          originalLink: 'https://www.youtube.com/watch?v=tCr5BhPqUjk',
           referenceSource: 'Bollywood Film Music History',
         }
       ),
@@ -484,7 +484,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The opening vocal melody and romantic phrasing closely follow ABBA’s 1974 Waterloo album ballad "Hasta Mañana".',
-          originalLink: yt('Hasta Manana ABBA 1974'),
+          originalLink: 'https://www.youtube.com/watch?v=-nNCeJ4FPDM',
           referenceSource: 'ITWOFS / Film Music Archives',
         }
       ),
@@ -594,7 +594,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Adopts the driving Euro-disco tempo, bass gallop, and descending minor hook of Eruption’s 1979 cover of Neil Sedaka’s "One Way Ticket".',
-          originalLink: yt('One Way Ticket Eruption 1979'),
+          originalLink: 'https://www.youtube.com/watch?v=sFyV5ejkc9o',
           referenceSource: 'ITWOFS / Public Musicology Records',
         }
       ),
@@ -648,7 +648,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Pairs an original Indeevar brass-and-disco hook with rhythmic patterns and pulsing synth grooves strongly inspired by Gibson Brothers’ "Que Sera Mi Vida" and Donna Summer’s "I Feel Love".',
-          originalLink: yt('Que Sera Mi Vida Gibson Brothers 1979'),
+          originalLink: 'https://www.youtube.com/watch?v=NKwsGIw9ASM',
           referenceSource: 'MySwar / Scroll / Disco Comparisons',
         }
       ),
@@ -667,7 +667,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The verse phrasing and chorus cadence closely follow Dr. Hook’s 1979 soft-rock hit.',
-          originalLink: yt("When You're in Love with a Beautiful Woman Dr. Hook 1979"),
+          originalLink: 'https://www.youtube.com/watch?v=bD0CSd6BM6w',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -743,7 +743,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Era-defining Bollywood synth-bass anthem whose dramatic fanfare prelude and disco groove draw inspiration from Saint Tropez’s "The Love Stealers" and Ottawan-era Euro-disco.',
-          originalLink: yt('The Love Stealers Saint Tropez'),
+          originalLink: 'https://www.youtube.com/watch?v=UWT0hAL_etg',
           referenceSource: 'MySwar / Disco Musicology',
         }
       ),
@@ -771,7 +771,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The catchy staccato hook, bassline, and vocal rhythm closely mirror French Euro-disco duo Ottawan’s 1980 hit.',
-          originalLink: yt("T'es OK T'es Bath Ottawan 1980"),
+          originalLink: 'https://www.youtube.com/watch?v=2XVHXW2u_98',
           referenceSource: 'ITWOFS / Euro-Disco Archives',
         }
       ),
@@ -790,7 +790,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Closely follows the staccato "Auva Auva / Oh-a oh-a" chorus melody and synth-pop cadence of The Buggles’ 1979 hit.',
-          originalLink: yt('Video Killed the Radio Star The Buggles 1979'),
+          originalLink: 'https://www.youtube.com/watch?v=W8r-tXRLazs',
           referenceSource: 'ITWOFS / Global Pop Comparisons',
         }
       ),
@@ -1008,7 +1008,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Indian Folk & Classical',
           adaptationNotes:
             'Reworked from Bappi Lahiri’s own 1982 studio album Superuna recorded with Runa Laila, enriched for Amitabh Bachchan with playful brass nods to Western cinema themes.',
-          originalLink: yt('De De Pyar De Runa Laila Superuna 1982'),
+          originalLink: 'https://www.youtube.com/watch?v=G-SqW28QpqI',
           referenceSource: 'MySwar / Album Provenance',
         }
       ),
@@ -1027,7 +1027,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'While the slow opening is original, the brisk female movement ("Logon ne to dil ko...") closely mirrors the upbeat synth-strings motif of The Three Degrees’ 1979 disco hit "The Runner".',
-          originalLink: yt('The Runner The Three Degrees 1979'),
+          originalLink: 'https://www.youtube.com/watch?v=PJZeuz2tMuU',
           referenceSource: 'ITWOFS / Comparative Musicology Archives',
         }
       ),
@@ -1092,7 +1092,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Fuses synth-bass pulses and funk breakbeats echoing Michael Jackson’s "Billie Jean" and Lipps Inc.’s "Funkytown", staged as a direct Bollywood homage to MJ’s "Thriller".',
-          originalLink: yt('Billie Jean Michael Jackson 1982'),
+          originalLink: 'https://www.youtube.com/watch?v=Zi_XLOBDo_Y',
           referenceSource: 'Scroll.in / Retro Musicology',
         }
       ),
@@ -1131,7 +1131,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Closely mirrors the cheerful melody and repetitive children’s chorus phrasing of The Sherman Brothers’ 1964 Disney classic.',
-          originalLink: yt("It's a Small World Sherman Brothers 1964"),
+          originalLink: 'https://www.youtube.com/watch?v=rtW4VG1qpac',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -1264,7 +1264,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Indian Folk & Classical',
           adaptationNotes:
             'Signature 1985 synthesizer pop anthem adapting traditional Bengali folk phrasing into an upbeat disco groove; recreated in Shubh Mangal Zyada Saavdhan (2020).',
-          originalLink: yt('Je Jon Premer Bhab Jane Bengali Folk'),
+          originalLink: 'https://www.youtube.com/watch?v=rS6bo0SQsQ4',
           referenceSource: 'Composer Interviews / Indian Musicology',
         }
       ),
@@ -1347,7 +1347,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'African & World Folk',
           adaptationNotes:
             'The tribal chant refrain and Afro-percussion dance hook closely mirror Ghanaian-British Afro-rock band Osibisa’s "Kelele Kelele".',
-          originalLink: yt('Kelele Kelele Osibisa'),
+          originalLink: 'https://www.youtube.com/watch?v=UplxARkNGdo',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -1366,7 +1366,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Adapts the buoyant European bubblegum-pop verse and call-and-response refrain of Middle of the Road’s 1971 smash.',
-          originalLink: yt('Chirpy Chirpy Cheep Cheep Middle of the Road 1971'),
+          originalLink: 'https://www.youtube.com/watch?v=rbHOornfq-s',
           referenceSource: 'Comparative Musicology Archives / Retro Film Music Comparisons',
         }
       ),
@@ -1474,7 +1474,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The harmonica riff, bouncy chord progression, and chorus refrain closely mirror Culture Club’s 1983 global hit.',
-          originalLink: yt('Karma Chameleon Culture Club 1983'),
+          originalLink: 'https://www.youtube.com/watch?v=JmcA9LIIXWw',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -1513,7 +1513,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The upbeat keyboard prelude and rhythmic piano vamp closely echo the opening motif of Billy Joel’s 1978 pop rock hit "My Life".',
-          originalLink: yt('My Life Billy Joel 1978'),
+          originalLink: 'https://www.youtube.com/watch?v=HVX80UpMPDI',
           referenceSource: 'MySwar',
         }
       ),
@@ -1602,7 +1602,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Closely mirrors the driving synth-guitar riff, bass pulse, and dramatic verse phrasing of Laura Branigan’s 1984 hit "Self Control".',
-          originalLink: yt('Self Control Laura Branigan 1984'),
+          originalLink: 'https://www.youtube.com/watch?v=RP0_8J7uxhs',
           referenceSource: 'Comparative Musicology Archives / Retro Synth Comparisons',
         }
       ),
@@ -1654,7 +1654,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The German synth-pop bass pulse, hook phrasing, and chorus rhythm closely adapt Modern Talking’s 1986 chart-topper.',
-          originalLink: yt('Brother Louie Modern Talking 1986'),
+          originalLink: 'https://www.youtube.com/watch?v=Dhy4xH662vE',
           referenceSource: 'ITWOFS / Euro-Disco Archives',
         }
       ),
@@ -1697,7 +1697,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The chorus hook and reggae-pop rhythmic groove closely adapt UB40’s 1985 single "Don’t Break My Heart".',
-          originalLink: yt("Don't Break My Heart UB40 1985"),
+          originalLink: 'https://www.youtube.com/watch?v=dHj_RxvkWHQ',
           referenceSource: 'Comparative Musicology Archives / Film Music Archives',
         }
       ),
@@ -1728,7 +1728,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Indian Folk & Classical',
           adaptationNotes:
             'Hindi adaptation of Bappi Lahiri’s own 1986 Bengali blockbuster composition "Chirodini Tumi Je Amar" from Amar Sangi.',
-          originalLink: yt('Chirodini Tumi Je Amar Kishore Kumar 1986'),
+          originalLink: 'https://www.youtube.com/watch?v=X0inl_R8-D4',
           referenceSource: 'Filmography Provenance Records',
         }
       ),
@@ -1917,7 +1917,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Pakistani Film & Ghazal',
           adaptationNotes:
             'Closely mirrors the melodic phrasing and refrain of composer Robin Ghosh’s 1984 Pakistani soundtrack track "Bas Ek Tere Siva".',
-          originalLink: yt('Bas Ek Tere Siva Dooriyan Robin Ghosh 1984'),
+          originalLink: 'https://www.youtube.com/watch?v=2aNlwRkh-fM',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -1956,7 +1956,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'African & World Folk',
           adaptationNotes:
             'Directly adapts the global 1989 accordion/dance melody and rhythmic groove of Kaoma’s "Lambada".',
-          originalLink: yt('Lambada Kaoma 1989'),
+          originalLink: 'https://www.youtube.com/watch?v=WMT5XzXFhUs',
           referenceSource: 'ITWOFS / World Music Archives',
         }
       ),
@@ -2003,7 +2003,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'African & World Folk',
           adaptationNotes:
             'Adapts the Guinean electro-kora hook and vocal chant from Mory Kanté’s 1987 international smash "Yeke Yeke" / "Tama Tama".',
-          originalLink: yt('Yeke Yeke Mory Kante 1987'),
+          originalLink: 'https://www.youtube.com/watch?v=EKnYhHbflU0',
           referenceSource: 'ITWOFS / World Music Archives',
         }
       ),
@@ -2022,7 +2022,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'The bouncy comedic chorus melody directly mirrors the classic European melody "April in Portugal" ("Coimbra").',
-          originalLink: yt('April in Portugal Les Baxter'),
+          originalLink: 'https://www.youtube.com/watch?v=oqYU3wNnv3w',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -2061,7 +2061,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Indian Folk & Classical',
           adaptationNotes:
             'Controversial overlapping tune and opening hook also recorded earlier in the 1980s by Shankar (of Shankar–Jaikishan) for Sudhakar Sharma’s delayed film Gori.',
-          originalLink: yt('Gori Hai Kalaiyan Shankar Jaikishan Kavita Krishnamurthy'),
+          originalLink: 'https://www.youtube.com/watch?v=foI4HHCg72c',
           referenceSource: 'Sudhakar Sharma Archival Records',
         }
       ),
@@ -2109,7 +2109,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Western Pop & Ambient',
           adaptationNotes:
             'Adopts the driving sax-and-synth brass hook and energetic rhythm of Glenn Frey’s 1984 Beverly Hills Cop hit.',
-          originalLink: yt('The Heat Is On Glenn Frey 1984'),
+          originalLink: 'https://www.youtube.com/watch?v=uZD8HKVKneI',
           referenceSource: 'ITWOFS / MySwar',
         }
       ),
@@ -2140,7 +2140,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'African & World Folk',
           adaptationNotes:
             'Directly adapts the iconic Mexican folk-rock chord progression and vocal riff popularized worldwide as "La Bamba".',
-          originalLink: yt('La Bamba Ritchie Valens 1958'),
+          originalLink: 'https://www.youtube.com/watch?v=BycLmWI97Nc',
           referenceSource: 'Comparative Musicology Archives / Film Music Archives',
         }
       ),
@@ -2179,7 +2179,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'African & World Folk',
           adaptationNotes:
             'The Trinidadian calypso chorus ("All day, all night, Miss Mary Ann") and bouncy island rhythm closely adapt Roaring Lion’s 1946 standard.',
-          originalLink: yt('Mary Ann Roaring Lion Calypso 1946'),
+          originalLink: 'https://www.youtube.com/watch?v=Lx_Xh94ZZQA',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -2425,7 +2425,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Arabic & Middle Eastern',
           adaptationNotes:
             'Closely follows the North African raï melody and synth-accordion hook of Khaled’s "El Arbi".',
-          originalLink: yt('El Arbi Khaled 1991'),
+          originalLink: 'https://www.youtube.com/watch?v=F_Prl5CyA74',
           referenceSource: 'ITWOFS',
         }
       ),
@@ -2573,7 +2573,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Pakistani Film & Ghazal',
           adaptationNotes:
             'Closely adapts both the title phrase and upbeat melodic hook of Pakistani pop-rock band Vital Signs’ hit "Sanwali Saloni".',
-          originalLink: yt('Sanwali Saloni Vital Signs 1991'),
+          originalLink: 'https://www.youtube.com/watch?v=uvpZmRAQccs',
           referenceSource: 'ITWOFS / Comparative Musicology Archives',
         }
       ),
@@ -2627,7 +2627,7 @@ export const BAPPI_LAHIRI_MOVIES: MovieEntry[] = [
           originCategory: 'Nusrat Fateh Ali Khan',
           adaptationNotes:
             'Directly mirrors the "Main yaar yaar kehna, main baar baar kehna" qawwali refrain and melody of Ustad Nusrat Fateh Ali Khan.',
-          originalLink: yt('Main Yaar Yaar Kehna Nusrat Fateh Ali Khan'),
+          originalLink: 'https://www.youtube.com/watch?v=7Wf_UhkhKOk',
           referenceSource: 'Comparative Musicology Archives / OTTPlay',
         }
       ),

@@ -12,7 +12,8 @@ export type DirectorId =
   | 'ravi'
   | 'roshan'
   | 'madan-mohan'
-  | 'bappi-lahiri';
+  | 'bappi-lahiri'
+  | 'jatin-lalit';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

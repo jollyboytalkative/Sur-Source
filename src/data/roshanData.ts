@@ -175,7 +175,7 @@ export const ROSHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Indian Folk & Classical',
         adaptationNotes:
           'Anchored in classical devotional bhajan tradition setting Meerabai’s poetry to Roshan’s delicate classical-folk phrasing.',
-        originalLink: yt('Meera Bhajan Eri Main To Prem Diwani traditional'),
+        originalLink: 'https://www.youtube.com/watch?v=2HiUxN-ZRi0',
         referenceSource: 'Golden Era Bhakti & Film Music Archives',
       }),
       origSong('roshan-naubahar-1952', 2, 'Dekho Ji Mera Jiya Churaaye', 'Lata Mangeshkar', 'Naubahar', 1952),
@@ -534,7 +534,7 @@ export const ROSHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Indian Folk & Classical',
         adaptationNotes:
           'Built on rustic North Indian harvest folk rhythms and flute phrasing suited to Premchand’s rural fable.',
-        originalLink: yt('Naach Re Dharti Ke Pyare Heera Moti 1959'),
+        originalLink: 'https://www.youtube.com/watch?v=j8gMF-dTfZE',
         referenceSource: 'Songs of Yore & Hindi Folk Music Archives',
       }),
       origSong('roshan-heera-moti-1959', 2, 'Kaun Rang Mungwa', 'Lata Mangeshkar', 'Heera Moti', 1959),
@@ -605,7 +605,7 @@ export const ROSHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Pakistani Film & Ghazal',
         adaptationNotes:
           'Producer R. Chandra legally acquired the rights to Mubarak Ali Khan & Fateh Ali Khan’s celebrated qawwali "Na To Butkade Ki Talab Mujhe", which Roshan expanded into this epic 12-minute cinematic suite.',
-        originalLink: yt('Na To Butkade Ki Talab Mujhe Mubarak Ali Fateh Ali Khan'),
+        originalLink: 'https://www.youtube.com/watch?v=_vwQLiutb7o',
         referenceSource: 'Scroll.in & MySwar Qawwali Provenance Archives',
       }),
       origSong('roshan-barsaat-ki-raat-1960', 2, 'Zindagi Bhar Nahin Bhoolegi Woh Barsaat Ki Raat', 'Mohammed Rafi, Lata Mangeshkar', 'Barsaat Ki Raat', 1960),
@@ -718,7 +718,7 @@ export const ROSHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Indian Folk & Classical',
         adaptationNotes:
           'Composed strictly in Hindustani Raag Bhairavi with tarana, adapting classical devotional metaphor and bandish grammar.',
-        originalLink: yt('Raag Bhairavi Laaga Chunari Mein Daag classical bandish'),
+        originalLink: 'https://www.youtube.com/watch?v=j_Bgts0a_1k',
         referenceSource: 'Hindustani Classical Film Music Archives',
       }),
       origSong('roshan-dil-hi-to-hai-1963', 2, 'Nigahen Milane Ko Jee Chahta Hai', 'Asha Bhosle', 'Dil Hi To Hai', 1963),
@@ -865,7 +865,7 @@ export const ROSHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Western Pop & Ambient',
         adaptationNotes:
           'ITWOFS documents that the opening orchestral string prelude draws inspiration from Ron Goodwin’s 1959 piece "Return to Paradise", while the vocal melody and song body remain Roshan’s original composition.',
-        originalLink: yt('Ron Goodwin Return to Paradise 1959'),
+        originalLink: 'https://www.youtube.com/watch?v=OGOB4whpadM',
         referenceSource: 'ITWOFS & Golden Era Musicology Archives',
       }),
       origSong('roshan-mamta-1966', 2, 'Rehte The Kabhi Jinke Dil Mein', 'Lata Mangeshkar', 'Mamta', 1966),
@@ -921,7 +921,7 @@ export const ROSHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Indian Folk & Classical',
         adaptationNotes:
           'Roshan’s swan-song melody draws its rustic, unhurried flow from traditional Indian boatman/Baul river folk phrasing paired with Indeevar’s philosophical verse.',
-        originalLink: yt('Baul river folk traditional song Bengal'),
+        originalLink: 'https://www.youtube.com/watch?v=W9H0f_EJSC4',
         referenceSource: 'Songs of Yore & Hindi Folk Music Archives',
       }),
       origSong('roshan-anokhi-raat-1968', 2, 'Mile Na Phool To Kanton Se Dosti Kar Li', 'Mohammed Rafi', 'Anokhi Raat', 1968),

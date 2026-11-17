@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import type { User } from 'firebase/auth';
 import { DIRECTORS } from '../data/directors';
+import { toDirectPlayHref } from '../lib/youtubeLink';
 import {
   ORIGIN_CATEGORIES,
   type AdaptationType,
@@ -1191,7 +1192,11 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
                           <div className="flex flex-wrap items-center gap-2 shrink-0">
                             {item.bollywoodLink && (
                               <a
-                                href={item.bollywoodLink}
+                                href={toDirectPlayHref(item.bollywoodLink, {
+                                  title: item.songTitle,
+                                  movie: `${item.movieTitle} ${item.movieYear}`,
+                                  kind: 'movie',
+                                })}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-[#1C1917] bg-[#FBF9F5] border border-[#D6CEBE] rounded hover:border-[#9A3412] hover:text-[#9A3412] transition-colors"
@@ -1358,7 +1363,11 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
                               <span>Original Source Listening Link</span>
                               {edits.originalLink && (
                                 <a
-                                  href={edits.originalLink}
+                                  href={toDirectPlayHref(edits.originalLink, {
+                                    title: edits.originalSongTitle,
+                                    artist: edits.originalArtist,
+                                    kind: 'original',
+                                  })}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-[#9A3412] hover:underline inline-flex items-center gap-1"

@@ -209,4 +209,19 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Bollywood-only chronological Hindi filmography (1973 Nanha Shikari – 2020 revivals; Bengali, Telugu, Kannada & regional scores excluded), with expanded ITWOFS/musicology origins and direct listening links.',
   },
+  {
+    id: 'jatin-lalit',
+    name: 'Jatin–Lalit',
+    fullName: 'Jatin Pandit & Lalit Pandit · Joint Hindi (Bollywood) Films Only',
+    era: '1991 – 2008',
+    status: 'active',
+    summary:
+      'Architects of 1990s–2000s Bollywood romance who worked together across 72 joint films (473 total songs) from Yaara Dildara (1991) through Dilwale Dulhania Le Jayenge (1995), Kuch Kuch Hota Hai (1998), Mohabbatein (2000), Kabhi Khushi Kabhie Gham... (2001), and Fanaa (2006)—strictly cataloging joint Hindi releases only.',
+    editorialEssay:
+      'Brothers Jatin Pandit and Lalit Pandit defined romantic Hindi cinema between their 1991 debut Yaara Dildara and their 2006 swan song Fanaa (followed by delayed joint recordings up to Mr. White Mr. Black in 2008), composing 473 songs across 72 films before parting ways professionally. Earning 12 Filmfare Best Music Director nominations across Jo Jeeta Wohi Sikandar, Kabhi Haan Kabhi Naa, Dilwale Dulhania Le Jayenge, Khamoshi: The Musical, Yes Boss, Kuch Kuch Hota Hai, Mohabbatein, Kabhi Khushi Kabhie Gham..., Chalte Chalte, Hum Tum, and Fanaa, their joint Bollywood catalog unites sparkling original melodies and R.D. Burman-inspired acoustic brass with documented adaptations from Frankie Valli, The Who, Stephen Schwartz, Andrew Lloyd Webber, Johnny Wakelin, Patrick Hernandez, Hisham Abbas, Ragheb Alama, and Andy.',
+    signatureSound:
+      'Udit Narayan, Kumar Sanu, Alka Yagnik, Abhijeet Bhattacharya, Lata Mangeshkar, Sonu Nigam · Acoustic Guitar, Mandolin & Sweeping Strings · Majrooh Sultanpuri, Anand Bakshi, Sameer, Javed Akhtar & Prasoon Joshi lyrics',
+    archiveNote:
+      'Complete 72-film chronological joint Hindi (Bollywood) filmography (1991 Yaara Dildara – 2008 delayed joint releases; solo post-split Lalit/Jatin projects and regional scores excluded), with ITWOFS/musicology origins and direct listening links.',
+  },
 ];

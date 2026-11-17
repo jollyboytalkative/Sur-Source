@@ -30,6 +30,8 @@ function scoreCandidate(
     originalSongTitle?: string;
     originalArtist?: string;
     bollywoodSongTitle?: string;
+    movieTitle?: string;
+    kind?: 'movie' | 'original';
     isBroadComparison?: boolean;
   }
 ): number {
@@ -37,15 +39,20 @@ function scoreCandidate(
   const titleLower = cand.title.toLowerCase();
   const channelLower = cand.channel.toLowerCase();
   const combined = `${titleLower} ${channelLower}`;
+  const isMovieKind = params.kind === 'movie';
 
-  if (cand.durationSec > 0 && cand.durationSec < 35) {
+  if (cand.durationSec > 0 && cand.durationSec < (isMovieKind ? 50 : 35)) {
     score -= 25;
   }
-  if (cand.durationSec > 2700) {
-    score -= 15;
+  if (cand.durationSec > (isMovieKind ? 720 : 2700)) {
+    score -= 20;
   }
 
-  const titleTokens = tokenize(params.originalSongTitle ?? '');
+  const primaryTitle = isMovieKind
+    ? (params.bollywoodSongTitle ?? params.originalSongTitle ?? '')
+    : (params.originalSongTitle ?? '');
+
+  const titleTokens = tokenize(primaryTitle);
   for (const tok of titleTokens) {
     if (
       [
@@ -67,6 +74,13 @@ function scoreCandidate(
       continue;
     }
     if (titleLower.includes(tok)) score += 6;
+  }
+
+  if (isMovieKind && params.movieTitle) {
+    for (const tok of tokenize(params.movieTitle)) {
+      if (['the', 'and', 'for', 'film'].includes(tok)) continue;
+      if (titleLower.includes(tok)) score += 4;
+    }
   }
 
   const artistTokens = tokenize(params.originalArtist ?? '');
@@ -99,12 +113,25 @@ function scoreCandidate(
     channelLower.includes('tips') ||
     channelLower.includes('sony') ||
     channelLower.includes('universal') ||
-    channelLower.includes('t-series')
+    channelLower.includes('t-series') ||
+    channelLower.includes('tseries') ||
+    channelLower.includes('yrf') ||
+    channelLower.includes('shemaroo') ||
+    channelLower.includes('ishtar') ||
+    channelLower.includes('venus') ||
+    channelLower.includes('zee') ||
+    channelLower.includes('eros') ||
+    channelLower.includes('rajshri')
   ) {
-    score += 7;
+    score += 8;
   }
 
-  if (titleLower.includes('official') || titleLower.includes('original')) {
+  if (
+    titleLower.includes('official') ||
+    titleLower.includes('original') ||
+    titleLower.includes('full song') ||
+    titleLower.includes('full video')
+  ) {
     score += 3;
   }
 
@@ -119,18 +146,22 @@ function scoreCandidate(
     'status video',
     'slowed',
     'reverb',
+    'lofi',
+    'lo-fi',
     '8d audio',
     'ringtone',
     'tiktok',
     'shorts',
     'english remix',
     'mashup',
+    'jukebox',
+    'full movie',
   ];
   for (const kw of noiseKeywords) {
-    if (titleLower.includes(kw)) score -= 16;
+    if (titleLower.includes(kw)) score -= 18;
   }
 
-  if (!params.isBroadComparison) {
+  if (!params.isBroadComparison && !isMovieKind) {
     const bollywoodSpam = ['copied', 'plagiarism', 'chor', 'exposed', 'copycat'];
     for (const kw of bollywoodSpam) {
       if (titleLower.includes(kw)) score -= 18;
@@ -190,6 +221,8 @@ export async function resolveClosestYouTubeVideoUrl(params: {
   originalSongTitle?: string;
   originalArtist?: string;
   bollywoodSongTitle?: string;
+  movieTitle?: string;
+  kind?: 'movie' | 'original';
   isBroadComparison?: boolean;
 }): Promise<string> {
   const fallback = `https://www.youtube.com/results?search_query=${encodeURIComponent(params.query)}`;

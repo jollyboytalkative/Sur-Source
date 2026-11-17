@@ -743,30 +743,38 @@ Respond ONLY with a valid JSON array matching:
       const releaseId = `rel_${movieId}`.slice(0, 128);
 
       const rawSongs = Array.isArray(item.songs) ? item.songs : [];
-      const songs: LiveMovieSongPayload[] = (
-        rawSongs.length > 0
+      const songs: LiveMovieSongPayload[] = await Promise.all(
+        (rawSongs.length > 0
           ? rawSongs
           : [{ title: `${title} Title Track`, singers: 'Official Soundtrack', lyricist: '' }]
-      )
-        .slice(0, 20)
-        .map((s, idx) => {
-          const songTitle = (s.title ?? '').trim() || `Track ${idx + 1}`;
-          return {
-            id: `${movieId}-${idx + 1}`,
-            title: songTitle.slice(0, 200),
-            singers: ((s.singers ?? '').trim() || 'Soundtrack Artist').slice(0, 300),
-            lyricist: (s.lyricist ?? '').trim().slice(0, 200),
-            adaptationType: 'original',
-            originalSongTitle: '',
-            originalArtist: '',
-            originalYear: '',
-            originCategory: 'Original Composition',
-            adaptationNotes: '',
-            bollywoodLink: `https://www.youtube.com/results?search_query=${encodeURIComponent(`${songTitle} ${title} ${year}`)}`,
-            originalLink: '',
-            referenceSource: primaryLink?.title ?? 'Google Search Grounding',
-          };
-        });
+        )
+          .slice(0, 20)
+          .map(async (s, idx) => {
+            const songTitle = (s.title ?? '').trim() || `Track ${idx + 1}`;
+            const directBollywoodLink = await resolveClosestYouTubeVideoUrl({
+              query: `${songTitle} ${title} ${year}`,
+              bollywoodSongTitle: songTitle,
+              movieTitle: title,
+              kind: 'movie',
+              isBroadComparison: true,
+            });
+            return {
+              id: `${movieId}-${idx + 1}`,
+              title: songTitle.slice(0, 200),
+              singers: ((s.singers ?? '').trim() || 'Soundtrack Artist').slice(0, 300),
+              lyricist: (s.lyricist ?? '').trim().slice(0, 200),
+              adaptationType: 'original',
+              originalSongTitle: '',
+              originalArtist: '',
+              originalYear: '',
+              originCategory: 'Original Composition',
+              adaptationNotes: '',
+              bollywoodLink: directBollywoodLink,
+              originalLink: '',
+              referenceSource: primaryLink?.title ?? 'Google Search Grounding',
+            };
+          })
+      );
 
       stagedReleases.push({
         releaseId,

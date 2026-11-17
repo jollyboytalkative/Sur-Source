@@ -308,7 +308,7 @@ export const MADAN_MOHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Western Pop & Ambient',
         adaptationNotes:
           'Rare light Western-style foxtrot composition in Madan Mohan’s discography taking rhythmic and melodic inspiration from the 1934 pop standard "Isle of Capri".',
-        originalLink: yt('Isle of Capri Wilhelm Grosz 1934'),
+        originalLink: 'https://www.youtube.com/watch?v=WNkBQPKJp1M',
         referenceSource: 'ITWOFS / MadanMohan.in',
       }),
       origSong('mm-mem-sahib-1956', 2, 'Kehta Hai Dil Tum Ho Mere Liye', 'Talat Mahmood, Asha Bhosle', 'Mem Sahib', 1956),
@@ -421,7 +421,7 @@ export const MADAN_MOHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Indian Folk & Classical',
         adaptationNotes:
           'Close melodic similarity to Sajjad Husain’s "Yeh Hawa Yeh Raat Yeh Chandni" (Sangdil, 1952); Madan Mohan famously acknowledged his admiration for Sajjad Husain’s tune when confronted.',
-        originalLink: yt('Yeh Hawa Yeh Raat Yeh Chandni Sangdil 1952'),
+        originalLink: 'https://www.youtube.com/watch?v=cP1bg63aZlc',
         referenceSource: 'Indian Film Music Archives / MadanMohan.in',
       }),
       origSong('mm-aakhri-dao-1958', 2, 'Idhar To Haath La Pyare', 'Mohammed Rafi', 'Aakhri Dao', 1958),
@@ -913,7 +913,7 @@ export const MADAN_MOHAN_MOVIES: MovieEntry[] = [
         originCategory: 'Indian Folk & Classical',
         adaptationNotes:
           'Draws its playful rhythmic refrain from traditional Bareilly/UP lok geet motifs, re-crafted with dholak and orchestration by Madan Mohan and Raja Mehdi Ali Khan.',
-        originalLink: yt('Jhumka Gira Re Bareilly Folk'),
+        originalLink: 'https://www.youtube.com/watch?v=pM7aoy2Tw78',
         referenceSource: 'Indian Folk Music History / MadanMohan.in',
       }),
     ],

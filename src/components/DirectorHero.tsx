@@ -330,7 +330,9 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                       ? 'Verified Hindi filmography (95 released films, ~700 songs + 12 shelved & posthumous Veer-Zaara 2004 archival revival)'
                                       : activeDirectorId === 'bappi-lahiri'
                                         ? 'Verified Hindi (Bollywood) filmography (1973 Nanha Shikari – 2020 revivals; 480–500+ total career films across languages & 1986 Guinness Record 180 songs / 33 films; regional films excluded)'
-                                        : 'Verified chronological filmography'}
+                                        : activeDirectorId === 'jatin-lalit'
+                                          ? 'Verified joint Hindi (Bollywood) filmography (72 joint films & 473 career songs from Yaara Dildara 1991 to Fanaa 2006 / Mr. White Mr. Black 2008; solo post-split & regional works excluded)'
+                                          : 'Verified chronological filmography'}
             </div>
           </div>
 

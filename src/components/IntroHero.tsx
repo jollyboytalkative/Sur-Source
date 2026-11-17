@@ -51,10 +51,10 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
               </strong>{' '}
               and expanding across golden and modern eras to include{' '}
               <strong className="font-semibold text-[#1C1917]">
-                Anu Malik, Bappi Lahiri, R.D. Burman, Shankar–Jaikishan,
-                A. R. Rahman, Naushad, O.P. Nayyar, Anand–Milind,
-                Laxmikant–Pyarelal, Madan Mohan, Ravi, Roshan, and
-                S. D. Burman
+                Anu Malik, Bappi Lahiri, Jatin–Lalit, R.D. Burman,
+                Shankar–Jaikishan, A. R. Rahman, Naushad, O.P. Nayyar,
+                Anand–Milind, Laxmikant–Pyarelal, Madan Mohan, Ravi, Roshan,
+                and S. D. Burman
               </strong>
               , among other composers. Across every composer profile, this
               archive maintains strictly Hindi (Bollywood) filmography records

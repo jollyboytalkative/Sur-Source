@@ -15,6 +15,7 @@ import {
   OriginCategory,
   SongEntry,
 } from '../types/archive';
+import { toDirectPlayHref } from '../lib/youtubeLink';
 
 export interface FlattenedSongRow extends SongEntry {
   movieTitle: string;
@@ -477,7 +478,11 @@ export const SongOriginTable: React.FC<SongOriginTableProps> = ({
                       <td className="py-3.5 px-4 text-right">
                         <div className="inline-flex flex-col items-end gap-1.5">
                           <a
-                            href={row.bollywoodLink}
+                            href={toDirectPlayHref(row.bollywoodLink, {
+                              title: row.title,
+                              movie: `${row.movieTitle} ${row.movieYear}`,
+                              kind: 'movie',
+                            })}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-[#1C1917] bg-[#FBF9F5] border border-[#D6CEBE] rounded hover:border-[#9A3412] hover:text-[#9A3412] transition-colors whitespace-nowrap"
@@ -488,7 +493,11 @@ export const SongOriginTable: React.FC<SongOriginTableProps> = ({
 
                           {row.originalLink ? (
                             <a
-                              href={row.originalLink}
+                              href={toDirectPlayHref(row.originalLink, {
+                                title: row.originalSongTitle ?? '',
+                                artist: row.originalArtist ?? '',
+                                kind: 'original',
+                              })}
                               target="_blank"
                               rel="noopener noreferrer"
                               title={

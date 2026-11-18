@@ -69,7 +69,16 @@ type DecadeFilter =
   | '1991-1995'
   | '1996-1999'
   | '2000-2002'
-  | '2003-2008';
+  | '2003-2008'
+  | '1956-1969'
+  | '1986-2013'
+  | '1948-1959'
+  | '1960-1979'
+  | '1986-2014'
+  | '1988-1994'
+  | '1995-1997'
+  | '1998-1999'
+  | '2000-2007';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -216,6 +225,54 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'jl-chalte-chalte-2003',
         'jl-hum-tum-2004',
         'jl-fanaa-2006',
+        'ka-chhalia-1960',
+        'ka-bluff-master-1963',
+        'ka-jab-jab-phool-khile-1965',
+        'ka-himalay-ki-god-mein-1965',
+        'ka-aamne-samne-1967',
+        'ka-upkar-1967',
+        'ka-saraswatichandra-1968',
+        'ka-johny-mera-naam-1970',
+        'ka-safar-1970',
+        'ka-zanjeer-1973',
+        'ka-kora-kagaz-1974',
+        'ka-dharmatma-1975',
+        'ka-don-1978',
+        'ka-muqaddar-ka-sikandar-1978',
+        'ka-qurbani-1980',
+        'ka-lawaaris-1981',
+        'ka-kalaakaar-1983',
+        'ka-janbaaz-1986',
+        'ka-mohabbat-ke-dushman-1988',
+        'ka-tridev-1989',
+        'kh-foot-path-1953',
+        'kh-phir-subha-hogi-1958',
+        'kh-shola-aur-shabnam-1961',
+        'kh-shagoon-1964',
+        'kh-aakhri-khat-1966',
+        'kh-kabhi-kabhie-1976',
+        'kh-trishul-1978',
+        'kh-noorie-1979',
+        'kh-thodi-si-bewafaai-1980',
+        'kh-umrao-jaan-1981',
+        'kh-ahista-ahista-1981',
+        'kh-bazaar-1982',
+        'kh-razia-sultan-1983',
+        'ds-jeena-marna-tere-sang-1992',
+        'ds-aaina-1993',
+        'ds-yeh-dillagi-1994',
+        'ds-haqeeqat-1995',
+        'ds-tu-chor-main-sipahi-1996',
+        'ds-angaara-1996',
+        'ds-ziddi-1997',
+        'ds-itihaas-1997',
+        'ds-daadagiri-1997',
+        'ds-aflatoon-1997',
+        'ds-salaakhen-1998',
+        'ds-anari-no-1-1999',
+        'ds-kohram-1999',
+        'ds-arjun-pandit-1999',
+        'ds-ittefaq-2001',
       ])
   );
 
@@ -273,6 +330,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === '1996-1999' && (m.year < 1996 || m.year > 1999)) return false;
         if (decade === '2000-2002' && (m.year < 2000 || m.year > 2002)) return false;
         if (decade === '2003-2008' && m.year < 2003) return false;
+        if (decade === '1956-1969' && m.year > 1969) return false;
+        if (decade === '1986-2013' && m.year < 1986) return false;
+        if (decade === '1948-1959' && m.year > 1959) return false;
+        if (decade === '1960-1979' && (m.year < 1960 || m.year > 1979)) return false;
+        if (decade === '1986-2014' && m.year < 1986) return false;
+        if (decade === '1988-1994' && (m.year < 1988 || m.year > 1994)) return false;
+        if (decade === '1995-1997' && (m.year < 1995 || m.year > 1997)) return false;
+        if (decade === '1998-1999' && (m.year < 1998 || m.year > 1999)) return false;
+        if (decade === '2000-2007' && m.year < 2000) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -426,7 +492,31 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                             { id: '2000-2002', label: '2000–2002' },
                                             { id: '2003-2008', label: '2003–2008' },
                                           ] as const)
-                                        : ([
+                                        : directorId === 'kalyanji-anandji'
+                                          ? ([
+                                              { id: 'all', label: 'All Eras (1956–2013)' },
+                                              { id: '1956-1969', label: '1956–1969' },
+                                              { id: '1970-1979', label: '1970–1979' },
+                                              { id: '1980-1985', label: '1980–1985' },
+                                              { id: '1986-2013', label: '1986–2013' },
+                                            ] as const)
+                                          : directorId === 'khayyam'
+                                            ? ([
+                                                { id: 'all', label: 'All Eras (1948–2014)' },
+                                                { id: '1948-1959', label: '1948–1959' },
+                                                { id: '1960-1979', label: '1960–1979' },
+                                                { id: '1980-1985', label: '1980–1985' },
+                                                { id: '1986-2014', label: '1986–2014' },
+                                              ] as const)
+                                            : directorId === 'dilip-sen-sameer-sen'
+                                              ? ([
+                                                  { id: 'all', label: 'All Eras (1988–2007)' },
+                                                  { id: '1988-1994', label: '1988–1994' },
+                                                  { id: '1995-1997', label: '1995–1997' },
+                                                  { id: '1998-1999', label: '1998–1999' },
+                                                  { id: '2000-2007', label: '2000–2007' },
+                                                ] as const)
+                                              : ([
                             {
                               id: 'all',
                               label:

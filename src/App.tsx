@@ -15,6 +15,7 @@ import {
   subscribeToSongOverrides,
 } from './lib/archiveOverrides';
 import { TopBar } from './components/TopBar';
+import { MasterArchiveSearch } from './components/MasterArchiveSearch';
 import { IntroHero } from './components/IntroHero';
 import { DirectorHero } from './components/DirectorHero';
 import { SongOriginTable } from './components/SongOriginTable';
@@ -328,6 +329,24 @@ export default function App() {
     setCurrentRoute('/director');
   };
 
+  const handleOpenInDirectorArchive = (directorId: DirectorId, movieId?: string) => {
+    setActiveDirectorId(directorId);
+    setSelectedMovieFilter(movieId ?? 'all');
+    setUrlSearchQuery('');
+    const nextPath = `/director/${directorId}`;
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState(null, '', nextPath);
+    }
+    setCurrentRoute('/director');
+    window.setTimeout(() => {
+      const targetId = movieId ? 'song-origin-table' : 'director-tabs';
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 60);
+  };
+
   const handleNavigateRoute = (path: Exclude<AppRoute, '/director'>) => {
     if (window.location.pathname !== path) {
       window.history.pushState(null, '', path);
@@ -393,6 +412,13 @@ export default function App() {
           />
         ) : (
           <>
+            <MasterArchiveSearch
+              allMovies={allMovies}
+              directors={sortedDirectors}
+              onOpenInDirectorArchive={handleOpenInDirectorArchive}
+              onNavigateContact={() => handleNavigateRoute('/contact')}
+            />
+
             <IntroHero
               onStartExploring={() => handleNavigate('director-tabs')}
               onOpenDisclaimer={() => handleNavigateRoute('/disclaimer')}

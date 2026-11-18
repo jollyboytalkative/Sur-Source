@@ -13,7 +13,10 @@ export type DirectorId =
   | 'roshan'
   | 'madan-mohan'
   | 'bappi-lahiri'
-  | 'jatin-lalit';
+  | 'jatin-lalit'
+  | 'kalyanji-anandji'
+  | 'khayyam'
+  | 'dilip-sen-sameer-sen';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

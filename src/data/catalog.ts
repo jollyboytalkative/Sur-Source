@@ -4,7 +4,10 @@ import { ANAND_MILIND_MOVIES } from './anandMilindData.ts';
 import { ANU_MALIK_MOVIES } from './anuMalikData.ts';
 import { AR_RAHMAN_BOLLYWOOD_MOVIES } from './arRahmanBollywoodData.ts';
 import { BAPPI_LAHIRI_MOVIES } from './bappiLahiriData.ts';
+import { DILIP_SEN_SAMEER_SEN_MOVIES } from './dilipSenSameerSenData.ts';
 import { JATIN_LALIT_MOVIES } from './jatinLalitData.ts';
+import { KALYANJI_ANANDJI_MOVIES } from './kalyanjiAnandjiData.ts';
+import { KHAYYAM_MOVIES } from './khayyamData.ts';
 import { LAXMIKANT_PYARELAL_MOVIES } from './laxmikantPyarelalData.ts';
 import { MADAN_MOHAN_MOVIES } from './madanMohanData.ts';
 import { NADEEM_SHRAVAN_MOVIES } from './nadeemShravanData.ts';
@@ -33,6 +36,9 @@ const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = [
   ...MADAN_MOHAN_MOVIES,
   ...BAPPI_LAHIRI_MOVIES,
   ...JATIN_LALIT_MOVIES,
+  ...KALYANJI_ANANDJI_MOVIES,
+  ...KHAYYAM_MOVIES,
+  ...DILIP_SEN_SAMEER_SEN_MOVIES,
 ];
 
 export const ALL_DIRECTOR_MOVIES: MovieEntry[] = RAW_ALL_DIRECTOR_MOVIES.map(

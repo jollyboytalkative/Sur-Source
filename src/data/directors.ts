@@ -224,4 +224,49 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Complete 72-film chronological joint Hindi (Bollywood) filmography (1991 Yaara Dildara – 2008 delayed joint releases; solo post-split Lalit/Jatin projects and regional scores excluded), with ITWOFS/musicology origins and direct listening links.',
   },
+  {
+    id: 'kalyanji-anandji',
+    name: 'Kalyanji–Anandji',
+    fullName: 'Kalyanji Virji Shah & Anandji Virji Shah · Hindi (Bollywood) Films Only',
+    era: '1959 – 1994+',
+    status: 'active',
+    summary:
+      'Iconic brother duo who composed music for over 250 to 300 films with 1,450+ cataloged songs (1959–1991 core era plus late & archival credits), including ~326 songs for Lata Mangeshkar, ~297 for Asha Bhosle, and ~270 for Kishore Kumar—maintaining strictly Hindi (Bollywood) films only.',
+    editorialEssay:
+      'Beginning with Kalyanji Virji Shah’s late-1950s solo assignments (Post Box 999, Samrat Chandragupta) and launching their official joint banner in 1959 (Satta Bazaar, Madari), Kalyanji–Anandji became towering pillars of Hindi cinema across 1959–1991 and into mid-1990s releases. Spanning over 250 to 300 career films and 1,450+ documented songs across film and album archives (with landmark tallies of ~326 songs for Lata Mangeshkar, ~297 for Asha Bhosle, and ~270 for Kishore Kumar), they won the National Film Award for Saraswatichandra (1968) and the Filmfare Award for Kora Kagaz (1974). Uniting Hindustani ragas, Gujarati-Awadhi folk melodies, and trailblazing electronic clavioline and brass arrangements across Chhalia, Jab Jab Phool Khile, Upkar, Johny Mera Naam, Safar, Zanjeer, Don, Muqaddar Ka Sikandar, Qurbani, Lawaaris, Vidhaata, Janbaaz, and Tridev, their Hindi-only catalog balances monumental studio originals with documented close similarities and inspirations drawn from Consuelo Velázquez, Ron Goodwin, Sidney Bechet, Serge Gainsbourg, Black Blood, Googoosh, Ilaiyaraaja, Gloria Estefan, Pet Shop Boys, and Awadhi folk traditions.',
+    signatureSound:
+      'Lata Mangeshkar (~326 songs), Asha Bhosle (~297 songs), Kishore Kumar (~270 songs), Mukesh, Mohammed Rafi, Mahendra Kapoor, Sadhana Sargam · Clavioline, Hindustani Ragas & Brass · Anand Bakshi, Indeevar & Anjaan lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi filmography (1956–1994+ plus 2013 Boss archival credit; excluding Gujarati/regional works & Biddu’s separate Qurbani track), with verified ITWOFS/musicology origins and direct listening links.',
+  },
+  {
+    id: 'khayyam',
+    name: 'Khayyam',
+    fullName: 'Mohammed Zahur "Khayyam" Hashmi · Hindi (Bollywood) Films Only',
+    era: '1948 – 2014',
+    status: 'active',
+    summary:
+      'National and three-time Filmfare Award-winning maestro revered for minimalist Hindustani classical orchestration and literary Urdu poetry across ~53–57 completed Hindi films—spanning Foot Path, Phir Subha Hogi, Shola Aur Shabnam, Shagoon, Kabhi Kabhie, Trishul, Noorie, Umrao Jaan, Bazaar, and Razia Sultan.',
+    editorialEssay:
+      'Debuting as Sharmaji of the Sharmaji–Varmaji duo in Heer Ranjha (1948) before adopting his iconic screen name with Foot Path (1953), Mohammed Zahur "Khayyam" Hashmi maintained one of Hindi cinema’s most selective filmographies—roughly 53–57 Hindi feature films across six decades through Yatra (2007) and Bazaar-E-Husn (2014). Fiercely protective of literary meter and delicate acoustic orchestration, he partnered with Sahir Ludhianvi, Kaifi Azmi, Jan Nisar Akhtar, Shahryar, and Gulzar to win both the National Film Award and Filmfare Award for Umrao Jaan (1981) alongside Filmfare honors for Kabhi Kabhie (1976). Celebrated across musicology archives for extraordinary originality, his catalog features authentic traditional Awadhi, Benarasi, and Rajasthani folk adaptations ("Kahe Ko Byahi Bides", "Jhoola Kinne Dala Re", "Hariyala Banna Aaya Re") rather than Western or pop borrowings.',
+    signatureSound:
+      'Asha Bhosle, Lata Mangeshkar, Mukesh, Mohammed Rafi, Talat Mahmood, Jagjit Kaur, Bhupinder Singh · Minimalist Sitar, Sarangi, Santoor & Ghazals · Sahir Ludhianvi, Kaifi Azmi, Jan Nisar Akhtar & Shahryar lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi filmography (1948 Heer Ranjha – 2014 Bazaar-E-Husn, covering 53 released Hindi films; Punjabi score Naukar Biwi Da & spoken-word albums excluded), with traditional folk/classical origins and direct listening links.',
+  },
+  {
+    id: 'dilip-sen-sameer-sen',
+    name: 'Dilip Sen–Sameer Sen',
+    fullName: 'Dilip Sen & Sameer Sen · Joint Hindi (Bollywood) Films Only',
+    era: '1988 – 2007',
+    status: 'active',
+    summary:
+      '1990s Bollywood uncle–nephew duo from the Jamal Sen musical dynasty who scored 57 verified joint Hindi feature albums—spanning Soorma Bhopali (1988), Jeena Marna Tere Sang (1992), Aaina (1993), Filmfare-nominated Yeh Dillagi (1994), Ziddi, Aflatoon, Arjun Pandit, Kohram, and Ittefaq.',
+    editorialEssay:
+      'Descendants of golden-era composer Jamal Sen and trained in classical and orchestral studios (with Sameer Sen assisting Shiv–Hari), Dilip Sen and Sameer Sen launched their joint Hindi film career with Jagdeep’s Soorma Bhopali (1988) and broke into the 1990s mainstream with Jeena Marna Tere Sang (1992), Yash Raj Films’ Aaina (1993), and the 2.2-million-selling Yeh Dillagi (1994, earning a Filmfare Best Music Director nomination led by Abhijeet’s original smash "Ole Ole"). Across 57 verified joint Hindi soundtracks through Parveen Bobby (2007)—strictly cataloging their joint Bollywood albums while excluding background-score-only credits (Baaghi 2000) and post-split solo projects (Nakshatra 2010, Romeo S3 2025)—their catalog balances exuberant original hits ("Poster Lagwado Bazar Mein", "Kudiyan Shaher Diyan", "Duniya Bhulake") with documented adaptations from The Champs, Queen, Ricky Martin, Abrar-ul-Haq, Vital Signs, Ustad Nusrat Fateh Ali Khan, and Punjabi folk ("Kala Doriya").',
+    signatureSound:
+      'Kumar Sanu, Alka Yagnik, Udit Narayan, Abhijeet, Anuradha Paudwal, Shweta Shetty · 1990s Brass, Dholak & Bhangra Grooves · Sameer, Anand Bakshi, Dev Kohli & Javed Akhtar lyrics',
+    archiveNote:
+      'Joint Hindi (Bollywood) chronological filmography (1988 Soorma Bhopali – 2007 Parveen Bobby; excluding background-score-only & post-split solo projects), with verified ITWOFS/musicology origins and direct listening links.',
+  },
 ];

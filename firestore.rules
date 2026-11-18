@@ -35,13 +35,13 @@ service cloud.firestore {
     function isValidDirectorId(val) {
       return val is string
         && val.size() <= 64
-        && val in ['nadeem-shravan', 'anu-malik', 'rd-burman', 'shankar-jaikishan', 'ar-rahman', 'naushad', 'op-nayyar', 'anand-milind', 'laxmikant-pyarelal', 'sd-burman', 'ravi', 'roshan', 'madan-mohan', 'bappi-lahiri', 'jatin-lalit'];
+        && val in ['nadeem-shravan', 'anu-malik', 'rd-burman', 'shankar-jaikishan', 'ar-rahman', 'naushad', 'op-nayyar', 'anand-milind', 'laxmikant-pyarelal', 'sd-burman', 'ravi', 'roshan', 'madan-mohan', 'bappi-lahiri', 'jatin-lalit', 'kalyanji-anandji', 'khayyam', 'dilip-sen-sameer-sen'];
     }
 
     function isValidTargetDirector(val) {
       return val is string
         && val.size() <= 64
-        && val in ['all', 'nadeem-shravan', 'anu-malik', 'rd-burman', 'shankar-jaikishan', 'ar-rahman', 'naushad', 'op-nayyar', 'anand-milind', 'laxmikant-pyarelal', 'sd-burman', 'ravi', 'roshan', 'madan-mohan', 'bappi-lahiri', 'jatin-lalit'];
+        && val in ['all', 'nadeem-shravan', 'anu-malik', 'rd-burman', 'shankar-jaikishan', 'ar-rahman', 'naushad', 'op-nayyar', 'anand-milind', 'laxmikant-pyarelal', 'sd-burman', 'ravi', 'roshan', 'madan-mohan', 'bappi-lahiri', 'jatin-lalit', 'kalyanji-anandji', 'khayyam', 'dilip-sen-sameer-sen'];
     }
 
     function isValidOriginCategory(val) {

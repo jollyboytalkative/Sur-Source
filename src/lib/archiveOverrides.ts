@@ -47,6 +47,9 @@ const VALID_DIRECTORS: DirectorId[] = [
   'madan-mohan',
   'bappi-lahiri',
   'jatin-lalit',
+  'kalyanji-anandji',
+  'khayyam',
+  'dilip-sen-sameer-sen',
 ];
 const VALID_TARGET_DIRECTORS: DiscoveryTargetDirector[] = [
   'all',

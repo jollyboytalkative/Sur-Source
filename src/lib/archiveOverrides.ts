@@ -50,6 +50,7 @@ const VALID_DIRECTORS: DirectorId[] = [
   'kalyanji-anandji',
   'khayyam',
   'dilip-sen-sameer-sen',
+  'viju-shah',
 ];
 const VALID_TARGET_DIRECTORS: DiscoveryTargetDirector[] = [
   'all',

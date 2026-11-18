@@ -78,7 +78,11 @@ type DecadeFilter =
   | '1988-1994'
   | '1995-1997'
   | '1998-1999'
-  | '2000-2007';
+  | '2000-2007'
+  | '1990-1995'
+  | '1996-1998'
+  | '2000-2003'
+  | '2004-2025';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -273,6 +277,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'ds-kohram-1999',
         'ds-arjun-pandit-1999',
         'ds-ittefaq-2001',
+        'viju-vishwatma-1992',
+        'viju-mohra-1994',
+        'viju-tere-mere-sapne-1996',
+        'viju-gupt-1997',
+        'viju-bade-miyan-chote-miyan-1998',
+        'viju-pyaar-ishq-aur-mohabbat-2001',
+        'viju-tujhe-meri-kasam-2003',
+        'viju-shikhar-2005',
+        'viju-zora-2025',
       ])
   );
 
@@ -339,6 +352,10 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === '1995-1997' && (m.year < 1995 || m.year > 1997)) return false;
         if (decade === '1998-1999' && (m.year < 1998 || m.year > 1999)) return false;
         if (decade === '2000-2007' && m.year < 2000) return false;
+        if (decade === '1990-1995' && (m.year < 1990 || m.year > 1995)) return false;
+        if (decade === '1996-1998' && (m.year < 1996 || m.year > 1998)) return false;
+        if (decade === '2000-2003' && (m.year < 2000 || m.year > 2003)) return false;
+        if (decade === '2004-2025' && m.year < 2004) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -516,7 +533,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                   { id: '1998-1999', label: '1998–1999' },
                                                   { id: '2000-2007', label: '2000–2007' },
                                                 ] as const)
-                                              : ([
+                                              : directorId === 'viju-shah'
+                                                ? ([
+                                                    { id: 'all', label: 'All Eras (1990–2025)' },
+                                                    { id: '1990-1995', label: '1990–1995' },
+                                                    { id: '1996-1998', label: '1996–1998' },
+                                                    { id: '2000-2003', label: '2000–2003' },
+                                                    { id: '2004-2025', label: '2004–2025' },
+                                                  ] as const)
+                                                : ([
                             {
                               id: 'all',
                               label:

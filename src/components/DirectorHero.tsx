@@ -338,7 +338,9 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                               ? 'Verified Hindi (Bollywood) filmography (53 released Hindi films across 1948 Heer Ranjha – 2014 Bazaar-E-Husn; Punjabi & non-film albums excluded)'
                                               : activeDirectorId === 'dilip-sen-sameer-sen'
                                                 ? 'Verified joint Hindi (Bollywood) filmography (57 joint Hindi films across 1988 Soorma Bhopali – 2007 Parveen Bobby; excluding background-score-only & post-split solo works)'
-                                                : 'Verified chronological filmography'}
+                                                : activeDirectorId === 'viju-shah'
+                                                  ? 'Verified Hindi (Bollywood) song filmography (1990 Muqaddar Ka Badshaah – 2025 Zora; excluding Gujarati scores, TV serials, non-film albums & BGM-only credits)'
+                                                  : 'Verified chronological filmography'}
             </div>
           </div>
 

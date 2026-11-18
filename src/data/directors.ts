@@ -269,4 +269,19 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Joint Hindi (Bollywood) chronological filmography (1988 Soorma Bhopali – 2007 Parveen Bobby; excluding background-score-only & post-split solo projects), with verified ITWOFS/musicology origins and direct listening links.',
   },
+  {
+    id: 'viju-shah',
+    name: 'Viju Shah',
+    fullName: 'Vijay Kalyanji Shah · Hindi (Bollywood) Films Only',
+    era: '1990 – 2025',
+    status: 'active',
+    summary:
+      'Bollywood’s "King of Synth Sounds" and Filmfare Award winner for Gupt, who pioneered 1990s electronic techno grooves across Vishwatma, Mohra, Tere Mere Sapne, Gupt, Bade Miyan Chote Miyan, and Zora—maintaining strictly Hindi (Bollywood) song soundtracks only.',
+    editorialEssay:
+      'Son of Kalyanji–Anandji patriarch Kalyanji Virji Shah, Viju Shah first turned heads with his electronic programming on Tridev (1989) before launching his solo Hindi film career with Muqaddar Ka Badshaah (1990), Vishwatma (1992), and Rajiv Rai’s blockbusters Mohra (1994) and Gupt: The Hidden Truth (1997, winning Filmfare Best Background Score). Strictly cataloging his Hindi (Bollywood) feature song albums through Tere Mere Sapne (1996), Bade Miyan Chote Miyan (1998), Pyaar Ishq Aur Mohabbat (2001), Tujhe Meri Kasam (2003), Shikhar (2005), Victoria No. 203 (2007), and Rajiv Rai’s comeback Zora (2025)—while excluding Gujarati works (Aa Te Kevi Dunniya), television serials, non-film albums, and background-score-only credits (Lootere, Andaz Apna Apna, Class of ’83)—his catalog pairs landmark synth-pop originals ("Aankh Marey", "Makhna", "Kisi Disco Mein Jaaye", "Na Kajre Ki Dhar") with documented close similarities and inspirations drawn from Pet Shop Boys, Ustad Nusrat Fateh Ali Khan, Dr. Alban, Deep Forest, Mike Oldfield, Kitaro, Jean-Michel Jarre, Karunesh, Musarrat Nazir, and Noor Jehan.',
+    signatureSound:
+      'Udit Narayan, Sadhana Sargam, Alka Yagnik, Kavita Krishnamurthy, Kumar Sanu, Shaan · Analog & Digital Synthesizers, Techno Percussion & Brass · Anand Bakshi & Sameer lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi song filmography (1990 Muqaddar Ka Badshaah – 2025 Zora; excluding Gujarati scores, TV serials, non-film albums & BGM-only credits), with ITWOFS/musicology origins and direct listening links.',
+  },
 ];

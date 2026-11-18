@@ -16,7 +16,8 @@ export type DirectorId =
   | 'jatin-lalit'
   | 'kalyanji-anandji'
   | 'khayyam'
-  | 'dilip-sen-sameer-sen';
+  | 'dilip-sen-sameer-sen'
+  | 'viju-shah';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

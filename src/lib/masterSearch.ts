@@ -50,6 +50,7 @@ const DIRECTOR_ALIASES: Record<DirectorId, string[]> = {
   'kalyanji-anandji': ['Kalyanji Anandji', 'Kalyanji-Anandji', 'Kalyanji Virji Shah', 'Anandji'],
   khayyam: ['Khayyam', 'Mohammed Zahur Khayyam', 'Sharmaji Varmaji'],
   'dilip-sen-sameer-sen': ['Dilip Sen Sameer Sen', 'Dilip Sen-Sameer Sen', 'Dilip Sen', 'Sameer Sen', 'Sen Brothers'],
+  'viju-shah': ['Viju Shah', 'Vijay Kalyanji Shah', 'King of Synth Sounds'],
 };
 
 /**
@@ -218,6 +219,17 @@ const SONG_LYRIC_CUES_BY_ID: Record<string, string[]> = {
   'kh-noorie-1979-1': ['Aaja re o mere dilbar aaja dil ki pyas bujha ja re'],
   'kh-bazaar-1982-1': ['Dikhayi diye yun ki bekhud kiya humein aap se bhi juda kar chali'],
   'kh-bazaar-1982-3': ['Karoge yaad to har baat yaad aayegi'],
+
+  // Viju Shah
+  'viju-vishwatma-1992-1': ['Saat samundar paar main tere peeche peeche aa gayi'],
+  'viju-mohra-1994-1': ['Tu cheez badi hai mast mast nahin tujhko koi hosh', 'Dam mast qalandar mast'],
+  'viju-mohra-1994-2': ['Tip tip barsa paani paani ne aag lagayi'],
+  'viju-mohra-1994-3': ['Na kajre ki dhar na motiyon ke haar', 'Koi kiya singaar phir bhi kitni sundar ho'],
+  'viju-tere-mere-sapne-1996-1': ['Ladka aankh maare aankh maare', 'Seeti bajaye'],
+  'viju-gupt-1997-2': ['Duniya haseenon ka mela mele mein yeh dil akela'],
+  'viju-gupt-1997-3': ['Mushkil bada yeh pyar hai hota nahin aasan'],
+  'viju-bade-miyan-chote-miyan-1998-2': ['Oye makhna oye makhna'],
+  'viju-bade-miyan-chote-miyan-1998-3': ['Kisi disco mein jaaye kisi hotel mein khaye'],
 };
 
 /**
@@ -240,6 +252,9 @@ const TITLE_PHRASE_ALIASES: Record<string, string[]> = {
   'aap jaisa koi meri zindagi mein aaye': ['to baat ban jaye haan haan baat ban jaye'],
   'poster lagwado bazar mein': ['ladki ko ladka pasand aa gaya', 'poster lagwa do bazaar mein'],
   'kudiyan shaher diyan': ['kudiya shehar diya', 'kudiyan shahar diyan'],
+  'saat samundar paar': ['main tere peeche peeche aa gayi', 'saat samundar paar divya bharti'],
+  'duniya haseenon ka mela': ['mele mein yeh dil akela', 'duniya hasino ka mela'],
+  'na kajre ki dhar': ['na motiyon ke haar', 'tum itna jo muskura rahi ho'],
 };
 
 const HINDI_STOP_WORDS = new Set([

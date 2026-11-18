@@ -18,6 +18,7 @@ import { RD_BURMAN_MOVIES } from './rdBurmanData.ts';
 import { ROSHAN_MOVIES } from './roshanData.ts';
 import { SD_BURMAN_MOVIES } from './sdBurmanData.ts';
 import { SHANKAR_JAIKISHAN_MOVIES } from './shankarJaikishanData.ts';
+import { VIJU_SHAH_MOVIES } from './vijuShahData.ts';
 import { DIRECT_VIDEO_LINKS } from './directVideoLinks.ts';
 
 const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = [
@@ -39,6 +40,7 @@ const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = [
   ...KALYANJI_ANANDJI_MOVIES,
   ...KHAYYAM_MOVIES,
   ...DILIP_SEN_SAMEER_SEN_MOVIES,
+  ...VIJU_SHAH_MOVIES,
 ];
 
 export const ALL_DIRECTOR_MOVIES: MovieEntry[] = RAW_ALL_DIRECTOR_MOVIES.map(

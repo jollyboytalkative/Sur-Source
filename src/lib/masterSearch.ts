@@ -51,6 +51,7 @@ const DIRECTOR_ALIASES: Record<DirectorId, string[]> = {
   khayyam: ['Khayyam', 'Mohammed Zahur Khayyam', 'Sharmaji Varmaji'],
   'dilip-sen-sameer-sen': ['Dilip Sen Sameer Sen', 'Dilip Sen-Sameer Sen', 'Dilip Sen', 'Sameer Sen', 'Sen Brothers'],
   'viju-shah': ['Viju Shah', 'Vijay Kalyanji Shah', 'King of Synth Sounds'],
+  'himesh-reshammiya': ['Himesh Reshammiya', 'Himesh', 'HR', 'Lord Himesh'],
 };
 
 /**
@@ -230,6 +231,36 @@ const SONG_LYRIC_CUES_BY_ID: Record<string, string[]> = {
   'viju-gupt-1997-3': ['Mushkil bada yeh pyar hai hota nahin aasan'],
   'viju-bade-miyan-chote-miyan-1998-2': ['Oye makhna oye makhna'],
   'viju-bade-miyan-chote-miyan-1998-3': ['Kisi disco mein jaaye kisi hotel mein khaye'],
+
+  // Himesh Reshammiya
+  'hr-tere-naam-2003-1': ['Tere naam humne kiya hai jeevan apna saara sanam'],
+  'hr-aashiq-banaya-aapne-2005-1': ['Aashiq banaya aapne aashiq banaya aapne'],
+  'hr-aashiq-banaya-aapne-2005-3': ['Aap ki kashish sarfarosh hai'],
+  'hr-aksar-2006-1': ['Jhalak dikhlaja ek baar aaja aaja aaja'],
+  'hr-36-china-town-2006-1': ['Aashiqui mein teri jaayegi jaan meri'],
+  'hr-namastey-london-2007-1': ['Main jahaan rahoon main kahin bhi hoon teri yaad saath hai'],
+  'hr-bodyguard-2011-1': ['Teri meri meri teri prem kahani hai mushkil', 'La Betleem colo-n jos'],
+  'hr-khiladi-786-2012-1': ['Tera pyaar pyaar pyaar hookah bar'],
+  'hr-khiladi-786-2012-2': ['Lonely lonely tere bin main lonely', 'Mr Saxobeat'],
+  'hr-kick-2014-1': ['Jumme ki raat hai chumme ki baat hai'],
+  'hr-prem-ratan-dhan-payo-2015-1': ['Payoji maine prem ratan dhan payo'],
+  'hr-sanam-teri-kasam-2016-2': ['Meri bebasi ka bayan hai tera chehra'],
+  'hr-teraa-surroor-2016-3': ['Wafa ne bewafai ki hai'],
+  'hr-genius-2018-1': ['Tera fitoor jabse chadh gaya re'],
+  'hr-kisi-ka-bhai-kisi-ki-jaan-2023-1': ['Naiyo lagda dil tere bina'],
+  'hr-kyaa-dil-ne-kahaa-2002-2': ['Nikamma kiya is dil ne hai tere pyaar mein'],
+  'hr-zameen-2003-2': ['Dilli ki sardi mein tu bhi aa ja'],
+  'hr-dil-ne-jise-apna-kahaa-2004-1': ['Bindiya chamakne lagi choodiyan khanakne lagi'],
+  'hr-main-aisa-hi-hoon-2005-3': ['Papa mere papa chanda ne poochha taaron se'],
+  'hr-rocky-the-rebel-2006-1': ['Junoon junoon tera hi junoon'],
+  'hr-dil-diya-hai-2006-1': ['Afsana banake bhool na jaana'],
+  'hr-aap-ki-khatir-2006-1': ['Aap ki khatir mere dil ka jahan hai hazir'],
+  'hr-tom-dick-and-harry-2006-1': ['Jhoom jhoom ta hoon main'],
+  'hr-kajraare-2010-1': ['Kajra kajra kajraare naina tere kajraare'],
+  'hr-dangerous-ishhq-2012-1': ['Tu hi rab tu hi dua'],
+  'hr-dangerous-ishhq-2012-2': ['Naina re naina tujhse bura na koi'],
+  'hr-humshakals-2014-1': ['Caller tune baby caller tune'],
+  'hr-humshakals-2014-2': ['Piya ke bazaar mein nachungi aaj saari raat'],
 };
 
 /**
@@ -255,6 +286,19 @@ const TITLE_PHRASE_ALIASES: Record<string, string[]> = {
   'saat samundar paar': ['main tere peeche peeche aa gayi', 'saat samundar paar divya bharti'],
   'duniya haseenon ka mela': ['mele mein yeh dil akela', 'duniya hasino ka mela'],
   'na kajre ki dhar': ['na motiyon ke haar', 'tum itna jo muskura rahi ho'],
+  'jhalak dikhlaja': ['ek baar aaja aaja aaja', 'jhalak dikhla ja'],
+  'aashiq banaya aapne': ['sine se lagaya aapne', 'tere bin jeena nahi'],
+  'teri meri': ['teri meri meri teri prem kahani hai mushkil'],
+  'hookah bar': ['tera pyaar pyaar hookah bar'],
+  'main jahaan rahoon': ['main kahin bhi hoon teri yaad saath hai'],
+  'aashiq deewana hoon': ['aashiq deewana main tera deewana', 'aashiq deewana hoon afsana pyar ka'],
+  'tip tip tip baarish shuru ho gayi': ['tip tip tip tip baarish shuru ho gayi', 'afsana pyar ka barish'],
+  'nazrein mili': ['nazren mili dhadkan badhi', 'nazrein mili afsana pyar ka'],
+  'yaad teri aati hai': ['yaad teri aati hai mujhe tadpati hai', 'afsana pyar ka alka yagnik'],
+  'afsana pyar ka': ['afsana pyar ka asha bhosle udit narayan'],
+  'roshni se': ['asoka roshni se bhare bhare'],
+  'san sanana': ['ja ja re ja pawan asoka'],
+  'chori chori sapno mein': ['chori chori sapnon mein aata hai koi'],
 };
 
 const HINDI_STOP_WORDS = new Set([

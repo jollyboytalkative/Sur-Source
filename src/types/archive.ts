@@ -17,7 +17,8 @@ export type DirectorId =
   | 'kalyanji-anandji'
   | 'khayyam'
   | 'dilip-sen-sameer-sen'
-  | 'viju-shah';
+  | 'viju-shah'
+  | 'himesh-reshammiya';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

@@ -82,7 +82,11 @@ type DecadeFilter =
   | '1990-1995'
   | '1996-1998'
   | '2000-2003'
-  | '2004-2025';
+  | '2004-2025'
+  | 'hr-1998-2004'
+  | 'hr-2005-2007'
+  | 'hr-2008-2014'
+  | 'hr-2015-2025';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -286,6 +290,20 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'viju-tujhe-meri-kasam-2003',
         'viju-shikhar-2005',
         'viju-zora-2025',
+        'hr-pyaar-kiya-to-darna-kya-1998',
+        'hr-kahin-pyaar-na-ho-jaaye-2000',
+        'hr-tere-naam-2003',
+        'hr-aitraaz-2004',
+        'hr-aashiq-banaya-aapne-2005',
+        'hr-aksar-2006',
+        'hr-namastey-london-2007',
+        'hr-karzzzz-2008',
+        'hr-bodyguard-2011',
+        'hr-khiladi-786-2012',
+        'hr-kick-2014',
+        'hr-prem-ratan-dhan-payo-2015',
+        'hr-sanam-teri-kasam-2016',
+        'hr-badass-ravi-kumar-2025',
       ])
   );
 
@@ -356,6 +374,10 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === '1996-1998' && (m.year < 1996 || m.year > 1998)) return false;
         if (decade === '2000-2003' && (m.year < 2000 || m.year > 2003)) return false;
         if (decade === '2004-2025' && m.year < 2004) return false;
+        if (decade === 'hr-1998-2004' && (m.year < 1998 || m.year > 2004)) return false;
+        if (decade === 'hr-2005-2007' && (m.year < 2005 || m.year > 2007)) return false;
+        if (decade === 'hr-2008-2014' && (m.year < 2008 || m.year > 2014)) return false;
+        if (decade === 'hr-2015-2025' && m.year < 2015) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -541,7 +563,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                     { id: '2000-2003', label: '2000–2003' },
                                                     { id: '2004-2025', label: '2004–2025' },
                                                   ] as const)
-                                                : ([
+                                                : directorId === 'himesh-reshammiya'
+                                                  ? ([
+                                                      { id: 'all', label: 'All Eras (1998–2025)' },
+                                                      { id: 'hr-1998-2004', label: '1998–2004' },
+                                                      { id: 'hr-2005-2007', label: '2005–2007' },
+                                                      { id: 'hr-2008-2014', label: '2008–2014' },
+                                                      { id: 'hr-2015-2025', label: '2015–2025' },
+                                                    ] as const)
+                                                  : ([
                             {
                               id: 'all',
                               label:

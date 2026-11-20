@@ -13,7 +13,7 @@ export const DIRECTORS: DirectorProfile[] = [
       'Following the landmark 1990 soundtrack Aashiqui, Nadeem–Shravan reshaped Hindi cinema music away from synthesized 1980s disco back toward sweeping melody. Musicologists and archival catalogs have extensively documented how their studio formula balanced original romantic ballads with close melodic adaptations and structural parallels sourced from Pakistani cassette releases, Sufi qawwali, Levantine pop, and European folk.',
     signatureSound: 'Kumar Sanu, Alka Yagnik, Udit Narayan · Dholak & Jhankar arrangements · Sameer lyrics',
     archiveNote:
-      'Complete chronological filmography (1977–2009) with song-level provenance and dual external listening links.',
+      'Verified Hindi feature filmography (1977–2009, 124 films & 775 songs) with song-level provenance and dual external listening links.',
   },
   {
     id: 'anu-malik',
@@ -27,7 +27,7 @@ export const DIRECTORS: DirectorProfile[] = [
       'Son of veteran composer Sardar Malik, Anu Malik bridged 1980s action cinema, 1990s commercial blockbusters (Baazigar, Border, Virasat), and acclaimed 2000s–2020s scores (Refugee, Main Hoon Na, Dum Laga Ke Haisha). While encyclopedic filmographies count 300–350+ total projects across four decades (including single-song guest appearances, TV telefilms, dubbed releases, and shelved albums), this archive focuses on verified primary Hindi feature soundtracks paired with reported adaptations and close similarities documented in public music catalogs.',
     signatureSound: 'Kumar Sanu, Sonu Nigam, Alka Yagnik · High-energy brass & synth · Javed Akhtar & Gulzar lyrics',
     archiveNote:
-      'Verified Hindi feature filmography (1977–Present) from his 300–350+ total career credits, with song-level provenance and dual external links.',
+      'Verified Hindi feature filmography (1977–Present, 247 films & 1,239 songs) from his 300–350+ total career credits, with song-level provenance and dual external links.',
   },
   {
     id: 'rd-burman',
@@ -42,7 +42,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Kishore Kumar, Asha Bhosle, Lata Mangeshkar · Brass, congas & foley percussion · Gulzar, Anand Bakshi & Majrooh Sultanpuri',
     archiveNote:
-      'Multi-language filmography (1961–1997) reflecting 331 career film credits (292 Hindi, 31 Bengali, 3 Telugu, 2 Tamil, 2 Oriya, 1 Marathi) & 5 TV serials, with verified song origins and dual links.',
+      'Chronological archive (1961–2000, 314 cataloged films & 1,312 songs) reflecting his 331 total career credits & full documented Hindi soundtracks, with verified song origins and dual links.',
   },
   {
     id: 'shankar-jaikishan',
@@ -72,7 +72,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Sukhwinder Singh, Arijit Singh, Mohit Chauhan, Alka Yagnik, Shreya Ghoshal · Sufi Qawwali, Electronic-Orchestral Fusion · Gulzar & Irshad Kamil lyrics',
     archiveNote:
-      'Bollywood-only chronological Hindi filmography (1995–Present), excluding all South Indian and dubbed soundtracks, continuously updated for new Hindi releases.',
+      'Bollywood-only chronological Hindi filmography (1995–Present, 70 original Hindi films & 415 songs), excluding all South Indian and dubbed soundtracks.',
   },
   {
     id: 'naushad',
@@ -117,7 +117,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Udit Narayan, Alka Yagnik, Anuradha Paudwal, Kumar Sanu, Poornima, Abhijeet · Acoustic Melody, Dholak & Brass Hooks · Majrooh Sultanpuri & Sameer lyrics',
     archiveNote:
-      'Complete chronological feature filmography (1984 Ab Ayega Mazaa – Present) across 220 tracked credits, with documented song origins and direct listening links.',
+      'Complete chronological feature filmography (1984 Ab Ayega Mazaa – Present) across 221 tracked Hindi credits (910 songs), with documented song origins and direct listening links.',
   },
   {
     id: 'laxmikant-pyarelal',
@@ -132,7 +132,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Lata Mangeshkar, Mohammed Rafi, Kishore Kumar, Asha Bhosle, Kavita Krishnamurthy, Alka Yagnik · Grand Symphonic Strings, Mandolin & Dholak · Anand Bakshi lyrics',
     archiveNote:
-      'Full 505-film chronological catalog (1963 Parasmani – 1998+ delayed releases) covering their documented 503–750 film career, with landmark tracklists, ITWOFS/musicology origins, and direct listening links.',
+      'Full 509-film chronological catalog (1963 Parasmani – 1998+ delayed releases, 2,162 indexed songs) covering their documented 503–750 film career, with full tracklists and direct listening links.',
   },
   {
     id: 'sd-burman',
@@ -162,7 +162,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Mohammed Rafi, Asha Bhosle, Mahendra Kapoor, Lata Mangeshkar, Salma Agha · Raag Pahadi, Sitar, Sarangi & Qawwali Dholak · Sahir Ludhianvi, Shakeel Badayuni, Rajinder Krishan & Hasan Kamal lyrics',
     archiveNote:
-      'Bollywood-only chronological Hindi filmography (1955 Vachan – 2003 Ek Alag Mausam, covering 91 verified Hindi films with all Malayalam films excluded), with song origins and direct listening links.',
+      'Bollywood-only chronological Hindi filmography (1955 Vachan – 2003 Ek Alag Mausam, covering 98 verified Hindi films & 580 songs with all Malayalam films excluded), with song origins and direct listening links.',
   },
   {
     id: 'roshan',
@@ -192,7 +192,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Lata Mangeshkar, Mohammed Rafi, Talat Mahmood, Asha Bhosle · Hindustani Ghazals, Sitar & Lush Strings · Raja Mehdi Ali Khan, Rajinder Krishan, Kaifi Azmi & Gulzar lyrics',
     archiveNote:
-      'Chronological Hindi filmography (1950 Aankhen – 1980 Chaalbaaz & Veer-Zaara 2004 archival revival) covering his ~95-film / ~700-song career, with song origins and direct listening links.',
+      'Chronological Hindi filmography (1950 Aankhen – 1980 Chaalbaaz & Veer-Zaara 2004 archival revival, 92 films & 616 songs) covering his ~95-film career, with song origins and direct listening links.',
   },
   {
     id: 'bappi-lahiri',
@@ -207,7 +207,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Kishore Kumar, Asha Bhosle, Lata Mangeshkar, Alisha Chinai, Bappi Lahiri, S. Janaki, Usha Uthup · Synthesized Disco, Analog Brass & Drum Machines · Anjaan & Indeevar lyrics',
     archiveNote:
-      'Bollywood-only chronological Hindi filmography (1973 Nanha Shikari – 2020 revivals; Bengali, Telugu, Kannada & regional scores excluded), with expanded ITWOFS/musicology origins and direct listening links.',
+      'Bollywood-only chronological Hindi filmography (1973 Nanha Shikari – 2020 revivals, 305 verified Hindi films & 1,464 songs; Bengali, Telugu, Kannada & regional scores excluded), with complete tracklists and direct listening links.',
   },
   {
     id: 'jatin-lalit',
@@ -222,7 +222,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Udit Narayan, Kumar Sanu, Alka Yagnik, Abhijeet Bhattacharya, Lata Mangeshkar, Sonu Nigam · Acoustic Guitar, Mandolin & Sweeping Strings · Majrooh Sultanpuri, Anand Bakshi, Sameer, Javed Akhtar & Prasoon Joshi lyrics',
     archiveNote:
-      'Complete 72-film chronological joint Hindi (Bollywood) filmography (1991 Yaara Dildara – 2008 delayed joint releases; solo post-split Lalit/Jatin projects and regional scores excluded), with ITWOFS/musicology origins and direct listening links.',
+      'Complete 74-film chronological joint Hindi (Bollywood) filmography (1991 Yaara Dildara – 2008 delayed joint releases, 368 songs; solo post-split Lalit/Jatin projects and regional scores excluded), with direct listening links.',
   },
   {
     id: 'kalyanji-anandji',
@@ -237,7 +237,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Lata Mangeshkar (~326 songs), Asha Bhosle (~297 songs), Kishore Kumar (~270 songs), Mukesh, Mohammed Rafi, Mahendra Kapoor, Sadhana Sargam · Clavioline, Hindustani Ragas & Brass · Anand Bakshi, Indeevar & Anjaan lyrics',
     archiveNote:
-      'Bollywood-only chronological Hindi filmography (1956–1994+ plus 2013 Boss archival credit; excluding Gujarati/regional works & Biddu’s separate Qurbani track), with verified ITWOFS/musicology origins and direct listening links.',
+      'Bollywood-only chronological Hindi filmography (1956–1994+ plus 2013 Boss archival credit, 232 Hindi films & 972 songs; excluding Gujarati/regional works & Biddu’s separate Qurbani track), with verified origins and direct listening links.',
   },
   {
     id: 'khayyam',
@@ -267,7 +267,7 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Kumar Sanu, Alka Yagnik, Udit Narayan, Abhijeet, Anuradha Paudwal, Shweta Shetty · 1990s Brass, Dholak & Bhangra Grooves · Sameer, Anand Bakshi, Dev Kohli & Javed Akhtar lyrics',
     archiveNote:
-      'Joint Hindi (Bollywood) chronological filmography (1988 Soorma Bhopali – 2007 Parveen Bobby; excluding background-score-only & post-split solo projects), with verified ITWOFS/musicology origins and direct listening links.',
+      'Joint Hindi (Bollywood) chronological filmography (1988 Soorma Bhopali – 2007 Parveen Bobby, 60 verified Hindi films & 339 songs; excluding background-score-only & post-split solo projects), with verified origins and direct listening links.',
   },
   {
     id: 'viju-shah',
@@ -282,6 +282,21 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Udit Narayan, Sadhana Sargam, Alka Yagnik, Kavita Krishnamurthy, Kumar Sanu, Shaan · Analog & Digital Synthesizers, Techno Percussion & Brass · Anand Bakshi & Sameer lyrics',
     archiveNote:
-      'Bollywood-only chronological Hindi song filmography (1990 Muqaddar Ka Badshaah – 2025 Zora; excluding Gujarati scores, TV serials, non-film albums & BGM-only credits), with ITWOFS/musicology origins and direct listening links.',
+      'Bollywood-only chronological Hindi song filmography (1990 Muqaddar Ka Badshaah – 2025 Zora, 29 Hindi films & 165 songs; excluding Gujarati scores, TV serials, non-film albums & BGM-only credits), with origins and direct listening links.',
+  },
+  {
+    id: 'himesh-reshammiya',
+    name: 'Himesh Reshammiya',
+    fullName: 'Himesh Vipin Reshammiya · Hindi (Bollywood) Films Only',
+    era: '1998 – 2025',
+    status: 'active',
+    summary:
+      'Multi-award-winning Bollywood composer and playback icon who scored over 100 feature films—indexing his complete 101 released Hindi feature film soundtracks (1998–2025) from Tere Naam, Aashiq Banaya Aapne, Aksar, and Namastey London to Bodyguard, Prem Ratan Dhan Payo, Sanam Teri Kasam, and Badass Ravi Kumar (excluding all private studio albums).',
+    editorialEssay:
+      'Breaking into Hindi cinema with Salman Khan’s Pyaar Kiya To Darna Kya (1998) and Dulhan Hum Le Jayenge (2000) before achieving a cultural watershed with Tere Naam (2003), Himesh Reshammiya scored over 100 feature film soundtracks—an output unmatched for velocity during his 2003–2007 peak across Aitraaz, Main Aisa Hi Hoon, Aashiq Banaya Aapne, Aksar, 36 China Town, Dil Diya Hai, Aap Ki Khatir, Namastey London, Apne, Karzzzz, Bodyguard, Khiladi 786, Kick, Prem Ratan Dhan Payo, Sanam Teri Kasam, Genius, Raksha Bandhan, Kisi Ka Bhai Kisi Ki Jaan, and Badass Ravi Kumar (2025). Strictly maintaining his 101 released Bollywood (Hindi) feature film soundtracks only—excluding all private studio albums (Aap Kaa Surroor 2006, Aap Se Mausiiquii, Surroor 2021, Moods with Melodies), Tamil Dasavathaaram (2008), television serials, background-score-only assignments, and unreleased upcoming films—this dossier catalogs his studio originals alongside ITWOFS and CopycatList-documented adaptations from Santana, R. Kelly, Ali Zafar, Faakhir Mehmood, Abrar-ul-Haq, Wajahat Attre, Kulwinder Kally, Karunesh, Cleopatra Stratan, Alexandra Stan, Chris Brown, Pitbull, Beyoncé, and official R.D. Burman / Laxmikant–Pyarelal / Anand Raj Anand recreations.',
+    signatureSound:
+      'Himesh Reshammiya, Kumar Sanu, Udit Narayan, Alka Yagnik, Sunidhi Chauhan, Shreya Ghoshal, KK, Arijit Singh, Darshan Raval · Sufi-Rock Vocals, Synth Hooks & Acoustic Orchestration · Sameer, Shabbir Ahmed & Irshad Kamil lyrics',
+    archiveNote:
+      'Complete 101-film Bollywood (Hindi) feature film songography (1998 Pyaar Kiya To Darna Kya – 2025 Badass Ravi Kumar); all private studio albums, Tamil Dasavathaaram, BGM-only titles, and unreleased films are excluded.',
   },
 ];

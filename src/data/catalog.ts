@@ -19,9 +19,12 @@ import { ROSHAN_MOVIES } from './roshanData.ts';
 import { SD_BURMAN_MOVIES } from './sdBurmanData.ts';
 import { SHANKAR_JAIKISHAN_MOVIES } from './shankarJaikishanData.ts';
 import { VIJU_SHAH_MOVIES } from './vijuShahData.ts';
+import { HIMESH_RESHAMMIYA_MOVIES } from './himeshReshammiyaData.ts';
+import { SUPPLEMENTAL_MOVIES } from './supplementalMovies.ts';
+import { SUPPLEMENTAL_TRACK_ADDITIONS } from './supplementalTracks.ts';
 import { DIRECT_VIDEO_LINKS } from './directVideoLinks.ts';
 
-const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = [
+const BASE_DIRECTOR_MOVIES: MovieEntry[] = [
   ...NADEEM_SHRAVAN_MOVIES,
   ...ANU_MALIK_MOVIES,
   ...RD_BURMAN_MOVIES,
@@ -41,7 +44,33 @@ const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = [
   ...KHAYYAM_MOVIES,
   ...DILIP_SEN_SAMEER_SEN_MOVIES,
   ...VIJU_SHAH_MOVIES,
+  ...HIMESH_RESHAMMIYA_MOVIES,
 ];
+
+const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = (() => {
+  const mergedBase = BASE_DIRECTOR_MOVIES.map((movie) => {
+    const patch = SUPPLEMENTAL_TRACK_ADDITIONS[movie.id];
+    if (!patch) return movie;
+    const keptSongs = patch.replacePlaceholderId
+      ? movie.songs.filter((s) => s.id !== patch.replacePlaceholderId)
+      : movie.songs;
+    return {
+      ...movie,
+      songs: [...keptSongs, ...patch.newSongs],
+    };
+  });
+
+  const combined = [...mergedBase, ...SUPPLEMENTAL_MOVIES];
+  const directorOrder = new Map(DIRECTORS.map((d, idx) => [d.id, idx]));
+
+  return combined.sort((a, b) => {
+    const da = directorOrder.get(a.directorId) ?? 999;
+    const db = directorOrder.get(b.directorId) ?? 999;
+    if (da !== db) return da - db;
+    if (a.year !== b.year) return a.year - b.year;
+    return a.title.localeCompare(b.title);
+  });
+})();
 
 export const ALL_DIRECTOR_MOVIES: MovieEntry[] = RAW_ALL_DIRECTOR_MOVIES.map(
   (movie) => ({

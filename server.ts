@@ -3,19 +3,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 import express, { type NextFunction, type Request, type Response } from 'express';
 import type { DiscoveryTargetDirector } from './src/types/archive.ts';
-import {
-  buildSsrRootHtml,
-  buildStructuredDataJsonLd,
-  DEFAULT_APP_ORIGIN,
-  getSeoMetaForPath,
-  getSitemapEntries,
-  OG_IMAGE_ALT,
-  OG_IMAGE_PATH,
-} from './src/seo/seoConfig.ts';
-
+type SeoConfigModule = typeof import('./src/seo/seoConfig.ts');
 type DiscoveryServiceModule = typeof import('./src/server/discoveryService.ts');
 
+let seoConfigPromise: Promise<SeoConfigModule> | null = null;
 let discoveryServicePromise: Promise<DiscoveryServiceModule> | null = null;
+
+function getSeoConfig(): Promise<SeoConfigModule> {
+  if (!seoConfigPromise) {
+    seoConfigPromise = import('./src/seo/seoConfig.ts');
+  }
+  return seoConfigPromise;
+}
 
 function getDiscoveryService(): Promise<DiscoveryServiceModule> {
   if (!discoveryServicePromise) {
@@ -152,10 +151,17 @@ function resolvePublicOrigin(req: Request): string {
     return envUrl.replace(/\/+$/, '');
   }
 
-  return DEFAULT_APP_ORIGIN;
+  return 'https://ais-pre-ctlhphzqer6embfkrimqiu-386234381851.asia-southeast1.run.app';
 }
 
-function injectSeoMeta(html: string, req: Request): string {
+async function injectSeoMeta(html: string, req: Request): Promise<string> {
+  const {
+    buildSsrRootHtml,
+    buildStructuredDataJsonLd,
+    getSeoMetaForPath,
+    OG_IMAGE_ALT,
+    OG_IMAGE_PATH,
+  } = await getSeoConfig();
   const origin = resolvePublicOrigin(req);
   const meta = getSeoMetaForPath(req.path);
   const canonicalUrl = `${origin}${meta.canonicalPath}`;
@@ -311,21 +317,26 @@ async function startServer(): Promise<void> {
       );
   });
 
-  app.get('/sitemap.xml', (req, res) => {
-    const origin = resolvePublicOrigin(req);
-    const today = new Date().toISOString().slice(0, 10);
-    const urls = getSitemapEntries().map((entry) => ({
-      loc: `${origin}${entry.path}`,
-      changefreq: entry.changefreq,
-      priority: entry.priority,
-    }));
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
-      .map(
-        (u) =>
-          `  <url>\n    <loc>${escapeHtmlAttr(u.loc)}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`
-      )
-      .join('\n')}\n</urlset>\n`;
-    res.type('application/xml').send(xml);
+  app.get('/sitemap.xml', async (req, res, next) => {
+    try {
+      const { getSitemapEntries } = await getSeoConfig();
+      const origin = resolvePublicOrigin(req);
+      const today = new Date().toISOString().slice(0, 10);
+      const urls = getSitemapEntries().map((entry) => ({
+        loc: `${origin}${entry.path}`,
+        changefreq: entry.changefreq,
+        priority: entry.priority,
+      }));
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
+        .map(
+          (u) =>
+            `  <url>\n    <loc>${escapeHtmlAttr(u.loc)}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`
+        )
+        .join('\n')}\n</urlset>\n`;
+      res.type('application/xml').send(xml);
+    } catch (err) {
+      next(err);
+    }
   });
 
   app.get('/api/discovery/status', async (_req, res, next) => {
@@ -486,7 +497,7 @@ async function startServer(): Promise<void> {
             req.originalUrl,
             rawTemplate
           );
-          const seoHtml = injectSeoMeta(transformed, req);
+          const seoHtml = await injectSeoMeta(transformed, req);
           res.status(200).set({ 'Content-Type': 'text/html' }).end(seoHtml);
           return;
         }
@@ -499,15 +510,19 @@ async function startServer(): Promise<void> {
   } else {
     const distDir = path.resolve(process.cwd(), 'dist');
     app.use(express.static(distDir, { index: false }));
-    app.get('*', (req, res, next) => {
+    app.get('*', async (req, res, next) => {
       if (req.path.startsWith('/api/')) {
         next();
         return;
       }
-      const indexPath = path.join(distDir, 'index.html');
-      const rawHtml = fs.readFileSync(indexPath, 'utf8');
-      const seoHtml = injectSeoMeta(rawHtml, req);
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(seoHtml);
+      try {
+        const indexPath = path.join(distDir, 'index.html');
+        const rawHtml = fs.readFileSync(indexPath, 'utf8');
+        const seoHtml = await injectSeoMeta(rawHtml, req);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(seoHtml);
+      } catch (err) {
+        next(err);
+      }
     });
   }
 

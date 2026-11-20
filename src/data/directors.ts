@@ -299,4 +299,19 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Complete 101-film Bollywood (Hindi) feature film songography (1998 Pyaar Kiya To Darna Kya – 2025 Badass Ravi Kumar); all private studio albums, Tamil Dasavathaaram, BGM-only titles, and unreleased films are excluded.',
   },
+  {
+    id: 'salil-chowdhury',
+    name: 'Salil Chowdhury',
+    fullName: 'Salil Chowdhury ("Salilda") · Hindi (Bollywood) Films Only',
+    era: '1953 – 1998',
+    status: 'active',
+    summary:
+      'Polyglot Filmfare-winning maestro and orchestral innovator who scored over 75 Hindi films alongside 41 Bengali and ~27 Malayalam classics—indexing his 67 verified Hindi feature song soundtracks (1953–1998) from Do Bigha Zamin, Madhumati, Parakh, Chhaya, Kabuliwala, Anand, Rajnigandha, and Chhoti Si Baat to Swami Vivekananda (excluding all Bengali, Malayalam, BGM-only, and non-film works).',
+    editorialEssay:
+      'Trained on Hindustani classical, Bengali IPTA folk choral traditions, and Western symphonic harmony—Mozart, Beethoven, Chopin, and Bach—Salil Chowdhury transformed Hindi film orchestration from Bimal Roy’s Do Bigha Zamin (1953), Biraj Bahu (1954), and Filmfare-winning Madhumati (1958) through Parakh (1960), Chhaya (1961), Kabuliwala (1961), Maya (1961), Half Ticket (1962), Hrishikesh Mukherjee’s Anand (1971), Basu Chatterjee’s Rajnigandha (1974) and Chhoti Si Baat (1975), and Swami Vivekananda (1998). Across his career spanning over 75 Hindi films, this dossier catalogs all 67 verified Hindi feature film song soundtracks (317 songs)—accounting separately for ~14 background-score-only Hindi features (Kanoon, Anokhi Raat, Ittefaq, Sara Aakash, Achanak, Mausam, Kaala Patthar, Kamla Ki Maut, and unreleased Mrigayaa) while strictly excluding his 41 Bengali films, ~27 Malayalam scores, other regional languages, TV serials, and IPTA non-film albums. Documented origins map his signature bilingual Bengali/Malayalam self-adaptations alongside celebrated world-folk and Western classical inspirations from Mozart’s Symphony No. 40, Charlie Chaplin’s Limelight, Chopin, Bach, Polish and Nepali folk tunes, and Red Army choral marches.',
+    signatureSound:
+      'Lata Mangeshkar, Manna Dey, Mukesh, Talat Mahmood, Kishore Kumar, Hemant Kumar, Asha Bhosle, Sabita Chowdhury, K.J. Yesudas · Polyphonic Strings, Solo Flute, Counterpoint Bass & Hindustani Folk Rhythms · Shailendra, Yogesh, Gulzar & Rajinder Krishan lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi song filmography (1953 Do Bigha Zamin – 1998 Swami Vivekananda, 67 verified Hindi song feature films & 317 songs; ~14 BGM-only Hindi titles, 41 Bengali films, ~27 Malayalam films, TV serials & non-film albums excluded), with musical origins and direct listening links.',
+  },
 ];

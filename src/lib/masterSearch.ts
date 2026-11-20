@@ -52,6 +52,7 @@ const DIRECTOR_ALIASES: Record<DirectorId, string[]> = {
   'dilip-sen-sameer-sen': ['Dilip Sen Sameer Sen', 'Dilip Sen-Sameer Sen', 'Dilip Sen', 'Sameer Sen', 'Sen Brothers'],
   'viju-shah': ['Viju Shah', 'Vijay Kalyanji Shah', 'King of Synth Sounds'],
   'himesh-reshammiya': ['Himesh Reshammiya', 'Himesh', 'HR', 'Lord Himesh'],
+  'salil-chowdhury': ['Salil Chowdhury', 'Salil Chaudhry', 'Salilda', 'Salil Da'],
 };
 
 /**
@@ -261,6 +262,34 @@ const SONG_LYRIC_CUES_BY_ID: Record<string, string[]> = {
   'hr-dangerous-ishhq-2012-2': ['Naina re naina tujhse bura na koi'],
   'hr-humshakals-2014-1': ['Caller tune baby caller tune'],
   'hr-humshakals-2014-2': ['Piya ke bazaar mein nachungi aaj saari raat'],
+
+  // Salil Chowdhury
+  'sc-do-bigha-zamin-1953-3': ['Dharti kahe pukar ke paas aa', 'Mausam beeta jaye'],
+  'sc-do-bigha-zamin-1953-4': ['Aaja ri aa nindiya tu aa', 'Ghoom aay re aay'],
+  'sc-madhumati-1958-1': ['Zulmi sang ankh ladi re', 'Kaisi yeh peer badi re'],
+  'sc-madhumati-1958-3': ['Aaja re pardesi main to kab se khadi is paar'],
+  'sc-madhumati-1958-4': ['Dil tadap tadap ke keh raha hai aa bhi jaa'],
+  'sc-madhumati-1958-5': ['Chadh gayo papi bichhua haye ram'],
+  'sc-madhumati-1958-11': ['Suhana safar aur yeh mausam haseen'],
+  'sc-parakh-1960-3': ['O sajna barkha bahar aayi ras ki phuhar layi'],
+  'sc-chhaya-1961-1': ['Itna na mujhse tu pyar badha ke main ek badal awara', 'Mozart Symphony 40'],
+  'sc-kabuliwala-1961-1': ['Ae mere pyare watan ae mere bichhde chaman'],
+  'sc-kabuliwala-1961-2': ['Ganga aaye kahan se ganga jaye kahan re'],
+  'sc-maya-1961-3': ['Tasveer teri dil mein jis din se utari hai'],
+  'sc-maya-1961-4': ['Ja re ja re ud ja re panchhi baharon ke des ja re'],
+  'sc-maya-1961-8': ['Zindagi hai kya sun meri jaan', 'Limelight Terry theme Chaplin'],
+  'sc-half-ticket-1962-4': ['Aake seedhi lagi dil pe jaise katariya'],
+  'sc-half-ticket-1962-6': ['Chil chil chilla ke kajri sunaye'],
+  'sc-anand-1971-1': ['Kahin door jab din dhal jaye saanjh ki dulhan badan churaaye'],
+  'sc-anand-1971-2': ['Zindagi kaisi hai paheli haye kabhi to hasaye kabhi ye rulaye'],
+  'sc-anand-1971-4': ['Maine tere liye hi saat rang ke sapne chune'],
+  'sc-annadata-1972-2': ['Raaton ke saaye ghane jab bojh dil par bane', 'Chopin Nocturne'],
+  'sc-annadata-1972-3': ['Guzar jaye din din din ke har pal'],
+  'sc-rajnigandha-1974-1': ['Kai baar yunhi dekha hai yeh jo man ki seema rekha hai'],
+  'sc-rajnigandha-1974-2': ['Rajnigandha phool tumhare mahke yun hi jeevan mein'],
+  'sc-chhoti-si-baat-1975-1': ['Jaaneman jaaneman tere do nayan chori chori leke gaye dekho mera man'],
+  'sc-chhoti-si-baat-1975-2': ['Yeh din kya aaye lage phool hasne'],
+  'sc-chhoti-si-baat-1975-3': ['Na jaane kyon hota hai yeh zindagi ke saath'],
 };
 
 /**
@@ -299,6 +328,14 @@ const TITLE_PHRASE_ALIASES: Record<string, string[]> = {
   'roshni se': ['asoka roshni se bhare bhare'],
   'san sanana': ['ja ja re ja pawan asoka'],
   'chori chori sapno mein': ['chori chori sapnon mein aata hai koi'],
+  'kahin door jab din dhal jaye': ['saanjh ki dulhan badan churaye chupke se aaye'],
+  'zindagi kaisi hai paheli': ['kabhi to hasaye kabhi yeh rulaye'],
+  'itna na mujhse tu pyar badha': ['ke main ek badal awara kaise kisi ka sahara banoo'],
+  'o sajna barkha bahar aayi': ['ras ki phuhar layi ankhiyon mein pyar layi'],
+  'suhana safar aur yeh mausam': ['hamein dar hai hum kho na jayein kahin'],
+  'aaja re pardesi': ['main to kab se khadi is paar yeh ankhiyan thak gayi panth nihaar'],
+  'na jane kyon hota hai': ['yeh zindagi ke saath achanak yeh man kisi ke jaane ke baad'],
+  'jaaneman jaaneman tere do nayan': ['chori chori leke gaye dekho mera man'],
 };
 
 const HINDI_STOP_WORDS = new Set([

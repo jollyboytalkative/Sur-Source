@@ -86,7 +86,11 @@ type DecadeFilter =
   | 'hr-1998-2004'
   | 'hr-2005-2007'
   | 'hr-2008-2014'
-  | 'hr-2015-2025';
+  | 'hr-2015-2025'
+  | 'sc-1953-1959'
+  | 'sc-1960-1969'
+  | 'sc-1970-1979'
+  | 'sc-1980-1998';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -304,6 +308,18 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'hr-prem-ratan-dhan-payo-2015',
         'hr-sanam-teri-kasam-2016',
         'hr-badass-ravi-kumar-2025',
+        'sc-do-bigha-zamin-1953',
+        'sc-madhumati-1958',
+        'sc-parakh-1960',
+        'sc-chhaya-1961',
+        'sc-kabuliwala-1961',
+        'sc-maya-1961',
+        'sc-half-ticket-1962',
+        'sc-anand-1971',
+        'sc-annadata-1972',
+        'sc-rajnigandha-1974',
+        'sc-chhoti-si-baat-1975',
+        'sc-swami-vivekananda-1998',
       ])
   );
 
@@ -378,6 +394,10 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === 'hr-2005-2007' && (m.year < 2005 || m.year > 2007)) return false;
         if (decade === 'hr-2008-2014' && (m.year < 2008 || m.year > 2014)) return false;
         if (decade === 'hr-2015-2025' && m.year < 2015) return false;
+        if (decade === 'sc-1953-1959' && (m.year < 1953 || m.year > 1959)) return false;
+        if (decade === 'sc-1960-1969' && (m.year < 1960 || m.year > 1969)) return false;
+        if (decade === 'sc-1970-1979' && (m.year < 1970 || m.year > 1979)) return false;
+        if (decade === 'sc-1980-1998' && m.year < 1980) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -571,7 +591,15 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                       { id: 'hr-2008-2014', label: '2008–2014' },
                                                       { id: 'hr-2015-2025', label: '2015–2025' },
                                                     ] as const)
-                                                  : ([
+                                                  : directorId === 'salil-chowdhury'
+                                                    ? ([
+                                                        { id: 'all', label: 'All Eras (1953–1998)' },
+                                                        { id: 'sc-1953-1959', label: '1953–1959' },
+                                                        { id: 'sc-1960-1969', label: '1960–1969' },
+                                                        { id: 'sc-1970-1979', label: '1970–1979' },
+                                                        { id: 'sc-1980-1998', label: '1980–1998' },
+                                                      ] as const)
+                                                    : ([
                             {
                               id: 'all',
                               label:

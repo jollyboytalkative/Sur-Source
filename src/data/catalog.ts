@@ -20,6 +20,7 @@ import { SD_BURMAN_MOVIES } from './sdBurmanData.ts';
 import { SHANKAR_JAIKISHAN_MOVIES } from './shankarJaikishanData.ts';
 import { VIJU_SHAH_MOVIES } from './vijuShahData.ts';
 import { HIMESH_RESHAMMIYA_MOVIES } from './himeshReshammiyaData.ts';
+import { SALIL_CHOWDHURY_MOVIES } from './salilChowdhuryData.ts';
 import { SUPPLEMENTAL_MOVIES } from './supplementalMovies.ts';
 import { SUPPLEMENTAL_TRACK_ADDITIONS } from './supplementalTracks.ts';
 import { DIRECT_VIDEO_LINKS } from './directVideoLinks.ts';
@@ -45,6 +46,7 @@ const BASE_DIRECTOR_MOVIES: MovieEntry[] = [
   ...DILIP_SEN_SAMEER_SEN_MOVIES,
   ...VIJU_SHAH_MOVIES,
   ...HIMESH_RESHAMMIYA_MOVIES,
+  ...SALIL_CHOWDHURY_MOVIES,
 ];
 
 const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = (() => {

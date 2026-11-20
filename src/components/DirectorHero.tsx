@@ -342,7 +342,9 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                                   ? '29 verified Hindi (Bollywood) song films (165 songs · 1990–2025; excluding Gujarati scores, TV, non-film & BGM-only credits)'
                                                   : activeDirectorId === 'himesh-reshammiya'
                                                     ? '101 released Hindi (Bollywood) films (468 songs · 1998–2025; excluding private albums, Tamil Dasavathaaram & upcoming titles)'
-                                                    : 'Verified chronological filmography'}
+                                                    : activeDirectorId === 'salil-chowdhury'
+                                                      ? '67 verified Hindi song feature films (317 songs · 1953–1998; +14 BGM-only Hindi titles in 75+ Hindi credits; Bengali & Malayalam excluded)'
+                                                      : 'Verified chronological filmography'}
             </div>
           </div>
 

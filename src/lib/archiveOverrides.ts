@@ -52,6 +52,7 @@ const VALID_DIRECTORS: DirectorId[] = [
   'dilip-sen-sameer-sen',
   'viju-shah',
   'himesh-reshammiya',
+  'salil-chowdhury',
 ];
 const VALID_TARGET_DIRECTORS: DiscoveryTargetDirector[] = [
   'all',

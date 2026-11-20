@@ -55,7 +55,7 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
                 Jatin–Lalit, Kalyanji–Anandji, Khayyam, R.D. Burman,
                 Shankar–Jaikishan, A. R. Rahman, Naushad, O.P. Nayyar,
                 Anand–Milind, Laxmikant–Pyarelal, Madan Mohan, Ravi, Roshan, S.
-                D. Burman, and Viju Shah
+                D. Burman, Salil Chowdhury, and Viju Shah
               </strong>
               , among other composers. Across every composer profile, this
               archive maintains strictly Hindi (Bollywood) filmography records

@@ -18,7 +18,8 @@ export type DirectorId =
   | 'khayyam'
   | 'dilip-sen-sameer-sen'
   | 'viju-shah'
-  | 'himesh-reshammiya';
+  | 'himesh-reshammiya'
+  | 'salil-chowdhury';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

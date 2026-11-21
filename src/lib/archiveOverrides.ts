@@ -53,6 +53,7 @@ const VALID_DIRECTORS: DirectorId[] = [
   'viju-shah',
   'himesh-reshammiya',
   'salil-chowdhury',
+  'ismail-darbar',
 ];
 const VALID_TARGET_DIRECTORS: DiscoveryTargetDirector[] = [
   'all',
@@ -65,7 +66,8 @@ function sanitizeId(raw: string, fallback = 'item'): string {
 }
 
 function clampString(value: unknown, maxLen: number, fallback = ''): string {
-  const str = typeof value === 'string' ? value.trim() : fallback;
+  const trimmed = typeof value === 'string' ? value.trim() : '';
+  const str = trimmed.length > 0 ? trimmed : fallback;
   return str.slice(0, maxLen);
 }
 

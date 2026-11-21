@@ -19,7 +19,8 @@ export type DirectorId =
   | 'dilip-sen-sameer-sen'
   | 'viju-shah'
   | 'himesh-reshammiya'
-  | 'salil-chowdhury';
+  | 'salil-chowdhury'
+  | 'ismail-darbar';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

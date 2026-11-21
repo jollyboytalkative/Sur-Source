@@ -119,6 +119,112 @@ function createGeminiClient(): GoogleGenAI {
   });
 }
 
+export function formatGeminiApiError(err: unknown): {
+  status: number;
+  message: string;
+} {
+  const fallbackMsg =
+    err instanceof Error ? err.message : 'Discovery scan failed unexpectedly.';
+
+  let status =
+    typeof err === 'object' &&
+    err !== null &&
+    'status' in err &&
+    typeof (err as { status?: unknown }).status === 'number'
+      ? ((err as { status: number }).status)
+      : 500;
+
+  let apiStatusLabel = '';
+  let apiReason = fallbackMsg;
+
+  try {
+    const jsonStart = fallbackMsg.indexOf('{');
+    if (jsonStart !== -1) {
+      const parsed = JSON.parse(fallbackMsg.slice(jsonStart)) as {
+        error?: { code?: number; message?: string; status?: string };
+      };
+      if (parsed?.error) {
+        if (typeof parsed.error.code === 'number') {
+          status = parsed.error.code;
+        }
+        if (typeof parsed.error.status === 'string') {
+          apiStatusLabel = parsed.error.status;
+        }
+        if (typeof parsed.error.message === 'string' && parsed.error.message.trim()) {
+          apiReason = parsed.error.message.trim();
+        }
+      }
+    }
+  } catch {
+    // Keep fallbackMsg if error message is not JSON
+  }
+
+  if (apiReason.includes('already in progress')) {
+    return { status: 409, message: apiReason };
+  }
+
+  if (apiReason.includes('GEMINI_API_KEY is not configured')) {
+    return { status: 500, message: apiReason };
+  }
+
+  if (status === 429 || apiStatusLabel === 'RESOURCE_EXHAUSTED') {
+    return {
+      status: 429,
+      message:
+        'Gemini API quota exhausted (429 RESOURCE_EXHAUSTED). Please wait a moment and retry, or check/attach a billing-enabled API key in Settings > Secrets.',
+    };
+  }
+
+  if (
+    status === 400 ||
+    status === 403 ||
+    apiStatusLabel === 'PERMISSION_DENIED' ||
+    apiReason.includes('API_KEY_INVALID')
+  ) {
+    return {
+      status,
+      message: `Gemini API key rejected (${status}). Please verify your API key in Settings > Secrets. (${apiReason})`,
+    };
+  }
+
+  if (status === 404 || apiStatusLabel === 'NOT_FOUND') {
+    return {
+      status: 404,
+      message: `Gemini model endpoint unavailable (404): ${apiReason}`,
+    };
+  }
+
+  return { status, message: apiReason };
+}
+
+async function generateGroundedContentWithRetry(
+  ai: GoogleGenAI,
+  prompt: string
+) {
+  const maxAttempts = 2;
+  let lastError: unknown;
+  for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+    try {
+      return await ai.models.generateContent({
+        model: 'gemini-4-hydrogen',
+        contents: prompt,
+        config: {
+          tools: [{ googleSearch: {} }],
+        },
+      });
+    } catch (err) {
+      lastError = err;
+      const { status } = formatGeminiApiError(err);
+      const isTransient = status === 500 || status === 502 || status === 503 || status === 504;
+      if (!isTransient || attempt === maxAttempts - 1) {
+        throw err;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 1200 * (attempt + 1)));
+    }
+  }
+  throw lastError;
+}
+
 function collectOriginalTracks(
   targetDirector: DiscoveryTargetDirector,
   excludeSongIds: Set<string>,
@@ -467,13 +573,7 @@ Respond ONLY with a valid JSON array (no markdown commentary outside JSON) of ob
   }
 ]`;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-4-hydrogen',
-      contents: prompt,
-      config: {
-        tools: [{ googleSearch: {} }],
-      },
-    });
+    const response = await generateGroundedContentWithRetry(ai, prompt);
 
     const rawFindings = extractJsonArray<RawGeminiFinding>(response.text ?? '[]');
 
@@ -627,7 +727,14 @@ export async function runNewReleaseDiscoveryScan(
     const targetDirector = options.targetDirector ?? state.targetDirector;
     const directorsToCheck: DirectorId[] =
       targetDirector === 'all'
-        ? ['ar-rahman', 'anu-malik', 'nadeem-shravan', 'anand-milind']
+        ? [
+            'ar-rahman',
+            'anu-malik',
+            'nadeem-shravan',
+            'anand-milind',
+            'viju-shah',
+            'himesh-reshammiya',
+          ]
         : [targetDirector];
 
     const existingKeys = new Set<string>();
@@ -687,13 +794,7 @@ Respond ONLY with a valid JSON array matching:
   }
 ]`;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-4-hydrogen',
-      contents: prompt,
-      config: {
-        tools: [{ googleSearch: {} }],
-      },
-    });
+    const response = await generateGroundedContentWithRetry(ai, prompt);
 
     const rawReleases = extractJsonArray<RawGeminiReleaseFinding>(
       response.text ?? '[]'

@@ -312,6 +312,21 @@ export const DIRECTORS: DirectorProfile[] = [
     signatureSound:
       'Lata Mangeshkar, Manna Dey, Mukesh, Talat Mahmood, Kishore Kumar, Hemant Kumar, Asha Bhosle, Sabita Chowdhury, K.J. Yesudas · Polyphonic Strings, Solo Flute, Counterpoint Bass & Hindustani Folk Rhythms · Shailendra, Yogesh, Gulzar & Rajinder Krishan lyrics',
     archiveNote:
-      'Bollywood-only chronological Hindi song filmography (1953 Do Bigha Zamin – 1998 Swami Vivekananda, 67 verified Hindi song feature films & 317 songs; ~14 BGM-only Hindi titles, 41 Bengali films, ~27 Malayalam films, TV serials & non-film albums excluded), with musical origins and direct listening links.',
+      'Bollywood-only chronological Hindi song filmography (1953 Do Bigha Zamin – 1998 Swami Vivekananda, 67 verified Hindi song feature films & 317 songs; +14 BGM-only Hindi titles, 41 Bengali films, ~27 Malayalam films, TV serials & non-film albums excluded), with musical origins and direct listening links.',
+  },
+  {
+    id: 'ismail-darbar',
+    name: 'Ismail Darbar',
+    fullName: 'Ismail Darbar · Hindi (Bollywood) Films Only',
+    era: '1999 – 2018',
+    status: 'active',
+    summary:
+      'National Award and Filmfare-winning composer–violinist of Hum Dil De Chuke Sanam (1999), Devdas (2002), Deewangee, Shakti, Baaz, Kisna, Mehbooba, Kaanchi, and Yeh Kaisa Tigdam—indexing all 13 released Hindi feature soundtracks (90 vocal/theme songs; excluding Telugu Vishnu, Kannada Santheyalli Nintha Kabira, Star Plus Mahabharat, Bhoomi BGM, private albums, and unreleased projects).',
+    editorialEssay:
+      'Trained as a session violinist and classical harmonium/instrumental arranger before making an epochal debut with Sanjay Leela Bhansali’s Hum Dil De Chuke Sanam (1999)—winning the National Film Award for Best Music Direction and the Filmfare R. D. Burman Award—Ismail Darbar restored grand Hindustani acoustic orchestration, shehnai, sarangi, and sweeping folk choruses to turn-of-the-millennium Bollywood. Across 13 released Hindi feature films (90 songs) spanning Tera Jadoo Chal Gayaa (2000), Devdas (2002, launching Shreya Ghoshal), Shakti: The Power (2002), Deewangee (2002), Desh Devi (2002), Baaz: A Bird in Danger (2003), Kisna: The Warrior Poet (2005, co-credited alongside A. R. Rahman), Mehbooba (2008), 8 x 10 Tasveer (2009 guest track), Kaanchi: The Unbreakable (2014), Ek Adbhut Dakshina Guru Dakshina (2015), and Yeh Kaisa Tigdam (2018)—strictly excluding regional scores (Telugu Vishnu, Kannada Santheyalli Nintha Kabira), television (Mahabharat 2013), Bhoomi background score, private devotional albums, and co-composers’ tracks on shared OSTs—his dossier preserves celebrated originals ("Tadap Tadap", "Bairi Piya", "Dola Re Dola", "Woh Kisna Hai") alongside documented inspirations from Francis Lai, Rajasthani Manganiyar & Gujarati garba folk, Ustad Sultan Khan’s Raag Ahir Bhairav bandish, and Dulce Pontes’ "Cancao do Mar".',
+    signatureSound:
+      'Shreya Ghoshal, Kavita Krishnamurthy, Udit Narayan, KK, Sukhwinder Singh, Sunidhi Chauhan, Alka Yagnik, Ustad Sultan Khan · Orchestral Violins, Sarangi, Shehnai, Garba Dhol & Raag-Based Classical Counterpoint · Mehboob, Nusrat Badr, Sameer, Javed Akhtar, Anand Bakshi & Irshad Kamil lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi song filmography (1999 Hum Dil De Chuke Sanam – 2018 Yeh Kaisa Tigdam, 13 verified Hindi films & 90 songs; Telugu Vishnu, Kannada Kabira, TV Mahabharat, Bhoomi BGM-only, private albums, unreleased films & co-composers’ tracks excluded), with origins and direct listening links.',
   },
 ];

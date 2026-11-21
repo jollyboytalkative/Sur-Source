@@ -29,7 +29,7 @@ export const DEFAULT_APP_ORIGIN =
   'https://ais-pre-ctlhphzqer6embfkrimqiu-386234381851.asia-southeast1.run.app';
 
 export const SEO_KEYWORDS =
-  'Indian music directors, Bollywood music directors, Hindi cinema composers, Bollywood music origins, Bollywood filmography archive, Indian film music history, Hindi film songs adapted, Bollywood song inspirations, Nadeem-Shravan, Anu Malik, Bappi Lahiri, Dilip Sen-Sameer Sen, Himesh Reshammiya, Jatin-Lalit, Kalyanji-Anandji, Khayyam, R.D. Burman, Shankar-Jaikishan, A. R. Rahman, Naushad, O.P. Nayyar, Anand-Milind, Laxmikant-Pyarelal, S. D. Burman, Salil Chowdhury, Ravi, Roshan, Madan Mohan, Viju Shah, Sur & Source';
+  'Indian music directors, Bollywood music directors, Hindi cinema composers, Bollywood music origins, Bollywood filmography archive, Indian film music history, Hindi film songs adapted, Bollywood song inspirations, Nadeem-Shravan, Anu Malik, Bappi Lahiri, Dilip Sen-Sameer Sen, Himesh Reshammiya, Ismail Darbar, Jatin-Lalit, Kalyanji-Anandji, Khayyam, R.D. Burman, Shankar-Jaikishan, A. R. Rahman, Naushad, O.P. Nayyar, Anand-Milind, Laxmikant-Pyarelal, S. D. Burman, Salil Chowdhury, Ravi, Roshan, Madan Mohan, Viju Shah, Sur & Source';
 
 export const OG_IMAGE_PATH = '/og-image.jpg';
 export const OG_IMAGE_ALT =
@@ -49,7 +49,7 @@ export const ARCHIVE_FAQS = [
   {
     question:
       'Which Indian and Bollywood music directors are indexed in Sur & Source?',
-    answer: `Sur & Source indexes ${DIRECTORS.length} iconic Indian & Bollywood music directors across ${TOTAL_CATALOG_STATS.totalMovies.toLocaleString('en-US')} Hindi films and ${TOTAL_CATALOG_STATS.totalSongs.toLocaleString('en-US')} songs (maintaining strictly Bollywood/Hindi filmography records only, excluding regional Tamil, Telugu, Malayalam, and Bengali scores): A. R. Rahman, Anand–Milind, Anu Malik, Bappi Lahiri, Dilip Sen–Sameer Sen, Himesh Reshammiya, Jatin–Lalit, Kalyanji–Anandji, Khayyam, Laxmikant–Pyarelal, Madan Mohan, Nadeem–Shravan, Naushad, O.P. Nayyar, R.D. Burman, Ravi, Roshan, S. D. Burman, Salil Chowdhury, Shankar–Jaikishan, and Viju Shah.`,
+    answer: `Sur & Source indexes ${DIRECTORS.length} iconic Indian & Bollywood music directors across ${TOTAL_CATALOG_STATS.totalMovies.toLocaleString('en-US')} Hindi films and ${TOTAL_CATALOG_STATS.totalSongs.toLocaleString('en-US')} songs (maintaining strictly Bollywood/Hindi filmography records only, excluding regional Tamil, Telugu, Malayalam, and Bengali scores): A. R. Rahman, Anand–Milind, Anu Malik, Bappi Lahiri, Dilip Sen–Sameer Sen, Himesh Reshammiya, Ismail Darbar, Jatin–Lalit, Kalyanji–Anandji, Khayyam, Laxmikant–Pyarelal, Madan Mohan, Nadeem–Shravan, Naushad, O.P. Nayyar, R.D. Burman, Ravi, Roshan, S. D. Burman, Salil Chowdhury, Shankar–Jaikishan, and Viju Shah.`,
   },
   {
     question:

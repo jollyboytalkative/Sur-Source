@@ -344,7 +344,9 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                                     ? '101 released Hindi (Bollywood) films (468 songs · 1998–2025; excluding private albums, Tamil Dasavathaaram & upcoming titles)'
                                                     : activeDirectorId === 'salil-chowdhury'
                                                       ? '67 verified Hindi song feature films (317 songs · 1953–1998; +14 BGM-only Hindi titles in 75+ Hindi credits; Bengali & Malayalam excluded)'
-                                                      : 'Verified chronological filmography'}
+                                                      : activeDirectorId === 'ismail-darbar'
+                                                        ? '13 verified Hindi (Bollywood) films (90 songs · 1999–2018; excluding Telugu Vishnu, Kannada Kabira, TV Mahabharat, Bhoomi BGM & private albums)'
+                                                        : 'Verified chronological filmography'}
             </div>
           </div>
 

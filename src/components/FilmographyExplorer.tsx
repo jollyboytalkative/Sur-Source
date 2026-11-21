@@ -90,7 +90,10 @@ type DecadeFilter =
   | 'sc-1953-1959'
   | 'sc-1960-1969'
   | 'sc-1970-1979'
-  | 'sc-1980-1998';
+  | 'sc-1980-1998'
+  | 'id-1999-2002'
+  | 'id-2003-2009'
+  | 'id-2010-2018';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -320,6 +323,13 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'sc-rajnigandha-1974',
         'sc-chhoti-si-baat-1975',
         'sc-swami-vivekananda-1998',
+        'id-hum-dil-de-chuke-sanam-1999',
+        'id-tera-jadoo-chal-gayaa-2000',
+        'id-devdas-2002',
+        'id-deewangee-2002',
+        'id-kisna-the-warrior-poet-2005',
+        'id-mehbooba-2008',
+        'id-kaanchi-2014',
       ])
   );
 
@@ -398,6 +408,9 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === 'sc-1960-1969' && (m.year < 1960 || m.year > 1969)) return false;
         if (decade === 'sc-1970-1979' && (m.year < 1970 || m.year > 1979)) return false;
         if (decade === 'sc-1980-1998' && m.year < 1980) return false;
+        if (decade === 'id-1999-2002' && (m.year < 1999 || m.year > 2002)) return false;
+        if (decade === 'id-2003-2009' && (m.year < 2003 || m.year > 2009)) return false;
+        if (decade === 'id-2010-2018' && m.year < 2010) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -599,7 +612,14 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                         { id: 'sc-1970-1979', label: '1970–1979' },
                                                         { id: 'sc-1980-1998', label: '1980–1998' },
                                                       ] as const)
-                                                    : ([
+                                                    : directorId === 'ismail-darbar'
+                                                      ? ([
+                                                          { id: 'all', label: 'All Eras (1999–2018)' },
+                                                          { id: 'id-1999-2002', label: '1999–2002' },
+                                                          { id: 'id-2003-2009', label: '2003–2009' },
+                                                          { id: 'id-2010-2018', label: '2010–2018' },
+                                                        ] as const)
+                                                      : ([
                             {
                               id: 'all',
                               label:

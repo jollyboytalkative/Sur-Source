@@ -53,6 +53,7 @@ const DIRECTOR_ALIASES: Record<DirectorId, string[]> = {
   'viju-shah': ['Viju Shah', 'Vijay Kalyanji Shah', 'King of Synth Sounds'],
   'himesh-reshammiya': ['Himesh Reshammiya', 'Himesh', 'HR', 'Lord Himesh'],
   'salil-chowdhury': ['Salil Chowdhury', 'Salil Chaudhry', 'Salilda', 'Salil Da'],
+  'ismail-darbar': ['Ismail Darbar', 'Ismail Durbar'],
 };
 
 /**
@@ -290,6 +291,27 @@ const SONG_LYRIC_CUES_BY_ID: Record<string, string[]> = {
   'sc-chhoti-si-baat-1975-1': ['Jaaneman jaaneman tere do nayan chori chori leke gaye dekho mera man'],
   'sc-chhoti-si-baat-1975-2': ['Yeh din kya aaye lage phool hasne'],
   'sc-chhoti-si-baat-1975-3': ['Na jaane kyon hota hai yeh zindagi ke saath'],
+
+  // Ismail Darbar
+  'id-hum-dil-de-chuke-sanam-1999-1': ['Chand chhupa badal mein sharma ke meri jaana'],
+  'id-hum-dil-de-chuke-sanam-1999-2': ['Nimbooda nimbooda nimbooda are kacha kacha chhota chhota'],
+  'id-hum-dil-de-chuke-sanam-1999-3': ['Aankhon ki gustakhiyan maaf ho ek tuk tumhe dekhti hain'],
+  'id-hum-dil-de-chuke-sanam-1999-6': ['Dholi taro dhol baje ke dham dham baje dhol'],
+  'id-hum-dil-de-chuke-sanam-1999-9': ['Jhonka hawa ka aaj bhi zulfein udata hoga na'],
+  'id-hum-dil-de-chuke-sanam-1999-10': ['Albela sajan aayo ri mora ati mann sukh payo ri'],
+  'id-hum-dil-de-chuke-sanam-1999-11': ['Tadap tadap ke is dil se aah nikalti rahi'],
+  'id-tera-jadoo-chal-gayaa-2000-1': ['Seene se yeh dil gaya tera jadoo chal gaya'],
+  'id-devdas-2002-1': ['Silsila ye chahat ka maine bujhne na diya'],
+  'id-devdas-2002-2': ['Maar daala maar daala hum pe yeh kisne hara rang daala'],
+  'id-devdas-2002-3': ['Bairi piya bada bedardi ishq karake sataye'],
+  'id-devdas-2002-5': ['Hamesha tumko chaha aur chaha kuch bhi nahi'],
+  'id-devdas-2002-6': ['Woh chand jaisi ladki is dil pe chhaa rahi hai'],
+  'id-devdas-2002-8': ['Dola re dola re dola re dola man dola tan dola'],
+  'id-deewangee-2002-5': ['Ai ajnabi yeh kya hua kyun dil dhadakne laga', 'Cancao do Mar Dulce Pontes'],
+  'id-baaz-a-bird-in-danger-2003-4': ['Sannate mein ek shor sunai deta hai yeh jo ajab si duniya hai'],
+  'id-baaz-a-bird-in-danger-2003-6': ['Are are jala koi mita koi'],
+  'id-kisna-the-warrior-poet-2005-1': ['Woh kisna hai woh kisna hai kisna kisna'],
+  'id-kaanchi-2014-1': ['Kaanchi re kaanchi teri akhiyon mein hai jaadoo'],
 };
 
 /**
@@ -336,6 +358,13 @@ const TITLE_PHRASE_ALIASES: Record<string, string[]> = {
   'aaja re pardesi': ['main to kab se khadi is paar yeh ankhiyan thak gayi panth nihaar'],
   'na jane kyon hota hai': ['yeh zindagi ke saath achanak yeh man kisi ke jaane ke baad'],
   'jaaneman jaaneman tere do nayan': ['chori chori leke gaye dekho mera man'],
+  'tadap tadap': ['tadap tadap ke is dil se aah nikalti rahi'],
+  'dholi taro dhol baaje': ['dholi taro dhol baje ke dham dham baje dhol'],
+  'chand chhupa badal mein': ['sharma ke meri jaana chand chhupa badal mein'],
+  'bairi piya': ['bairi piya bada bedardi ishq karake sataye'],
+  'dola re dola': ['dola re dola re dola man dola tan dola'],
+  'maar daala': ['hum pe yeh kisne hara rang daala'],
+  'woh kisna hai': ['hai krishna hai woh kisna hai'],
 };
 
 const HINDI_STOP_WORDS = new Set([

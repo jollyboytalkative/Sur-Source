@@ -431,6 +431,12 @@ async function startServer(): Promise<void> {
           status: ds.getDiscoveryStatus(),
         });
       } catch (err) {
+        const ds = await getDiscoveryService().catch(() => null);
+        if (ds) {
+          const parsed = ds.formatGeminiApiError(err);
+          res.status(parsed.status).json({ error: parsed.message });
+          return;
+        }
         const message =
           err instanceof Error
             ? err.message
@@ -460,6 +466,12 @@ async function startServer(): Promise<void> {
           status: ds.getDiscoveryStatus(),
         });
       } catch (err) {
+        const ds = await getDiscoveryService().catch(() => null);
+        if (ds) {
+          const parsed = ds.formatGeminiApiError(err);
+          res.status(parsed.status).json({ error: parsed.message });
+          return;
+        }
         const message =
           err instanceof Error
             ? err.message

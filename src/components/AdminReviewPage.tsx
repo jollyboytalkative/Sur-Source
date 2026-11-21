@@ -74,6 +74,43 @@ type QueueTab =
   | 'approved'
   | 'rejected';
 
+async function parseJsonResponseSafe<T>(response: Response): Promise<T> {
+  const raw = await response.text();
+  if (!raw.trim()) {
+    return {} as T;
+  }
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    throw new Error(
+      `Server returned an unexpected response (HTTP ${response.status}). Please retry in a moment.`
+    );
+  }
+}
+
+function formatUiError(err: unknown, fallback: string): string {
+  const raw = err instanceof Error ? err.message : fallback;
+  const trimmed = raw.trim();
+  if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+    try {
+      const parsed = JSON.parse(trimmed) as {
+        error?: string | { message?: string };
+        path?: string | null;
+      };
+      if (typeof parsed.error === 'string') {
+        const pathLabel = parsed.path ? ` (${parsed.path})` : '';
+        return `Database error${pathLabel}: ${parsed.error}`;
+      }
+      if (parsed.error && typeof parsed.error.message === 'string') {
+        return parsed.error.message;
+      }
+    } catch {
+      // Fall through to raw string
+    }
+  }
+  return raw || fallback;
+}
+
 export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
   user,
   authReady,
@@ -159,7 +196,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
         setQueueItems(items);
       },
       (err) => {
-        setActionError(err.message);
+        setActionError(formatUiError(err, 'Failed to load discovery queue.'));
       }
     );
 
@@ -169,7 +206,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
         setReleaseQueue(items);
       },
       (err) => {
-        setActionError(err.message);
+        setActionError(formatUiError(err, 'Failed to load release queue.'));
       }
     );
 
@@ -438,11 +475,11 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
       ]);
 
       if (!serverRes.ok) {
-        const body = (await serverRes.json()) as { error?: string };
+        const body = await parseJsonResponseSafe<{ error?: string }>(serverRes);
         throw new Error(body.error || 'Failed to update server scheduler.');
       }
 
-      const nextStatus = (await serverRes.json()) as DiscoveryStatusInfo;
+      const nextStatus = await parseJsonResponseSafe<DiscoveryStatusInfo>(serverRes);
       setServerStatus(nextStatus);
       setStatusNotice(
         scheduleEnabled
@@ -450,9 +487,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
           : 'Background scheduled checks paused (manual scans still available).'
       );
     } catch (err) {
-      setActionError(
-        err instanceof Error ? err.message : 'Could not save schedule.'
-      );
+      setActionError(formatUiError(err, 'Could not save schedule.'));
     } finally {
       setIsSavingSchedule(false);
     }
@@ -487,14 +522,14 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
         }),
       });
 
-      const payload = (await response.json()) as {
+      const payload = await parseJsonResponseSafe<{
         error?: string;
         scannedCount?: number;
         candidates?: StagedServerCandidate[];
         scanSummary?: string;
         scannedAtIso?: string;
         status?: DiscoveryStatusInfo;
-      };
+      }>(response);
 
       if (!response.ok) {
         throw new Error(payload.error || 'Search-grounded scan failed.');
@@ -533,9 +568,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
         setActiveTab('pending');
       }
     } catch (err) {
-      setActionError(
-        err instanceof Error ? err.message : 'Discovery scan failed.'
-      );
+      setActionError(formatUiError(err, 'Discovery scan failed.'));
     } finally {
       setIsScanning(false);
     }
@@ -551,7 +584,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
       const idToken = await user.getIdToken();
       const excludeMovieTitles = Array.from(
         new Set([
-          ...allMovies.map((m) => m.title),
+          ...liveMovies.map((m) => m.title),
           ...releaseQueue.map((r) => r.title),
         ])
       );
@@ -568,13 +601,13 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
         }),
       });
 
-      const payload = (await response.json()) as {
+      const payload = await parseJsonResponseSafe<{
         error?: string;
         releases?: StagedReleaseCandidate[];
         scanSummary?: string;
         scannedAtIso?: string;
         status?: DiscoveryStatusInfo;
-      };
+      }>(response);
 
       if (!response.ok) {
         throw new Error(payload.error || 'New release scan failed.');
@@ -618,7 +651,7 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
       }
     } catch (err) {
       setActionError(
-        err instanceof Error ? err.message : 'New release discovery scan failed.'
+        formatUiError(err, 'New release discovery scan failed.')
       );
     } finally {
       setIsScanningReleases(false);

@@ -22,6 +22,8 @@ import { VIJU_SHAH_MOVIES } from './vijuShahData.ts';
 import { HIMESH_RESHAMMIYA_MOVIES } from './himeshReshammiyaData.ts';
 import { SALIL_CHOWDHURY_MOVIES } from './salilChowdhuryData.ts';
 import { ISMAIL_DARBAR_MOVIES } from './ismailDarbarData.ts';
+import { NIKHIL_VINAY_MOVIES } from './nikhilVinayData.ts';
+import { SHIV_HARI_MOVIES } from './shivHariData.ts';
 import { SUPPLEMENTAL_MOVIES } from './supplementalMovies.ts';
 import { SUPPLEMENTAL_TRACK_ADDITIONS } from './supplementalTracks.ts';
 import { DIRECT_VIDEO_LINKS } from './directVideoLinks.ts';
@@ -49,6 +51,8 @@ const BASE_DIRECTOR_MOVIES: MovieEntry[] = [
   ...HIMESH_RESHAMMIYA_MOVIES,
   ...SALIL_CHOWDHURY_MOVIES,
   ...ISMAIL_DARBAR_MOVIES,
+  ...NIKHIL_VINAY_MOVIES,
+  ...SHIV_HARI_MOVIES,
 ];
 
 const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = (() => {

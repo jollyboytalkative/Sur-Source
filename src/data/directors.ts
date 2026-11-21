@@ -329,4 +329,34 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Bollywood-only chronological Hindi song filmography (1999 Hum Dil De Chuke Sanam – 2018 Yeh Kaisa Tigdam, 13 verified Hindi films & 90 songs; Telugu Vishnu, Kannada Kabira, TV Mahabharat, Bhoomi BGM-only, private albums, unreleased films & co-composers’ tracks excluded), with origins and direct listening links.',
   },
+  {
+    id: 'nikhil-vinay',
+    name: 'Nikhil–Vinay',
+    fullName: 'Nikhil Kamath & Vinay Tiwari · Hindi (Bollywood) Films Only',
+    era: '1991 – 2008',
+    status: 'active',
+    summary:
+      'Melodic duo behind Tum Bin (2001), Dulaara (1994), Bewafa Sanam (1995), English Babu Desi Mem (1996), Hum Tumhare Hain Sanam (2002), Aapko Pehle Bhi Kahin Dekha Hai (2003), and Muskaan (2004)—indexing all 38 verified Hindi (Bollywood) feature films (204 songs composed by Nikhil–Vinay; strictly excluding all private/non-film albums, Bhojpuri/regional scores, post-split solo projects, and co-composers’ tracks).',
+    editorialEssay:
+      'Trained alongside veteran golden-era mentors before debuting for T-Series with Pyar Bhara Dil (1991), Nikhil Kamath and Vinay Tiwari crafted tender romantic ballads and ghazal-inflected Hindi cinema scores across 1991–2008—reaching their artistic pinnacle with Anubhav Sinha’s Tum Bin (2001, anchored by Jagjit Singh’s "Koi Fariyaad", "Tumhare Siva", and "Chhoti Chhoti Raatein") and Aapko Pehle Bhi Kahin Dekha Hai (2003). Strictly maintaining only their joint Hindi (Bollywood) feature film compositions across 38 films (204 songs), this dossier excludes all non-film/private studio albums (Shikhar 1995, Sonu Nigam’s Jaan 1999 & Yaad 2001, Bewafai 2004, and non-film Bewafa Sanam Vol. 1–7 cassette tracks), Bhojpuri cinema (Sohagan Bana Da Sajana Hamaar), misattributed titles (Chandra Mukhi, Smuggler, Hum Pyar Tumhi Se Kar Baithe), post-split solo works (Deshdrohi), unindexed/ambiguous joint B-credits (Shaitan Tantrik, Bazaar, Laila), and co-composers’ tracks on shared OSTs—while mapping documented inspirations from Attaullah Khan Esakhelvi, Ustad Nusrat Fateh Ali Khan, Hadiqa Kiani, M. Arshad, and Faisal Latif.',
+    signatureSound:
+      'Sonu Nigam, Anuradha Paudwal, Udit Narayan, Kumar Sanu, Shreya Ghoshal, Jagjit Singh, Alka Yagnik · Acoustic Guitar, Flute, Harmonium & Melodic Ghazals · Yogesh, Faaiz Anwar, Sameer & Rani Malik lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi filmography (1991 Pyar Bhara Dil – 2008 Tulsi, 38 verified Hindi feature films & 204 songs by Nikhil–Vinay; private albums like Jaan/Yaad/Bewafa Sanam non-film cassettes, Bhojpuri scores, solo Deshdrohi & co-composers’ tracks excluded), with origins and direct listening links.',
+  },
+  {
+    id: 'shiv-hari',
+    name: 'Shiv–Hari',
+    fullName: 'Pandit Shivkumar Sharma & Pandit Hariprasad Chaurasia · Hindi (Bollywood) Films Only',
+    era: '1981 – 1993',
+    status: 'active',
+    summary:
+      'Santoor virtuoso Pandit Shivkumar Sharma and bansuri maestro Pandit Hariprasad Chaurasia, who redefined romantic Hindi film orchestration across all 8 verified Bollywood feature films (72 songs) from Silsila (1981), Faasle (1985), Vijay (1988), Chandni (1989), and Lamhe (1991) to Parampara, Sahibaan, and Darr (1993)—strictly excluding private classical/fusion albums like Call of the Valley.',
+    editorialEssay:
+      'Already revered across world classical stages—and renowned for their landmark 1967 instrumental album Call of the Valley (with Brij Bhushan Kabra)—Pandit Shivkumar Sharma and Pandit Hariprasad Chaurasia entered Hindi cinema together as Shiv–Hari for Yash Chopra’s Silsila (1981). Across eight celebrated Bollywood feature films (72 cataloged tracks) spanning Faasle (1985), Vijay (1988), Chandni (1989), Lamhe (1991), Parampara (1993), Ramesh Talwar’s Sahibaan (1993), and Darr (1993), their luminous santoor-and-bansuri tapestries restored Hindustani raga lyricism to the 1980s–1990s mainstream. Celebrated across archival catalogs for zero Western/pop plagiarism entries, their documented external roots derive organically from authentic Indian folk and devotional traditions—Awadhi–Braj Holi ("Rang Barse"), Mirabai bhajan ("Jo Tum Todo Piya"), Sikh shabad kirtan ("Bahan Jinah Di Pakdiye"), and Rajasthani desert Mand ("Morni Baaga Ma Bole", "Mhare Rajasthan Ma").',
+    signatureSound:
+      'Lata Mangeshkar, Kishore Kumar, Suresh Wadkar, Hariharan, Udit Narayan, Asha Bhosle, Pamela Chopra · Santoor, Bansuri, Hindustani Ragas & Rajasthani/Braj Folk · Anand Bakshi, Javed Akhtar, Shahryar & Nida Fazli lyrics',
+    archiveNote:
+      'Complete 8-film Hindi (Bollywood) feature filmography (1981 Silsila – 1993 Darr, 72 tracks; classical/non-film studio albums such as Call of the Valley excluded), with authentic folk/classical origins and direct listening links.',
+  },
 ];

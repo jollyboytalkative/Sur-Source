@@ -54,6 +54,8 @@ const DIRECTOR_ALIASES: Record<DirectorId, string[]> = {
   'himesh-reshammiya': ['Himesh Reshammiya', 'Himesh', 'HR', 'Lord Himesh'],
   'salil-chowdhury': ['Salil Chowdhury', 'Salil Chaudhry', 'Salilda', 'Salil Da'],
   'ismail-darbar': ['Ismail Darbar', 'Ismail Durbar'],
+  'nikhil-vinay': ['Nikhil Vinay', 'Nikhil-Vinay', 'Nikhil Kamath', 'Vinay Tiwari'],
+  'shiv-hari': ['Shiv Hari', 'Shiv-Hari', 'Shivkumar Sharma', 'Hariprasad Chaurasia', 'Pandit Shivkumar Sharma', 'Pandit Hariprasad Chaurasia'],
 };
 
 /**
@@ -312,6 +314,42 @@ const SONG_LYRIC_CUES_BY_ID: Record<string, string[]> = {
   'id-baaz-a-bird-in-danger-2003-6': ['Are are jala koi mita koi'],
   'id-kisna-the-warrior-poet-2005-1': ['Woh kisna hai woh kisna hai kisna kisna'],
   'id-kaanchi-2014-1': ['Kaanchi re kaanchi teri akhiyon mein hai jaadoo'],
+
+  // Nikhil–Vinay
+  'nv-dulaara-1994-7': ['Meri pant bhi sexy meri shirt bhi sexy', 'Arey ek hai anaar yahan'],
+  'nv-bewafa-sanam-1995-1': ['Achchha sila diya toone mere pyar ka yaar ne hi loot liya ghar yaar ka'],
+  'nv-bewafa-sanam-1995-2': ['Wafa na raas aayee tujhe o harjaee'],
+  'nv-bewafa-sanam-1995-3': ['O dil tod ke hansti ho mera wafayein meri yaad karogi'],
+  'nv-english-babu-desi-mem-1996-6': ['Kaise mukhde se nazarein hataun ki tujh mein mera rab dikhta', 'Kiven mukhre ton nazraan'],
+  'nv-tum-bin-2001-1': ['Chhoti chhoti raatein lambi ho jaati hain baithe bithaye yunhi neendein kho jaati hain'],
+  'nv-tum-bin-2001-2': ['Tumhare siva kuchh na chaahat karenge ke jab tak jiyenge mohabbat karenge'],
+  'nv-tum-bin-2001-3': ['Koi fariyaad tere dil mein dabi ho jaise tune aankhon se koi baat kahi ho jaise'],
+  'nv-tum-bin-2001-4': ['Dekhte hi dekhte dil kho gaya tumse milke na jaane mujhe kya ho gaya'],
+  'nv-tum-bin-2001-8': ['Pyar humko hone laga kho na jaye yeh dil'],
+  'nv-hum-tumhare-hain-sanam-2002-1': ['Hum tumhare hain sanam hum tumhare hain', 'Boohey barian Hadiqa Kiani'],
+  'nv-aapko-pehle-bhi-kahin-dekha-hai-2003-3': ['Kuch bhi na kaha aur keh bhi gaye'],
+  'nv-aapko-pehle-bhi-kahin-dekha-hai-2003-4': ['Aapko pehle bhi kahin dekha hai dil ne yeh mujhse kaha'],
+  'nv-aapko-pehle-bhi-kahin-dekha-hai-2003-7': ['Aisi aankhen nahin dekhin aisi baatein nahin suni'],
+  'nv-muskaan-2004-1': ['Woh ho tum woh ho tum zara si shokhi zara sa nasha ho tum'],
+  'nv-phir-milenge-2004-1': ['Betab dil hai dhadkanon ki kasam na roko isey'],
+
+  // Shiv–Hari
+  'sh-silsila-1981-1': ['Rang barse bheege chunarwali rang barse o khaaike paan', 'Sone ki thaali mein jona parosa'],
+  'sh-silsila-1981-2': ['Yeh kahan aa gaye hum yunhi saath saath chalte', 'Main aur meri tanhai aksar yeh baatein karte hain'],
+  'sh-silsila-1981-3': ['Dekha ek khwab to yeh silsile hue door tak nigahon mein hain gul khile hue'],
+  'sh-silsila-1981-4': ['Neela aasman so gaya neela aasman so gaya'],
+  'sh-silsila-1981-6': ['Sar se sarke sarke chunariya ho gori'],
+  'sh-vijay-1988-2': ['Badal pe chhalke aa sawan mein dhalke aa'],
+  'sh-chandni-1989-1': ['Mere haathon mein nau nau choodiyan hain thoda thehro sajan majbooriyan hain'],
+  'sh-chandni-1989-2': ['Lagi aaj sawan ki phir woh jhadi hai wohi aag seene mein phir jal padi hai'],
+  'sh-chandni-1989-3': ['Chandni o meri chandni rang bhare baadal se tere naino ke kaajal se'],
+  'sh-chandni-1989-4': ['Mitwa bhool na jaana mitwa', 'Tere mere hothon pe meethe meethe geet mitwa'],
+  'sh-lamhe-1991-1': ['Kabhi main kahoon kabhi tum kaho maine tumhe yeh dil de diya'],
+  'sh-lamhe-1991-2': ['Morni baaga ma bole aadhi raat ma chudiyan khanak gayeen haath ma'],
+  'sh-darr-1993-1': ['Jaadu teri nazar khushboo tera badan tu haan kar ya na kar tu hai meri kiran'],
+  'sh-darr-1993-2': ['Darwaza band karlo aji darwaza band karlo'],
+  'sh-darr-1993-3': ['Tu mere samne main tere samne tujhko dekhoon ke pyar karoon'],
+  'sh-darr-1993-7': ['Ang se ang lagana sajan humein aise rang lagana'],
 };
 
 /**
@@ -365,6 +403,18 @@ const TITLE_PHRASE_ALIASES: Record<string, string[]> = {
   'dola re dola': ['dola re dola re dola man dola tan dola'],
   'maar daala': ['hum pe yeh kisne hara rang daala'],
   'woh kisna hai': ['hai krishna hai woh kisna hai'],
+  'koi fariyaad': ['tere dil mein dabi ho jaise', 'ab tere bina yahan meri saansein'],
+  'tumhare siva': ['kuchh na chaahat karenge ke jab tak jiyenge mohabbat karenge'],
+  'chhoti chhoti raatein': ['chhoti chhoti raatein lambi ho jaati hain'],
+  'achchha sila diya': ['yaar ne hi loot liya ghar yaar ka'],
+  'o dil tod ke hansti ho mera': ['wafayein meri yaad karogi', 'dil tod ke hansti ho mera'],
+  'dekha ek khwab': ['door tak nigahon mein hain gul khile hue'],
+  'yeh kahan aa gaye hum': ['yunhi saath saath chalte', 'main aur meri tanhai'],
+  'rang barse bheege chunarwali': ['rang barse bheege chunarwali rang barse'],
+  'jaadu teri nazar': ['tu haan kar ya na kar tu hai meri kiran'],
+  'tu mere samne': ['tujhko dekhoon ke pyar karoon'],
+  'mere haathon mein nau nau choodiyan': ['thoda thehro sajan majbooriyan hain'],
+  'lagi aaj sawan ki': ['phir woh jhadi hai wohi aag seene mein'],
 };
 
 const HINDI_STOP_WORDS = new Set([

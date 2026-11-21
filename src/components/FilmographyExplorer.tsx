@@ -93,7 +93,13 @@ type DecadeFilter =
   | 'sc-1980-1998'
   | 'id-1999-2002'
   | 'id-2003-2009'
-  | 'id-2010-2018';
+  | 'id-2010-2018'
+  | 'nv-1991-1997'
+  | 'nv-2000-2003'
+  | 'nv-2004-2008'
+  | 'sh-1981-1988'
+  | 'sh-1989-1991'
+  | 'sh-1993';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -330,6 +336,18 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'id-kisna-the-warrior-poet-2005',
         'id-mehbooba-2008',
         'id-kaanchi-2014',
+        'nv-dulaara-1994',
+        'nv-bewafa-sanam-1995',
+        'nv-english-babu-desi-mem-1996',
+        'nv-tum-bin-2001',
+        'nv-hum-tumhare-hain-sanam-2002',
+        'nv-aapko-pehle-bhi-kahin-dekha-hai-2003',
+        'nv-muskaan-2004',
+        'nv-sitam-2005',
+        'sh-silsila-1981',
+        'sh-chandni-1989',
+        'sh-lamhe-1991',
+        'sh-darr-1993',
       ])
   );
 
@@ -411,6 +429,12 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === 'id-1999-2002' && (m.year < 1999 || m.year > 2002)) return false;
         if (decade === 'id-2003-2009' && (m.year < 2003 || m.year > 2009)) return false;
         if (decade === 'id-2010-2018' && m.year < 2010) return false;
+        if (decade === 'nv-1991-1997' && (m.year < 1991 || m.year > 1997)) return false;
+        if (decade === 'nv-2000-2003' && (m.year < 2000 || m.year > 2003)) return false;
+        if (decade === 'nv-2004-2008' && m.year < 2004) return false;
+        if (decade === 'sh-1981-1988' && (m.year < 1981 || m.year > 1988)) return false;
+        if (decade === 'sh-1989-1991' && (m.year < 1989 || m.year > 1991)) return false;
+        if (decade === 'sh-1993' && m.year !== 1993) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -619,7 +643,21 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                           { id: 'id-2003-2009', label: '2003–2009' },
                                                           { id: 'id-2010-2018', label: '2010–2018' },
                                                         ] as const)
-                                                      : ([
+                                                      : directorId === 'nikhil-vinay'
+                                                        ? ([
+                                                            { id: 'all', label: 'All Eras (1991–2008)' },
+                                                            { id: 'nv-1991-1997', label: '1991–1997' },
+                                                            { id: 'nv-2000-2003', label: '2000–2003' },
+                                                            { id: 'nv-2004-2008', label: '2004–2008' },
+                                                          ] as const)
+                                                        : directorId === 'shiv-hari'
+                                                          ? ([
+                                                              { id: 'all', label: 'All Eras (1981–1993)' },
+                                                              { id: 'sh-1981-1988', label: '1981–1988' },
+                                                              { id: 'sh-1989-1991', label: '1989–1991' },
+                                                              { id: 'sh-1993', label: '1993' },
+                                                            ] as const)
+                                                          : ([
                             {
                               id: 'all',
                               label:

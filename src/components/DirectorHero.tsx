@@ -346,7 +346,11 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                                       ? '67 verified Hindi song feature films (317 songs · 1953–1998; +14 BGM-only Hindi titles in 75+ Hindi credits; Bengali & Malayalam excluded)'
                                                       : activeDirectorId === 'ismail-darbar'
                                                         ? '13 verified Hindi (Bollywood) films (90 songs · 1999–2018; excluding Telugu Vishnu, Kannada Kabira, TV Mahabharat, Bhoomi BGM & private albums)'
-                                                        : 'Verified chronological filmography'}
+                                                        : activeDirectorId === 'nikhil-vinay'
+                                                          ? '38 verified Hindi (Bollywood) films (204 songs · 1991–2008; excluding private albums like Jaan/Yaad/Bewafai, Bhojpuri scores, solo Deshdrohi & co-composers’ tracks)'
+                                                          : activeDirectorId === 'shiv-hari'
+                                                            ? 'All 8 verified Hindi (Bollywood) films (72 songs · 1981–1993; excluding non-film classical albums like Call of the Valley)'
+                                                            : 'Verified chronological filmography'}
             </div>
           </div>
 

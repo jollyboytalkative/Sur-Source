@@ -20,7 +20,9 @@ export type DirectorId =
   | 'viju-shah'
   | 'himesh-reshammiya'
   | 'salil-chowdhury'
-  | 'ismail-darbar';
+  | 'ismail-darbar'
+  | 'nikhil-vinay'
+  | 'shiv-hari';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

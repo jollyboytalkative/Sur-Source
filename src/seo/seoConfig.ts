@@ -6,7 +6,7 @@ import {
 import { DIRECTORS } from '../data/directors.ts';
 import type { DirectorId, DirectorProfile, MovieEntry } from '../types/archive.ts';
 
-export type PublicSeoRoute = '/' | '/director' | '/disclaimer' | '/contact' | '/admin';
+export type PublicSeoRoute = '/' | '/director' | '/disclaimer' | '/contact';
 
 export interface ResolvedSeoRoute {
   route: PublicSeoRoute;
@@ -100,9 +100,6 @@ export function resolveSeoRoute(pathname: string): ResolvedSeoRoute {
   if (cleanPath === '/contact') {
     return { route: '/contact', directorId: null, canonicalPath: '/contact' };
   }
-  if (cleanPath === '/admin') {
-    return { route: '/admin', directorId: null, canonicalPath: '/admin' };
-  }
   if (cleanPath.startsWith('/director/')) {
     const slug = cleanPath.slice('/director/'.length) as DirectorId;
     if (DIRECTOR_MAP.has(slug)) {
@@ -190,16 +187,6 @@ export const ROUTE_SEO_META: Record<Exclude<PublicSeoRoute, '/director'>, RouteS
     keywords: `${SEO_KEYWORDS}, submit Bollywood filmography correction`,
     robots:
       'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-    ogType: 'website',
-  },
-  '/admin': {
-    path: '/admin',
-    canonicalPath: '/admin',
-    title: 'Curator Review Queue | Sur & Source',
-    description:
-      'Private curator review workspace for verifying archival music provenance submissions on Sur & Source.',
-    keywords: SITE_NAME,
-    robots: 'noindex, nofollow',
     ogType: 'website',
   },
 };
@@ -501,13 +488,6 @@ export function buildSsrRootHtml(pathname: string): string {
     ${directoryNav}
   </section>
   <footer><a href="/">Back to Archive</a> · <a href="/disclaimer">Disclaimer</a></footer>
-</main>`;
-  }
-
-  if (resolved.route === '/admin') {
-    return `<main class="max-w-[1280px] mx-auto px-6 py-12">
-  <h1>Curator Review Queue</h1>
-  <p>Authenticated curator review workspace for Sur &amp; Source.</p>
 </main>`;
   }
 

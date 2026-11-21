@@ -1,19 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { onAuthStateChanged, type User } from 'firebase/auth';
 import { DIRECTORS } from './data/directors';
 import { ALL_DIRECTOR_MOVIES } from './data/catalog';
 import type {
   DirectorId,
-  LiveMovieRecord,
   MovieEntry,
-  SongEntry,
-  SongOverrideRecord,
 } from './types/archive';
-import { auth } from './lib/firebase';
-import {
-  subscribeToLiveMovies,
-  subscribeToSongOverrides,
-} from './lib/archiveOverrides';
 import { TopBar } from './components/TopBar';
 import { MasterArchiveSearch } from './components/MasterArchiveSearch';
 import { IntroHero } from './components/IntroHero';
@@ -24,7 +15,6 @@ import { QueuedDirectorView } from './components/QueuedDirectorView';
 import { ArchiveNotes } from './components/ArchiveNotes';
 import { DisclaimerPage } from './components/DisclaimerPage';
 import { ContactPage } from './components/ContactPage';
-import { AdminReviewPage } from './components/AdminReviewPage';
 import {
   buildStructuredDataJsonLd,
   getSeoMetaForPath,
@@ -51,13 +41,6 @@ export default function App() {
   const [selectedMovieFilter, setSelectedMovieFilter] = useState<string>('all');
   const [urlSearchQuery, setUrlSearchQuery] = useState<string>(() => readQueryParam());
 
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [authReady, setAuthReady] = useState<boolean>(false);
-  const [liveOverrides, setLiveOverrides] = useState<
-    Record<string, SongOverrideRecord>
-  >({});
-  const [liveMovies, setLiveMovies] = useState<LiveMovieRecord[]>([]);
-
   useEffect(() => {
     const handlePopState = () => {
       const next = resolveSeoRoute(window.location.pathname);
@@ -71,37 +54,6 @@ export default function App() {
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
-
-  useEffect(() => {
-    const unsubAuth = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setAuthReady(true);
-    });
-    return () => unsubAuth();
-  }, []);
-
-  useEffect(() => {
-    const unsubOverrides = subscribeToSongOverrides(
-      (overrides) => {
-        setLiveOverrides(overrides);
-      },
-      (err) => {
-        console.error('Failed to subscribe to live song overrides:', err);
-      }
-    );
-    const unsubLiveMovies = subscribeToLiveMovies(
-      (movies) => {
-        setLiveMovies(movies);
-      },
-      (err) => {
-        console.error('Failed to subscribe to live movies:', err);
-      }
-    );
-    return () => {
-      unsubOverrides();
-      unsubLiveMovies();
-    };
   }, []);
 
   useEffect(() => {
@@ -166,94 +118,7 @@ export default function App() {
     }
   }, [currentRoute, activeDirectorId]);
 
-  const baseMovies = useMemo<MovieEntry[]>(() => ALL_DIRECTOR_MOVIES, []);
-
-  const mergedBaseAndLiveMovies = useMemo<MovieEntry[]>(() => {
-    if (liveMovies.length === 0) return baseMovies;
-
-    const map = new Map<string, MovieEntry>();
-    for (const m of baseMovies) {
-      map.set(m.id, m);
-    }
-
-    for (const lm of liveMovies) {
-      const convertedSongs: SongEntry[] = lm.songs.map((s) => ({
-        id: s.id,
-        movieId: lm.movieId,
-        title: s.title,
-        singers: s.singers,
-        lyricist: s.lyricist || undefined,
-        adaptationType: s.adaptationType,
-        originalSongTitle: s.originalSongTitle || undefined,
-        originalArtist: s.originalArtist || undefined,
-        originalYear: s.originalYear || undefined,
-        originCategory: s.originCategory,
-        adaptationNotes: s.adaptationNotes || undefined,
-        bollywoodLink: s.bollywoodLink,
-        originalLink: s.originalLink || undefined,
-        referenceSource: s.referenceSource || undefined,
-        sourceUrl: lm.sourceUrl || undefined,
-      }));
-
-      const existing = map.get(lm.movieId);
-      if (existing) {
-        const existingSongIds = new Set(existing.songs.map((s) => s.id));
-        const newSongs = convertedSongs.filter((s) => !existingSongIds.has(s.id));
-        if (newSongs.length > 0) {
-          map.set(lm.movieId, {
-            ...existing,
-            songs: [...existing.songs, ...newSongs],
-          });
-        }
-      } else {
-        map.set(lm.movieId, {
-          id: lm.movieId,
-          directorId: lm.directorId,
-          title: lm.title,
-          year: lm.year,
-          cast: lm.cast || undefined,
-          label: lm.label || undefined,
-          significance: lm.significance || undefined,
-          songs: convertedSongs,
-        });
-      }
-    }
-
-    return Array.from(map.values());
-  }, [baseMovies, liveMovies]);
-
-  const allMovies = useMemo<MovieEntry[]>(() => {
-    if (Object.keys(liveOverrides).length === 0) {
-      return mergedBaseAndLiveMovies;
-    }
-
-    const applyOverride = (song: SongEntry): SongEntry => {
-      const ov = liveOverrides[song.id];
-      if (!ov) return song;
-      return {
-        ...song,
-        adaptationType: ov.adaptationType,
-        originalSongTitle: ov.originalSongTitle,
-        originalArtist: ov.originalArtist,
-        originalYear: ov.originalYear || song.originalYear,
-        originCategory: ov.originCategory,
-        adaptationNotes: ov.adaptationNotes || song.adaptationNotes,
-        originalLink: ov.originalLink || song.originalLink,
-        referenceSource: ov.referenceSource || song.referenceSource,
-        sourceUrl: ov.sourceUrl || song.sourceUrl,
-        isLiveOverride: true,
-      };
-    };
-
-    return mergedBaseAndLiveMovies.map((movie) => {
-      const hasOverride = movie.songs.some((s) => Boolean(liveOverrides[s.id]));
-      if (!hasOverride) return movie;
-      return {
-        ...movie,
-        songs: movie.songs.map(applyOverride),
-      };
-    });
-  }, [mergedBaseAndLiveMovies, liveOverrides]);
+  const allMovies = useMemo<MovieEntry[]>(() => ALL_DIRECTOR_MOVIES, []);
 
   const sortedDirectors = useMemo(
     () =>
@@ -401,15 +266,6 @@ export default function App() {
           <DisclaimerPage onNavigateRoute={handleNavigateRoute} />
         ) : currentRoute === '/contact' ? (
           <ContactPage onNavigateRoute={handleNavigateRoute} />
-        ) : currentRoute === '/admin' ? (
-          <AdminReviewPage
-            user={currentUser}
-            authReady={authReady}
-            allMovies={mergedBaseAndLiveMovies}
-            liveOverrides={liveOverrides}
-            liveMovies={liveMovies}
-            onNavigateHome={() => handleNavigateRoute('/')}
-          />
         ) : (
           <>
             <MasterArchiveSearch
@@ -560,21 +416,6 @@ export default function App() {
                 }`}
               >
                 Contact / Corrections
-              </a>
-              <span aria-hidden="true" className="text-[#D6CEBE]">
-                |
-              </span>
-              <a
-                href="/admin"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigateRoute('/admin');
-                }}
-                className={`hover:text-[#9A3412] hover:underline underline-offset-4 transition-colors ${
-                  currentRoute === '/admin' ? 'text-[#9A3412] font-medium' : ''
-                }`}
-              >
-                Curator Review
               </a>
             </nav>
           </div>

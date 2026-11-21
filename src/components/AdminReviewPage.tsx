@@ -437,9 +437,28 @@ export const AdminReviewPage: React.FC<AdminReviewPageProps> = ({
     try {
       await signInAdminWithGoogle();
     } catch (err) {
-      setAuthError(
-        err instanceof Error ? err.message : 'Google Sign-In failed.'
-      );
+      const code =
+        typeof err === 'object' &&
+        err !== null &&
+        'code' in err &&
+        typeof (err as { code?: unknown }).code === 'string'
+          ? (err as { code: string }).code
+          : '';
+      const rawMessage =
+        err instanceof Error ? err.message : 'Google Sign-In failed.';
+
+      if (
+        code === 'auth/unauthorized-domain' ||
+        rawMessage.includes('auth/unauthorized-domain')
+      ) {
+        const currentHost =
+          typeof window !== 'undefined' ? window.location.hostname : '';
+        setAuthError(
+          `Firebase Auth blocked sign-in from "${currentHost}" (auth/unauthorized-domain). Add "${currentHost}" in Firebase Console → Authentication → Settings → Authorized domains.`
+        );
+      } else {
+        setAuthError(rawMessage);
+      }
     }
   };
 

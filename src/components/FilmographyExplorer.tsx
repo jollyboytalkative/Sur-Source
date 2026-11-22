@@ -99,7 +99,19 @@ type DecadeFilter =
   | 'nv-2004-2008'
   | 'sh-1981-1988'
   | 'sh-1989-1991'
-  | 'sh-1993';
+  | 'sh-1993'
+  | 'rl-1977-1988'
+  | 'rl-1989-1993'
+  | 'rl-1994-1998'
+  | 'rl-1999-2003'
+  | 'jd-1955-1969'
+  | 'jd-1971-1976'
+  | 'jd-1977-1980'
+  | 'jd-1981-1997'
+  | 'as-1991-1998'
+  | 'as-1999-2001'
+  | 'as-2002-2005'
+  | 'as-2006-2015';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -348,6 +360,38 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'sh-chandni-1989',
         'sh-lamhe-1991',
         'sh-darr-1993',
+        'rl-taraana-1979',
+        'rl-hum-se-badkar-kaun-1981',
+        'rl-maine-pyar-kiya-1989',
+        'rl-police-public-1990',
+        'rl-100-days-1991',
+        'rl-patthar-ke-phool-1991',
+        'rl-hum-aapke-hain-koun-1994',
+        'rl-dulhan-banoo-mein-teri-1999',
+        'rl-hum-saath-saath-hain-1999',
+        'jd-hum-dono-1961',
+        'jd-mujhe-jeene-do-1963',
+        'jd-reshma-aur-shera-1971',
+        'jd-prem-parbat-1973',
+        'jd-alaap-1977',
+        'jd-gharaonda-1977',
+        'jd-gaman-1978',
+        'jd-ankahee-1985',
+        'as-aao-pyaar-karen-1994',
+        'as-shastra-1996',
+        'as-major-saab-1998',
+        'as-anari-no-1-1999',
+        'as-international-khiladi-1999',
+        'as-joru-ka-ghulam-2000',
+        'as-kunwara-2000',
+        'as-tarkieb-2000',
+        'as-kabhi-khushi-kabhie-gham-2001',
+        'as-baghban-2003',
+        'as-chalte-chalte-2003',
+        'as-dev-2004',
+        'as-baabul-2006',
+        'as-raajneeti-2010',
+        'as-mahayoddha-rama-2016',
       ])
   );
 
@@ -435,6 +479,18 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === 'sh-1981-1988' && (m.year < 1981 || m.year > 1988)) return false;
         if (decade === 'sh-1989-1991' && (m.year < 1989 || m.year > 1991)) return false;
         if (decade === 'sh-1993' && m.year !== 1993) return false;
+        if (decade === 'rl-1977-1988' && m.year > 1988) return false;
+        if (decade === 'rl-1989-1993' && (m.year < 1989 || m.year > 1993)) return false;
+        if (decade === 'rl-1994-1998' && (m.year < 1994 || m.year > 1998)) return false;
+        if (decade === 'rl-1999-2003' && m.year < 1999) return false;
+        if (decade === 'jd-1955-1969' && m.year > 1969) return false;
+        if (decade === 'jd-1971-1976' && (m.year < 1971 || m.year > 1976)) return false;
+        if (decade === 'jd-1977-1980' && (m.year < 1977 || m.year > 1980)) return false;
+        if (decade === 'jd-1981-1997' && m.year < 1981) return false;
+        if (decade === 'as-1991-1998' && m.year > 1998) return false;
+        if (decade === 'as-1999-2001' && (m.year < 1999 || m.year > 2001)) return false;
+        if (decade === 'as-2002-2005' && (m.year < 2002 || m.year > 2005)) return false;
+        if (decade === 'as-2006-2017' && m.year < 2006) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -657,7 +713,31 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                               { id: 'sh-1989-1991', label: '1989–1991' },
                                                               { id: 'sh-1993', label: '1993' },
                                                             ] as const)
-                                                          : ([
+                                                          : directorId === 'raamlaxman'
+                                                            ? ([
+                                                                { id: 'all', label: 'All Eras (1977–2003)' },
+                                                                { id: 'rl-1977-1988', label: '1977–1988' },
+                                                                { id: 'rl-1989-1993', label: '1989–1993' },
+                                                                { id: 'rl-1994-1998', label: '1994–1998' },
+                                                                { id: 'rl-1999-2003', label: '1999–2003' },
+                                                              ] as const)
+                                                            : directorId === 'jaidev'
+                                                              ? ([
+                                                                  { id: 'all', label: 'All Eras (1955–1997)' },
+                                                                  { id: 'jd-1955-1969', label: '1955–1969' },
+                                                                  { id: 'jd-1971-1976', label: '1971–1976' },
+                                                                  { id: 'jd-1977-1980', label: '1977–1980' },
+                                                                  { id: 'jd-1981-1997', label: '1981–1997' },
+                                                                ] as const)
+                                                              : directorId === 'aadesh-shrivastava'
+                                                                ? ([
+                                                                    { id: 'all', label: 'All Eras (1991–2017)' },
+                                                                    { id: 'as-1991-1998', label: '1991–1998' },
+                                                                    { id: 'as-1999-2001', label: '1999–2001' },
+                                                                    { id: 'as-2002-2005', label: '2002–2005' },
+                                                                    { id: 'as-2006-2017', label: '2006–2017' },
+                                                                  ] as const)
+                                                                : ([
                             {
                               id: 'all',
                               label:

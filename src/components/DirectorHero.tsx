@@ -337,7 +337,7 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                             : activeDirectorId === 'khayyam'
                                               ? '53 released Hindi (Bollywood) films (232 songs · 1948–2014; Punjabi & non-film albums excluded)'
                                               : activeDirectorId === 'dilip-sen-sameer-sen'
-                                                ? '60 verified joint Hindi (Bollywood) films (339 songs · 1988–2007; excluding BGM-only & post-split solo works)'
+                                                ? '60 verified joint Hindi (Bollywood) films (338 songs · 1988–2007; excluding BGM-only, Aadesh Shrivastava guest track & post-split solo works)'
                                                 : activeDirectorId === 'viju-shah'
                                                   ? '29 verified Hindi (Bollywood) song films (165 songs · 1990–2025; excluding Gujarati scores, TV, non-film & BGM-only credits)'
                                                   : activeDirectorId === 'himesh-reshammiya'
@@ -350,7 +350,13 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                                           ? '38 verified Hindi (Bollywood) films (204 songs · 1991–2008; excluding private albums like Jaan/Yaad/Bewafai, Bhojpuri scores, solo Deshdrohi & co-composers’ tracks)'
                                                           : activeDirectorId === 'shiv-hari'
                                                             ? 'All 8 verified Hindi (Bollywood) films (72 songs · 1981–1993; excluding non-film classical albums like Call of the Valley)'
-                                                            : 'Verified chronological filmography'}
+                                                            : activeDirectorId === 'raamlaxman'
+                                                              ? '53 verified Hindi (Bollywood) films (359 songs · 1977–2003; Marathi/Bhojpuri scores, shelved 101 Days & co-composers’ tracks excluded)'
+                                                              : activeDirectorId === 'jaidev'
+                                                                ? '36 verified Hindi (Bollywood) films (182 songs · 1955–1997; Nepali Maitighar, TV Ramayan, Madhushala album & co-composers’ tracks excluded)'
+                                                                : activeDirectorId === 'aadesh-shrivastava'
+                                                                  ? '62 verified Hindi (Bollywood) song films (263 songs · 1991–2017; ~25 BGM-only Hindi films, private albums, telefilms, shelved cassettes, Pakistani/Punjabi scores & co-composers’ tracks excluded)'
+                                                                  : 'Verified chronological filmography'}
             </div>
           </div>
 

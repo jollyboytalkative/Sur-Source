@@ -359,4 +359,49 @@ export const DIRECTORS: DirectorProfile[] = [
     archiveNote:
       'Complete 8-film Hindi (Bollywood) feature filmography (1981 Silsila – 1993 Darr, 72 tracks; classical/non-film studio albums such as Call of the Valley excluded), with authentic folk/classical origins and direct listening links.',
   },
+  {
+    id: 'raamlaxman',
+    name: 'Raamlaxman',
+    fullName: 'Vijay Patil (with Surendra Hendre in 1976–1977) · Hindi (Bollywood) Films Only',
+    era: '1977 – 2003',
+    status: 'active',
+    summary:
+      'Iconic composer of Maine Pyar Kiya (1989), Hum Aapke Hain Koun..! (1994), Hum Saath-Saath Hain (1999), Taraana (1979), 100 Days, and Patthar Ke Phool—indexing all 53 verified Hindi (Bollywood) released feature films (359 songs; strictly excluding Marathi/Bhojpuri scores, shelved 101 Days, private/TV projects, misattributed soundtracks, and co-composers’ tracks).',
+    editorialEssay:
+      'Beginning as a composing duo with Surendra Hendre (who passed away soon after their 1977 Hindi debut in Agent Vinod, after which Vijay Patil retained the Raamlaxman moniker solo), Raamlaxman defined Rajshri Productions’ musical golden revival across three decades. Following early Hindi hits like Taraana (1979), Hum Se Badkar Kaun (1981), Sun Sajna (1982), and Dada Kondke’s bilingual Hindi comedies, his Filmfare Award-winning blockbuster Maine Pyar Kiya (1989) ushered in S. P. Balasubrahmanyam’s iconic 1990s Hindi run and culminated in Hum Aapke Hain Koun..! (1994) and Hum Saath-Saath Hain (1999). Strictly preserving his 53 released Hindi (Bollywood) feature films (359 songs), this dossier excludes his extensive Marathi filmography (Pandu Havaldar, Bot Lavin Tithe Gudgulya, Khatarnak, etc.), shelved projects (101 Days), misattributed albums (Aashiq Mastane, Kachchi Kali, Tahalka, Radha Ka Sangam, Pratikar, Chhote Sarkar, Maahir, Nishana, Saazish, Censor), and co-composers’ tracks on Mehboob Mere Mehboob (Dilip Tahir), Phoolwati (Surinder Kohli), and Megha (Surinder Kohli), while indexing documented influences from Stevie Wonder, Europe, Baltimora, Jeanette, Madonna, Ustad Nusrat Fateh Ali Khan, and Deepak Khazanchi.',
+    signatureSound:
+      'Lata Mangeshkar, S. P. Balasubrahmanyam, Udit Narayan, Kumar Sanu, Alka Yagnik, Kavita Krishnamurthy, Shailendra Singh, Asha Bhosle, Hariharan · Harmonium, Dholak, Flute, Strings & Rajshri Family Choruses · Dev Kohli, Ravindra Rawal & Asad Bhopali lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi filmography (1977 Agent Vinod – 2003 Aisa Kyon, 53 verified Hindi feature films & 359 songs; Marathi cinema, shelved 101 Days, misattributed OSTs & co-composers’ tracks on shared albums excluded), with documented song origins and direct listening links.',
+  },
+  {
+    id: 'jaidev',
+    name: 'Jaidev',
+    fullName: 'Jaidev Verma · Hindi (Bollywood) Films Only',
+    era: '1955 – 1997',
+    status: 'active',
+    summary:
+      'Three-time National Film Award-winning composer of Hum Dono (1961), Mujhe Jeene Do (1963), Reshma Aur Shera (1971), Prem Parbat (1973), Alaap (1977), Gharaonda (1977), Gaman (1978), and Ankahee (1985)—indexing all 36 verified Hindi (Bollywood) feature films (182 songs; strictly excluding Nepali Maitighar, Doordarshan Ramayan TV, non-film Madhushala/ghazal albums, BGM-only/misattributed projects, and co-composers’ tracks).',
+    editorialEssay:
+      'Beginning as Ustad Ali Akbar Khan’s sarod disciple and S. D. Burman’s chief assistant before making his independent Hindi film debut with Chetan Anand’s Joru Ka Bhai (1955), Jaidev Verma crafted some of Indian cinema’s most literary, raga-anchored, and emotionally luminous soundtracks. Across 36 verified Hindi (Bollywood) feature films (182 cataloged songs) spanning Anjali (1957), Hum Dono (1961), Kinare Kinare (1963), Mujhe Jeene Do (1963), Prem Parbat (1973), Parinay (1974), Alaap (1977), Gharaonda (1977), Dooriyaan (1979), Tumhare Liye (1978), and posthumous 1973 archival recordings released in Chand Grahan (1997)—winning three National Film Awards for Best Music Direction (Reshma Aur Shera 1971, Gaman 1978, Ankahee 1985)—his dossier strictly maintains released Hindi feature films only: excluding Nepali cinema (Maitighar), television (Doordarshan Ramayan), non-film studio/poetry albums (Madhushala), BGM-only works (Aashadh Ka Ek Din), misattributed albums, and co-composers’ tracks on shared soundtracks (Bipin–Babul on Raat Ke Rahi, Madan Mohan on Laila Majnu, Santosh Nair on Chand Grahan), with zero Western/pop plagiarism and organic roots in Indian folk and saint-bhajan traditions.',
+    signatureSound:
+      'Lata Mangeshkar, Asha Bhosle, Mohammed Rafi, Bhupinder Singh, K. J. Yesudas, Manna Dey, Pandit Bhimsen Joshi, Chhaya Ganguly · Sarod, Bansuri, Sitar, Hindustani Ragas & Devotional Poetry · Sahir Ludhianvi, Naqsh Lyallpuri, Jan Nisar Akhtar, Kaifi Azmi, Gulzar, Shahryar & Nyay Sharma lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi filmography (1955 Joru Ka Bhai – 1997 posthumous Chand Grahan, 36 verified Hindi feature films & 182 songs; Nepali Maitighar, TV Ramayan, non-film Madhushala, misattributed scores & co-composers’ tracks excluded), with authentic folk/bhajan origins and direct listening links.',
+  },
+  {
+    id: 'aadesh-shrivastava',
+    name: 'Aadesh Shrivastava',
+    fullName: 'Aadesh Shrivastava · Hindi (Bollywood) Films Only',
+    era: '1991 – 2017',
+    status: 'active',
+    summary:
+      'Versatile composer and playback voice behind Aao Pyaar Karen (1994), Shastra (1996), Kunwara (2000), Kabhi Khushi Kabhie Gham ("Say Shava Shava"), Chalte Chalte, Baghban (2003), Dev (2004), Baabul (2006), Raajneeti ("Mora Piya"), Stand By (2011), and posthumous Mahayoddha Rama (2016)—indexing 62 verified Hindi (Bollywood) feature films (263 songs; explaining the difference from "100+ film" summaries that bundle ~25 BGM-only credits, private albums, telefilms, shelved cassettes, and Pakistani/Punjabi scores).',
+    editorialEssay:
+      'Starting as an instrumentalist and arranger before making his Hindi feature debut with Khatra (1991) and breaking into mainstream stardom with Aao Pyaar Karen (1994), Aadesh Shrivastava became one of Bollywood’s defining voices for earthy folk-fusion, brassy comedy dance numbers, and Amitabh Bachchan’s late-career musical renaissance across Baghban (2003), Dev (2004), and Baabul (2006). Equally adept at ghazal sensitivity ("Kiska Chehra Ab Main Dekhu", "Suno Na Suno Na"), Sufi intensity ("Mora Piya"), and posthumous swan songs (Mahayoddha Rama 2016, Blue Mountains 2017), his archive indexes 62 verified Hindi feature films (263 playable songs). While encyclopedic summaries frequently cite "over 100 Hindi films", that figure groups song soundtracks together with ~25 background-score-only Hindi assignments (Sailaab, Khalnayak, Baazi, Ram Shastra, The Don, Border, Haseena Maan Jaayegi, IIFA-winning Refugee, Badal, Champion, Khauff, Humraaz, Yeh Hai Jalwa, LOC Kargil, Zameen, Garv, Lakeer, Paheli, Angel, Welcome Back, etc.), non-film studio albums (Ek Dhun Pyar Ki, Dil Kahin Hosh Kahin, Kuch Khwaab Aise), Zee telefilm Humko Ishq Ne Mara, Pakistani Godfather (2007), Punjabi Yaariyan (2008), shelved cassette projects (Jane Tamanna, Aashiq), and out-of-print rare soundtracks without digital audio (Satya Bol, Husn, Anubhav)—alongside guest co-composer boundaries on Anari No.1, Major Saab, Angaaray, Dahek, K3G, RHTDM, Farz, Aankhen, Chalte Chalte, Love at Times Square, Apaharan, Saawan, Sandwich, Raajneeti, Chakravyuh, Satyagraha, Dirty Politics, and Blue Mountains. Documented external roots span M. Ashraf ("Baant Raha Tha Jab Khuda"), Tarkan ("Meri Chamak Chalo"), Shazia Manzoor ("Say Shava Shava"), and Indian folk-classical idioms ("Hori Khele Raghuveera", "Layi Vi Na Gayee", "Raske Bhare Tore Naina").',
+    signatureSound:
+      'Sonu Nigam, Alka Yagnik, Udit Narayan, Kumar Sanu, Amitabh Bachchan, Sukhwinder Singh, Kailash Kher, Shaan, Richa Sharma, Aadesh Shrivastava · Dholak, Harmonium, Classical Percussion, Sufi Vocals & Brass Grooves · Sameer, Shyam Raj, Dev Kohli, Nida Fazli, Javed Akhtar, Prasoon Joshi & Swanand Kirkire lyrics',
+    archiveNote:
+      'Bollywood-only chronological Hindi song filmography (1991 Khatra – posthumous 2017 Blue Mountains, 62 verified Hindi films & 263 playable songs; ~25 BGM-only Hindi films, private albums, telefilms, shelved/audio-unavailable projects, Pakistani/Punjabi scores & co-composers’ tracks excluded), with documented song origins and direct listening links.',
+  },
 ];

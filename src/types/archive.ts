@@ -22,7 +22,10 @@ export type DirectorId =
   | 'salil-chowdhury'
   | 'ismail-darbar'
   | 'nikhil-vinay'
-  | 'shiv-hari';
+  | 'shiv-hari'
+  | 'raamlaxman'
+  | 'jaidev'
+  | 'aadesh-shrivastava';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

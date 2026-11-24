@@ -29,7 +29,7 @@ export const DEFAULT_APP_ORIGIN =
   'https://ais-pre-ctlhphzqer6embfkrimqiu-386234381851.asia-southeast1.run.app';
 
 export const SEO_KEYWORDS =
-  'Indian music directors, Bollywood music directors, Hindi cinema composers, Bollywood music origins, Bollywood filmography archive, Indian film music history, Hindi film songs adapted, Bollywood song inspirations, Aadesh Shrivastava, Nadeem-Shravan, Anu Malik, Bappi Lahiri, Dilip Sen-Sameer Sen, Himesh Reshammiya, Ismail Darbar, Jaidev, Jatin-Lalit, Kalyanji-Anandji, Khayyam, Nikhil-Vinay, Raamlaxman, R.D. Burman, Shankar-Jaikishan, Shiv-Hari, A. R. Rahman, Naushad, O.P. Nayyar, Anand-Milind, Laxmikant-Pyarelal, S. D. Burman, Salil Chowdhury, Ravi, Roshan, Madan Mohan, Viju Shah, Sur & Source';
+  'Indian music directors, Bollywood music directors, Hindi cinema composers, Bollywood music origins, Bollywood filmography archive, Indian film music history, Hindi film songs adapted, Bollywood song inspirations, Aadesh Shrivastava, Nadeem-Shravan, Anu Malik, Bappi Lahiri, Dilip Sen-Sameer Sen, Himesh Reshammiya, Ismail Darbar, Jaidev, Jatin-Lalit, Kalyanji-Anandji, Khayyam, Nikhil-Vinay, Raamlaxman, R.D. Burman, Sanjeev-Darshan, Shankar-Ehsaan-Loy, Shankar-Jaikishan, Shiv-Hari, Usha Khanna, Uttam Singh, A. R. Rahman, Naushad, O.P. Nayyar, Anand-Milind, Laxmikant-Pyarelal, S. D. Burman, Salil Chowdhury, Ravi, Roshan, Madan Mohan, Viju Shah, Sur & Source';
 
 export const OG_IMAGE_PATH = '/og-image.jpg';
 export const OG_IMAGE_ALT =
@@ -46,13 +46,15 @@ const DUO_DIRECTOR_IDS = new Set<DirectorId>([
   'nikhil-vinay',
   'shiv-hari',
   'raamlaxman',
+  'shankar-ehsaan-loy',
+  'sanjeev-darshan',
 ]);
 
 export const ARCHIVE_FAQS = [
   {
     question:
       'Which Indian and Bollywood music directors are indexed in Sur & Source?',
-    answer: `Sur & Source indexes ${DIRECTORS.length} iconic Indian & Bollywood music directors across ${TOTAL_CATALOG_STATS.totalMovies.toLocaleString('en-US')} Hindi films and ${TOTAL_CATALOG_STATS.totalSongs.toLocaleString('en-US')} songs (maintaining strictly Bollywood/Hindi filmography records only, excluding regional Tamil, Telugu, Malayalam, and Bengali scores): A. R. Rahman, Aadesh Shrivastava, Anand–Milind, Anu Malik, Bappi Lahiri, Dilip Sen–Sameer Sen, Himesh Reshammiya, Ismail Darbar, Jaidev, Jatin–Lalit, Kalyanji–Anandji, Khayyam, Laxmikant–Pyarelal, Madan Mohan, Nadeem–Shravan, Naushad, Nikhil–Vinay, O.P. Nayyar, R.D. Burman, Raamlaxman, Ravi, Roshan, S. D. Burman, Salil Chowdhury, Shankar–Jaikishan, Shiv–Hari, and Viju Shah.`,
+    answer: `Sur & Source indexes ${DIRECTORS.length} iconic Indian & Bollywood music directors across ${TOTAL_CATALOG_STATS.totalMovies.toLocaleString('en-US')} Hindi films and ${TOTAL_CATALOG_STATS.totalSongs.toLocaleString('en-US')} songs (maintaining strictly Bollywood/Hindi filmography records only, excluding regional Tamil, Telugu, Malayalam, and Bengali scores): A. R. Rahman, Aadesh Shrivastava, Anand–Milind, Anu Malik, Bappi Lahiri, Dilip Sen–Sameer Sen, Himesh Reshammiya, Ismail Darbar, Jaidev, Jatin–Lalit, Kalyanji–Anandji, Khayyam, Laxmikant–Pyarelal, Madan Mohan, Nadeem–Shravan, Naushad, Nikhil–Vinay, O.P. Nayyar, R.D. Burman, Raamlaxman, Ravi, Roshan, S. D. Burman, Salil Chowdhury, Sanjeev–Darshan, Shankar–Ehsaan–Loy, Shankar–Jaikishan, Shiv–Hari, Usha Khanna, Uttam Singh, and Viju Shah.`,
   },
   {
     question:

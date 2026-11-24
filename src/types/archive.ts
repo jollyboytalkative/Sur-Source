@@ -25,7 +25,11 @@ export type DirectorId =
   | 'shiv-hari'
   | 'raamlaxman'
   | 'jaidev'
-  | 'aadesh-shrivastava';
+  | 'aadesh-shrivastava'
+  | 'usha-khanna'
+  | 'uttam-singh'
+  | 'shankar-ehsaan-loy'
+  | 'sanjeev-darshan';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

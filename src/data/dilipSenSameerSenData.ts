@@ -920,7 +920,6 @@ export const DILIP_SEN_SAMEER_SEN_MOVIES: MovieEntry[] = [
     songs: [
       origSong('ds-anari-no-1-1999', 1, 'Main Laila', 'Abhijeet & Jaspinder Narula', 'Anari No.1', 1999, 'Dev Kohli'),
       origSong('ds-anari-no-1-1999', 2, 'Dheere Dheere Ham Dono Mein', 'Abhijeet & Alka Yagnik', 'Anari No.1', 1999, 'Dev Kohli'),
-      origSong('ds-anari-no-1-1999', 3, 'Tujhe Dekh Ke Jaana Jaana', 'Sonu Nigam & Alka Yagnik', 'Anari No.1', 1999, 'Dev Kohli'),
       origSong('ds-anari-no-1-1999', 4, 'A B C D E F G', 'Udit Narayan & Kavita Krishnamurthy', 'Anari No.1', 1999, 'Dev Kohli'),
       origSong('ds-anari-no-1-1999', 5, 'Le Aaya Hoon', 'Kumar Sanu & Preeti Uttam', 'Anari No.1', 1999, 'Dev Kohli'),
       origSong('ds-anari-no-1-1999', 6, 'Main Hoon Ladki Kunwari', 'Abhijeet & Jaspinder Narula', 'Anari No.1', 1999, 'Dev Kohli'),

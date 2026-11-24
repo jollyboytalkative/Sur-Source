@@ -4541,7 +4541,6 @@ export const DIRECT_VIDEO_LINKS: Record<string, string> = {
   "ds-lohpurush-1999-4": "OdwCUb6r8fU",
   "ds-lohpurush-1999-3": "aLiyPwdTlzc",
   "ds-anari-no-1-1999-2": "QsHnyI-3Du8",
-  "ds-anari-no-1-1999-3": "pcotqcreUko",
   "ds-anari-no-1-1999-1": "eEkHBbIJC_g",
   "ds-anari-no-1-1999-4": "QsHnyI-3Du8",
   "ds-anari-no-1-1999-6": "GqRYFSTrtcI",

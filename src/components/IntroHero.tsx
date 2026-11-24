@@ -53,7 +53,7 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
               <strong className="font-semibold text-[#1C1917]">
                 Aadesh Shrivastava, Anu Malik, Bappi Lahiri, Dilip Sen–Sameer Sen, Himesh Reshammiya,
                 Ismail Darbar, Jaidev, Jatin–Lalit, Kalyanji–Anandji, Khayyam,
-                Nikhil–Vinay, Raamlaxman, R.D. Burman, Shankar–Jaikishan, Shiv–Hari, A. R. Rahman,
+                Nikhil–Vinay, Raamlaxman, R.D. Burman, Sanjeev–Darshan, Shankar–Ehsaan–Loy, Shankar–Jaikishan, Shiv–Hari, Usha Khanna, Uttam Singh, A. R. Rahman,
                 Naushad, O.P. Nayyar, Anand–Milind, Laxmikant–Pyarelal, Madan
                 Mohan, Ravi, Roshan, S. D. Burman, Salil Chowdhury, and Viju Shah
               </strong>

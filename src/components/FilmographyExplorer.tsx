@@ -111,7 +111,23 @@ type DecadeFilter =
   | 'as-1991-1998'
   | 'as-1999-2001'
   | 'as-2002-2005'
-  | 'as-2006-2015';
+  | 'as-2006-2017'
+  | 'uk-1959-1969'
+  | 'uk-1970-1977'
+  | 'uk-1978-1985'
+  | 'uk-1986-2003'
+  | 'us-1983-1989'
+  | 'us-1997-2001'
+  | 'us-2002-2006'
+  | 'us-2013-2014'
+  | 'sel-1999-2004'
+  | 'sel-2005-2009'
+  | 'sel-2010-2015'
+  | 'sel-2016-2025'
+  | 'sd-1999-2002'
+  | 'sd-2003-2009'
+  | 'sd-2011-2016'
+  | 'sd-2017-2026';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -392,6 +408,52 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'as-baabul-2006',
         'as-raajneeti-2010',
         'as-mahayoddha-rama-2016',
+        'uk-dil-deke-dekho-1959',
+        'uk-hum-hindustani-1960',
+        'uk-shabnam-1964',
+        'uk-ek-sapera-ek-lutera-1965',
+        'uk-sabak-1973',
+        'uk-hawas-1974',
+        'uk-saajan-bina-suhagan-1978',
+        'uk-dada-1979',
+        'uk-aap-to-aise-na-the-1980',
+        'uk-souten-1983',
+        'uk-dil-pardesi-ho-gayaa-2003',
+        'us-painter-babu-1983',
+        'us-waaris-1988',
+        'us-dil-to-pagal-hai-1997',
+        'us-dushman-1998',
+        'us-gadar-ek-prem-katha-2001',
+        'us-pinjar-2003',
+        'sel-mission-kashmir-2000',
+        'sel-dil-chahta-hai-2001',
+        'sel-kal-ho-naa-ho-2003',
+        'sel-lakshya-2004',
+        'sel-bunty-aur-babli-2005',
+        'sel-kabhi-alvida-naa-kehna-2006',
+        'sel-don-2006',
+        'sel-taare-zameen-par-2007',
+        'sel-rock-on-2008',
+        'sel-wake-up-sid-2009',
+        'sel-my-name-is-khan-2010',
+        'sel-zindagi-na-milegi-dobara-2011',
+        'sel-bhaag-milkha-bhaag-2013',
+        'sel-2-states-2014',
+        'sel-dil-dhadakne-do-2015',
+        'sel-raazi-2018',
+        'sel-sitaare-zameen-par-2025',
+        'sd-mann-1999',
+        'sd-deewane-2000',
+        'sd-hamara-dil-aapke-paas-hai-2000',
+        'sd-aashiq-2001',
+        'sd-style-2001',
+        'sd-rishtey-2002',
+        'sd-karz-2002',
+        'sd-talaash-2003',
+        'sd-xcuse-me-2003',
+        'sd-nh10-2015',
+        'sd-ghost-2019',
+        'sd-dhamaal-4-2026',
       ])
   );
 
@@ -491,6 +553,22 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === 'as-1999-2001' && (m.year < 1999 || m.year > 2001)) return false;
         if (decade === 'as-2002-2005' && (m.year < 2002 || m.year > 2005)) return false;
         if (decade === 'as-2006-2017' && m.year < 2006) return false;
+        if (decade === 'uk-1959-1969' && m.year > 1969) return false;
+        if (decade === 'uk-1970-1977' && (m.year < 1970 || m.year > 1977)) return false;
+        if (decade === 'uk-1978-1985' && (m.year < 1978 || m.year > 1985)) return false;
+        if (decade === 'uk-1986-2003' && m.year < 1986) return false;
+        if (decade === 'us-1983-1989' && m.year > 1989) return false;
+        if (decade === 'us-1997-2001' && (m.year < 1990 || m.year > 2001)) return false;
+        if (decade === 'us-2002-2006' && (m.year < 2002 || m.year > 2006)) return false;
+        if (decade === 'us-2013-2014' && m.year < 2007) return false;
+        if (decade === 'sel-1999-2004' && m.year > 2004) return false;
+        if (decade === 'sel-2005-2009' && (m.year < 2005 || m.year > 2009)) return false;
+        if (decade === 'sel-2010-2015' && (m.year < 2010 || m.year > 2015)) return false;
+        if (decade === 'sel-2016-2025' && m.year < 2016) return false;
+        if (decade === 'sd-1999-2002' && m.year > 2002) return false;
+        if (decade === 'sd-2003-2009' && (m.year < 2003 || m.year > 2009)) return false;
+        if (decade === 'sd-2011-2016' && (m.year < 2011 || m.year > 2016)) return false;
+        if (decade === 'sd-2017-2026' && m.year < 2017) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -737,7 +815,39 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                                     { id: 'as-2002-2005', label: '2002–2005' },
                                                                     { id: 'as-2006-2017', label: '2006–2017' },
                                                                   ] as const)
-                                                                : ([
+                                                                : directorId === 'usha-khanna'
+                                                                  ? ([
+                                                                      { id: 'all', label: 'All Eras (1959–2003)' },
+                                                                      { id: 'uk-1959-1969', label: '1959–1969' },
+                                                                      { id: 'uk-1970-1977', label: '1970–1977' },
+                                                                      { id: 'uk-1978-1985', label: '1978–1985' },
+                                                                      { id: 'uk-1986-2003', label: '1986–2003' },
+                                                                    ] as const)
+                                                                  : directorId === 'uttam-singh'
+                                                                    ? ([
+                                                                        { id: 'all', label: 'All Eras (1983–2014)' },
+                                                                        { id: 'us-1983-1989', label: '1983–1989' },
+                                                                        { id: 'us-1997-2001', label: '1997–2001' },
+                                                                        { id: 'us-2002-2006', label: '2002–2006' },
+                                                                        { id: 'us-2013-2014', label: '2013–2014' },
+                                                                      ] as const)
+                                                                    : directorId === 'shankar-ehsaan-loy'
+                                                                      ? ([
+                                                                          { id: 'all', label: 'All Eras (1999–2025)' },
+                                                                          { id: 'sel-1999-2004', label: '1999–2004' },
+                                                                          { id: 'sel-2005-2009', label: '2005–2009' },
+                                                                          { id: 'sel-2010-2015', label: '2010–2015' },
+                                                                          { id: 'sel-2016-2025', label: '2016–2025' },
+                                                                        ] as const)
+                                                                      : directorId === 'sanjeev-darshan'
+                                                                        ? ([
+                                                                            { id: 'all', label: 'All Eras (1999–2026)' },
+                                                                            { id: 'sd-1999-2002', label: '1999–2002' },
+                                                                            { id: 'sd-2003-2009', label: '2003–2009' },
+                                                                            { id: 'sd-2011-2016', label: '2011–2016' },
+                                                                            { id: 'sd-2017-2026', label: '2017–2026' },
+                                                                          ] as const)
+                                                                        : ([
                             {
                               id: 'all',
                               label:

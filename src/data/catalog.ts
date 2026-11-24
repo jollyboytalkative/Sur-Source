@@ -27,6 +27,10 @@ import { SHIV_HARI_MOVIES } from './shivHariData.ts';
 import { RAAMLAXMAN_MOVIES } from './raamlaxmanData.ts';
 import { JAIDEV_MOVIES } from './jaidevData.ts';
 import { AADESH_SHRIVASTAVA_MOVIES } from './aadeshShrivastavaData.ts';
+import { USHA_KHANNA_MOVIES } from './ushaKhannaData.ts';
+import { UTTAM_SINGH_MOVIES } from './uttamSinghData.ts';
+import { SHANKAR_EHSAAN_LOY_MOVIES } from './shankarEhsaanLoyData.ts';
+import { SANJEEV_DARSHAN_MOVIES } from './sanjeevDarshanData.ts';
 import { SUPPLEMENTAL_MOVIES } from './supplementalMovies.ts';
 import { SUPPLEMENTAL_TRACK_ADDITIONS } from './supplementalTracks.ts';
 import { DIRECT_VIDEO_LINKS } from './directVideoLinks.ts';
@@ -59,6 +63,10 @@ const BASE_DIRECTOR_MOVIES: MovieEntry[] = [
   ...RAAMLAXMAN_MOVIES,
   ...JAIDEV_MOVIES,
   ...AADESH_SHRIVASTAVA_MOVIES,
+  ...USHA_KHANNA_MOVIES,
+  ...UTTAM_SINGH_MOVIES,
+  ...SHANKAR_EHSAAN_LOY_MOVIES,
+  ...SANJEEV_DARSHAN_MOVIES,
 ];
 
 const RAW_ALL_DIRECTOR_MOVIES: MovieEntry[] = (() => {

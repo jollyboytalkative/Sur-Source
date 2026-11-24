@@ -356,7 +356,15 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                                                 ? '36 verified Hindi (Bollywood) films (182 songs · 1955–1997; Nepali Maitighar, TV Ramayan, Madhushala album & co-composers’ tracks excluded)'
                                                                 : activeDirectorId === 'aadesh-shrivastava'
                                                                   ? '62 verified Hindi (Bollywood) song films (263 songs · 1991–2017; ~25 BGM-only Hindi films, private albums, telefilms, shelved cassettes, Pakistani/Punjabi scores & co-composers’ tracks excluded)'
-                                                                  : 'Verified chronological filmography'}
+                                                                  : activeDirectorId === 'usha-khanna'
+                                                                    ? '158 verified Hindi (Bollywood) song films (796 songs · 1959–2003; excluding Malayalam, Gujarati, Bengali, Marathi & Bhojpuri scores, TV Chandrakanta, non-film Mausam, shelved cassettes & co-composers’ tracks across 150–250+ career credits)'
+                                                                    : activeDirectorId === 'uttam-singh'
+                                                                      ? '19 verified Hindi (Bollywood) song films (125 songs · 1983–2014; excluding BGM-only Baghban/Taj Mahal/HTHS, arranger credits like Maine Pyar Kiya/DDLJ, Dil Ne Phir Yaad Kiya, Gadar 2 & Punjabi/Malayalam/Marathi/Bhojpuri films)'
+                                                                      : activeDirectorId === 'shankar-ehsaan-loy'
+                                                                        ? '78 verified Hindi (Bollywood) song films (408 vocal songs · 1999–2025; excluding Tamil/Telugu/Marathi/English films, Bandish Bandits, unreleased Dus/The Desire, BGM/remix-only & co-composers’ tracks)'
+                                                                        : activeDirectorId === 'sanjeev-darshan'
+                                                                          ? '37 verified Hindi (Bollywood) song films (166 vocal songs · 1999–2026; excluding Tamil Unakkaga En Kadhal, Gujarati devotional album, Silk Route’s Ganga Nahale, BGM/mashups & co-composers’ tracks)'
+                                                                          : 'Verified chronological filmography'}
             </div>
           </div>
 

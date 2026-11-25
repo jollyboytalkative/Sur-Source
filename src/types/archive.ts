@@ -29,7 +29,9 @@ export type DirectorId =
   | 'usha-khanna'
   | 'uttam-singh'
   | 'shankar-ehsaan-loy'
-  | 'sanjeev-darshan';
+  | 'sanjeev-darshan'
+  | 'c-ramchandra'
+  | 'anil-biswas';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

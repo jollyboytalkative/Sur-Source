@@ -51,7 +51,7 @@ export const IntroHero: React.FC<IntroHeroProps> = ({
               </strong>{' '}
               and expanding across golden and modern eras to include{' '}
               <strong className="font-semibold text-[#1C1917]">
-                Aadesh Shrivastava, Anu Malik, Bappi Lahiri, Dilip Sen–Sameer Sen, Himesh Reshammiya,
+                Aadesh Shrivastava, Anil Biswas, Anu Malik, Bappi Lahiri, C. Ramchandra, Dilip Sen–Sameer Sen, Himesh Reshammiya,
                 Ismail Darbar, Jaidev, Jatin–Lalit, Kalyanji–Anandji, Khayyam,
                 Nikhil–Vinay, Raamlaxman, R.D. Burman, Sanjeev–Darshan, Shankar–Ehsaan–Loy, Shankar–Jaikishan, Shiv–Hari, Usha Khanna, Uttam Singh, A. R. Rahman,
                 Naushad, O.P. Nayyar, Anand–Milind, Laxmikant–Pyarelal, Madan

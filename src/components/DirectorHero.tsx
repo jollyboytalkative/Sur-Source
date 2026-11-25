@@ -364,7 +364,11 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                                                         ? '78 verified Hindi (Bollywood) song films (408 vocal songs · 1999–2025; excluding Tamil/Telugu/Marathi/English films, Bandish Bandits, unreleased Dus/The Desire, BGM/remix-only & co-composers’ tracks)'
                                                                         : activeDirectorId === 'sanjeev-darshan'
                                                                           ? '37 verified Hindi (Bollywood) song films (166 vocal songs · 1999–2026; excluding Tamil Unakkaga En Kadhal, Gujarati devotional album, Silk Route’s Ganga Nahale, BGM/mashups & co-composers’ tracks)'
-                                                                          : 'Verified chronological filmography'}
+                                                                          : activeDirectorId === 'c-ramchandra'
+                                                                            ? '97 verified Hindi (Bollywood) song films (730 vocal songs · 1942–1978; excluding Tamil/Telugu/Marathi cinema, shelved Nazrana/Jitne Door Utne Paas, non-film "Ae Mere Watan Ke Logon", misattributions, instrumentals, unuploaded 1940s tracks & co-composers’ tracks)'
+                                                                            : activeDirectorId === 'anil-biswas'
+                                                                              ? '73 verified Hindi (Bollywood) song films (505 vocal songs · 1936–1965; excluding Bengali Du-janay, unreleased Chaand 1956, songless Munna, uncredited Basant/Bawre Nain, non-film & tribute albums, unuploaded 1935–1937 scores & co-composers’ tracks)'
+                                                                              : 'Verified chronological filmography'}
             </div>
           </div>
 

@@ -31,7 +31,9 @@ export type DirectorId =
   | 'shankar-ehsaan-loy'
   | 'sanjeev-darshan'
   | 'c-ramchandra'
-  | 'anil-biswas';
+  | 'anil-biswas'
+  | 'chitragupt'
+  | 'hemant-kumar';
 
 export type AdaptationType = 'copied' | 'inspired' | 'original';
 

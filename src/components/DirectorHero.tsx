@@ -368,7 +368,11 @@ export const DirectorHero: React.FC<DirectorHeroProps> = ({
                                                                             ? '97 verified Hindi (Bollywood) song films (730 vocal songs · 1942–1978; excluding Tamil/Telugu/Marathi cinema, shelved Nazrana/Jitne Door Utne Paas, non-film "Ae Mere Watan Ke Logon", misattributions, instrumentals, unuploaded 1940s tracks & co-composers’ tracks)'
                                                                             : activeDirectorId === 'anil-biswas'
                                                                               ? '73 verified Hindi (Bollywood) song films (505 vocal songs · 1936–1965; excluding Bengali Du-janay, unreleased Chaand 1956, songless Munna, uncredited Basant/Bawre Nain, non-film & tribute albums, unuploaded 1935–1937 scores & co-composers’ tracks)'
-                                                                              : 'Verified chronological filmography'}
+                                                                              : activeDirectorId === 'chitragupt'
+                                                                                ? '134 verified Hindi (Bollywood) song films (723 vocal songs · 1946–1988; excluding Bhojpuri/Gujarati/Punjabi scores, Hindi dubs Jeevan Taara & Rangeen Duniyaa, Dost BGM-only, non-film albums, misattributions, instrumentals & unuploaded 1946–1950 films)'
+                                                                                : activeDirectorId === 'hemant-kumar'
+                                                                                  ? '54 verified Hindi (Bollywood) song films (397 vocal songs · 1952–1979; excluding 150+ Bengali scores, Devi Choudhurani 1969, Do Mastane 1958, Hemant Bhosle credits, singer-only Baat Ek Raat Ki, non-film albums, instrumentals & 7 unuploaded 1954–1957 tracks)'
+                                                                                  : 'Verified chronological filmography'}
             </div>
           </div>
 

@@ -92,6 +92,20 @@ const DIRECTOR_ALIASES: Record<DirectorId, string[]> = {
     'Anil Da',
     'Bhishma Pitamah of Hindi film music',
   ],
+  chitragupt: [
+    'Chitragupt',
+    'Chitragupta',
+    'Chitragupt Shrivastava',
+    'Chitragupta Shrivastava',
+  ],
+  'hemant-kumar': [
+    'Hemant Kumar',
+    'Hemanta Mukherjee',
+    'Hemanta Kumar Mukhopadhyay',
+    'Hemant Da',
+    'Hemant-da',
+    'Hemanta Mukhopadhyay',
+  ],
 };
 
 /**
@@ -99,6 +113,30 @@ const DIRECTOR_ALIASES: Record<DirectorId, string[]> = {
  * keyed by exact verified song IDs across all 18 music directors.
  */
 const SONG_LYRIC_CUES_BY_ID: Record<string, string[]> = {
+  // Hemant Kumar
+  'hk-anand-math-1952-1': ['Vande Mataram Lata Mangeshkar Anand Math', 'Bande Mataram'],
+  'hk-nagin-1954-1': ['Man dole mera tan dole mere dil ka gaya qarar re', 'Been music Nagin Clavioline'],
+  'hk-nagin-1954-2': ['Mera dil ye pukare aaja mere gham ke sahare aaja'],
+  'hk-jagriti-1954-2': ['De di hamein aazadi bina khadag bina dhaal', 'Sabarmati ke sant tune kar diya kamaal'],
+  'hk-jagriti-1954-3': ['Aao bachcho tumhein dikhayein jhanki hindustan ki', 'Vande Mataram Jagriti'],
+  'hk-shart-1954-1': ['Na yeh chand hoga na taare rahenge magar hum hamesha tumhare rahenge'],
+  'hk-chand-1959-5': ['Ai baadalon rimjhim ke rang liye kahan chale', 'Hey Madhabi Dwidha Keno Tagore'],
+  'hk-masoom-1960-1': ['Nani teri morni ko mor le gaye baki jo bacha tha kale chor le gaye'],
+  'hk-bees-saal-baad-1962-2': ['Beqarar karke hamein yun na jaiye aapko hamari kasam laut aaiye'],
+  'hk-bees-saal-baad-1962-3': ['Kahin deep jale kahin dil zara dekh le aakar parwane'],
+  'hk-sahib-bibi-aur-ghulam-1962-3': ['Piya aiso jiya mein samay gayo re'],
+  'hk-sahib-bibi-aur-ghulam-1962-4': ['Na jao saiyan chhuda ke baiyan kasam tumhari main ro padungi'],
+  'hk-kohraa-1964-2': ['Ye nayan dare dare ye jaam bhare bhare zara pine do', 'Ei Raat Tomar Amar'],
+  'hk-do-dil-1965-2': ['Sara mora kajra chhudaya tune', 'Jadu Bhara Oi Banshi'],
+  'hk-anupama-1966-1': ['Kuchh dil ne kaha kuchh bhi nahi aisi bhi baatein hoti hain'],
+  'hk-anupama-1966-2': ['Ya dil ki suno duniyawalon ya mujhko abhi chup rehne do'],
+  'hk-biwi-aur-makaan-1966-1': ['Jaane kahan dekha hai kahan dekha hai tumhein kitni anjani suraten'],
+  'hk-do-dooni-chaar-1968-1': ['Hawaon pe likh do hawaon ke naam'],
+  'hk-khamoshi-1969-1': ['Tum pukar lo tumhara intezar hai khwab chun rahi hai raat beqaraar hai'],
+  'hk-khamoshi-1969-2': ['Hamne dekhi hai un aankhon ki mehakati khushbu haath se chhu ke isey rishton ka ilzam na do'],
+  'hk-khamoshi-1969-3': ['Woh shaam kuchh ajeeb thi yeh shaam bhi ajeeb hai'],
+  'hk-bees-saal-pehle-1972-7': ['Jab tak yeh raat hai baaki teri meri baat hai baaki', 'Yellow River Christie'],
+
   // Dilip Sen–Sameer Sen
   'ds-yeh-dillagi-1994-1': [
     'Jab bhi koi ladki dekhu mera dil deewana bole ole ole',
@@ -549,6 +587,26 @@ const SONG_LYRIC_CUES_BY_ID: Record<string, string[]> = {
   'ab-angulimaal-1960-1': ['Buddham sharanam gachchhami'],
   'ab-chhoti-chhoti-baatein-1965-1': ['Zindagi ka ajab fasana hai'],
   'ab-chhoti-chhoti-baatein-1965-3': ['Zindagi khvaab hai tha hamen bhi pataa motilal mukesh'],
+
+  // Chitragupt
+  'cg-bhabhi-1957-7': ['Chal ud ja re panchhi ke ab yeh desh hua begana'],
+  'cg-bhabhi-1957-2': ['Chali chali re patang meri chali re'],
+  'cg-barkha-1959-1': ['Tadpaoge tadpa lo hum tadap tadap kar'],
+  'cg-kali-topi-lal-rumal-1959-6': ['Laagi chhoote na ab toh sanam chahe jaaye jiya'],
+  'cg-kali-topi-lal-rumal-1959-7': ['O kaali topi waale zara naam toh bata'],
+  'cg-naya-sansar-1959-2': ['Chanda loriyan sunaye hawa jhulna jhulaye', 'Taari Aankhno Afiini Dilip Dholakia'],
+  'cg-patang-1960-2': ['Dilli hai dil hindustan ka'],
+  'cg-opera-house-1961-1': ['Balma maane na bairi chup na rahe'],
+  'cg-opera-house-1961-2': ['Dekho mausam kya bahaar hai', 'Bimbo Jim Reeves'],
+  'cg-zabak-1961-4': ['Tujhko main jaan gayi maan ya na maan vai vai'],
+  'cg-zabak-1961-6': ['Teri taqdeer ka sitara kamaal hai'],
+  'cg-main-chup-rahungi-1962-1': ['Tumhi ho mata pita tumhi ho tumhi ho bandhu sakha tumhi ho'],
+  'cg-ek-raaz-1963-2': ['Agar sun le toh ek nagma huzoor e yaar laaya hoon'],
+  'cg-ganga-ki-laharen-1964-2': ['Chhedo na meri zulfen sab log kya kahenge'],
+  'cg-ganga-ki-laharen-1964-7': ['Ae jaan e man hans lo zara'],
+  'cg-oonche-log-1965-1': ['Jaag dil e deewana rut jaagi'],
+  'cg-vaasna-1968-3': ['Yeh parbaton ke daayre yeh shaam ka dhuan'],
+  'cg-do-shikari-1979-1': ['Aaja gori dil mein rakh lein tujhe', 'Hey hey jamburi Coconut Woman Harry Belafonte'],
 };
 
 /**

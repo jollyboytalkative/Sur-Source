@@ -135,7 +135,15 @@ type DecadeFilter =
   | 'ab-1936-1942'
   | 'ab-1943-1949'
   | 'ab-1950-1954'
-  | 'ab-1955-1965';
+  | 'ab-1955-1965'
+  | 'cg-1946-1956'
+  | 'cg-1957-1961'
+  | 'cg-1962-1969'
+  | 'cg-1970-1988'
+  | 'hk-1952-1956'
+  | 'hk-1957-1961'
+  | 'hk-1962-1966'
+  | 'hk-1967-1979';
 
 export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
   directorId,
@@ -502,6 +510,46 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         'ab-angulimaal-1960',
         'ab-sautela-bhai-1962',
         'ab-chhoti-chhoti-baatein-1965',
+        'cg-alibaba-aur-40-chor-1954',
+        'cg-shiv-bhakta-1955',
+        'cg-bhabhi-1957',
+        'cg-barkha-1959',
+        'cg-kali-topi-lal-rumal-1959',
+        'cg-naya-sansar-1959',
+        'cg-patang-1960',
+        'cg-opera-house-1961',
+        'cg-zabak-1961',
+        'cg-main-chup-rahungi-1962',
+        'cg-ek-raaz-1963',
+        'cg-ganga-ki-laharen-1964',
+        'cg-oonche-log-1965',
+        'cg-vaasna-1968',
+        'cg-kabhi-dhoop-kabhi-chhaon-1971',
+        'cg-do-shikari-1979',
+        'cg-ghar-dwaar-1985',
+        'cg-shiv-ganga-1988',
+        'hk-anand-math-1952',
+        'hk-jagriti-1954',
+        'hk-nagin-1954',
+        'hk-shart-1954',
+        'hk-bandish-1955',
+        'hk-ek-hi-raasta-1956',
+        'hk-champa-kali-1957',
+        'hk-miss-mary-1957',
+        'hk-chand-1959',
+        'hk-masoom-1960',
+        'hk-bees-saal-baad-1962',
+        'hk-sahib-bibi-aur-ghulam-1962',
+        'hk-bin-badal-barsaat-1963',
+        'hk-kohraa-1964',
+        'hk-do-dil-1965',
+        'hk-anupama-1966',
+        'hk-biwi-aur-makaan-1966',
+        'hk-majhli-didi-1967',
+        'hk-do-dooni-chaar-1968',
+        'hk-khamoshi-1969',
+        'hk-bees-saal-pehle-1972',
+        'hk-love-in-canada-1979',
       ])
   );
 
@@ -625,6 +673,14 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
         if (decade === 'ab-1943-1949' && (m.year < 1943 || m.year > 1949)) return false;
         if (decade === 'ab-1950-1954' && (m.year < 1950 || m.year > 1954)) return false;
         if (decade === 'ab-1955-1965' && m.year < 1955) return false;
+        if (decade === 'cg-1946-1956' && m.year > 1956) return false;
+        if (decade === 'cg-1957-1961' && (m.year < 1957 || m.year > 1961)) return false;
+        if (decade === 'cg-1962-1969' && (m.year < 1962 || m.year > 1969)) return false;
+        if (decade === 'cg-1970-1988' && m.year < 1970) return false;
+        if (decade === 'hk-1952-1956' && m.year > 1956) return false;
+        if (decade === 'hk-1957-1961' && (m.year < 1957 || m.year > 1961)) return false;
+        if (decade === 'hk-1962-1966' && (m.year < 1962 || m.year > 1966)) return false;
+        if (decade === 'hk-1967-1979' && m.year < 1967) return false;
 
         if (onlyWithAdaptations) {
           const hasAdapted = m.songs.some((s) => s.adaptationType !== 'original');
@@ -919,7 +975,23 @@ export const FilmographyExplorer: React.FC<FilmographyExplorerProps> = ({
                                                                                 { id: 'ab-1950-1954', label: '1950–1954' },
                                                                                 { id: 'ab-1955-1965', label: '1955–1965' },
                                                                               ] as const)
-                                                                            : ([
+                                                                            : directorId === 'chitragupt'
+                                                                              ? ([
+                                                                                  { id: 'all', label: 'All Eras (1946–1988)' },
+                                                                                  { id: 'cg-1946-1956', label: '1946–1956' },
+                                                                                  { id: 'cg-1957-1961', label: '1957–1961' },
+                                                                                  { id: 'cg-1962-1969', label: '1962–1969' },
+                                                                                  { id: 'cg-1970-1988', label: '1970–1988' },
+                                                                                ] as const)
+                                                                              : directorId === 'hemant-kumar'
+                                                                                ? ([
+                                                                                    { id: 'all', label: 'All Eras (1952–1979)' },
+                                                                                    { id: 'hk-1952-1956', label: '1952–1956' },
+                                                                                    { id: 'hk-1957-1961', label: '1957–1961' },
+                                                                                    { id: 'hk-1962-1966', label: '1962–1966' },
+                                                                                    { id: 'hk-1967-1979', label: '1967–1979' },
+                                                                                  ] as const)
+                                                                                : ([
                             {
                               id: 'all',
                               label:
